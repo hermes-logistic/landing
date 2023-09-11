@@ -64,10 +64,10 @@ export const Plans: React.FC = () => {
   ]
 
   return (
-    <section className="plan-section w-100 bg-primary">
+    <section id="pricing" className="plan-section w-100 bg-primary">
       <div className="mw-1200">
         <span className="fw-semibold fs-12 text-sunset w-100 d-block text-center">PRICING</span>
-        <h2 className="my-4 pb-5 display-5 text-center fw-semibold">Title for this Section Here</h2>
+        <h2 className="my-4 pb-3 pb-md-5 display-5 text-center fw-semibold">Title for this Section Here</h2>
         <div className="plans-grid">
           {data.map(el => (
             <div key={el.id} className="plan-card">

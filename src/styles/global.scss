@@ -123,9 +123,28 @@ nav.navbar {
       background-color: $primary;
     }
   }
+  @media (max-width: 1370px) {
+    .nav-item {
+      .nav-link {
+        padding: 15px 20px;
+      }
+    }
+  }
+  @media (max-width: 1150px) {
+    .container-fluid {
+      padding: 20px;
+    }
+  }
   @media (max-width: 991px) {
     .container-fluid {
+      background-color: $primary;
       padding: 0 12px;
+    }
+  }
+  @media (max-width: 345px) {
+    .logo {
+      height: auto !important;
+      width: 200px !important;
     }
   }
 }

@@ -75,7 +75,10 @@ const Home: NextPage = () => {
       </header>
 
       <main className="container-fluid px-0 pt-5">
-        <section className="py-3 py-lg-5 d-flex justify-content-evenly align-items-center mw-1200">
+        <section
+          id="who-we-are"
+          className="who-we-are-section py-5 d-flex justify-content-evenly align-items-center mw-1200 px-3 px-xl-0"
+        >
           <div style={{ maxWidth: '510px' }}>
             <span className="fs-12 text-sunset fw-semibold">WHO WE ARE</span>
             <h2 className="display-5 fw-semibold lh-base py-4 mb-0">
@@ -83,6 +86,13 @@ const Home: NextPage = () => {
               <br />
               Section Here
             </h2>
+            <Image
+              src={whoWeAreMain}
+              alt="Who We Are"
+              width={650}
+              height={550}
+              className="mw-100 d-inline-block d-lg-none"
+            />
             <p className="fs-5">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua.
@@ -93,7 +103,13 @@ const Home: NextPage = () => {
               pariatur.
             </p>
           </div>
-          <Image src={whoWeAreMain} alt="Who We Are" width={650} height={550} className="mw-100" />
+          <Image
+            src={whoWeAreMain}
+            alt="Who We Are"
+            width={650}
+            height={550}
+            className="mw-100 d-none d-lg-inline-block"
+          />
         </section>
 
         <section>
@@ -138,9 +154,10 @@ const Home: NextPage = () => {
               tabIndex={0}
             >
               <div className="tab-custom-content">
-                <Image src={purpose} alt="Our purpose" width={550} className="mw-100" />
+                <Image src={purpose} alt="Our purpose" width={550} className="mw-100 d-none d-lg-inline-block" />
                 <div style={{ maxWidth: '410px' }}>
                   <h2 className="display-5 fw-semibold lh-base pb-4 mb-0">Our Purpose</h2>
+                  <Image src={purpose} alt="Our purpose" width={550} className="mw-100 d-lg-inline-block d-lg-none" />
                   <p className="fs-5">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua.
@@ -163,19 +180,20 @@ const Home: NextPage = () => {
               <div className="tab-custom-content">
                 <div style={{ maxWidth: '410px' }}>
                   <h2 className="display-5 fw-semibold pb-4 mb-0">What do we Want To Archive?</h2>
+                  <Image src={purpose} alt="Our purpose" width={550} className="mw-100 d-inline-block d-lg-none" />
                   <p className="fs-5">
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
                     nulla pariatur.
                   </p>
                 </div>
-                <Image src={purpose} alt="Our purpose" width={550} className="mw-100" />
+                <Image src={purpose} alt="Our purpose" width={550} className="mw-100 d-none d-lg-inline-block" />
               </div>
             </div>
           </div>
         </section>
 
-        <section className="mw-1200 pt-5">
+        <section id="benefits" className="mw-1200 pt-0 pt-md-5 px-3">
           <span className="fs-12 text-sunset fw-semibold">BENEFITS</span>
           <h2 className="display-5 fw-semibold pb-5 pt-4">Title for this Section Here</h2>
 
@@ -232,7 +250,7 @@ const Home: NextPage = () => {
 
         <Plans />
 
-        <section className="w-100 banner-section">
+        <section id="contact" className="w-100 banner-section">
           <div className="banner">
             <div>
               <h2 className="display-5 fw-semibold">CTA title Banner Here</h2>
@@ -245,13 +263,13 @@ const Home: NextPage = () => {
                 CTA Text Here
               </button>
             </div>
-            <Image src={banner} alt="Banner" width={440} height={565} />
+            <Image src={banner} alt="Banner" width={440} height={565} className="mw-100" />
           </div>
         </section>
       </main>
-      <footer className="w-100">
+      <footer className="w-100 bg-primary">
         <div className="mw-1200">
-          <div className="d-flex justify-content-between align-items-center pb-5">
+          <div className="d-flex justify-content-between align-items-center pb-0 pb-md-5">
             <Image src="/small-logo.svg" alt="Hermes Logistic" width={170} height={70} />
             <ul className="social">
               <li>

@@ -19,7 +19,7 @@ export const Features: React.FC = () => {
   }, [render, show])
 
   return (
-    <section className="w-100 features-section">
+    <section id="features" className="w-100 features-section">
       <div className="mw-1200">
         <span className="fw-semibold fs-12 text-sunset w-100 d-block text-center">FEATURES</span>
         <h2 className="my-4 display-5 text-center fw-semibold">Title for this Section Here</h2>

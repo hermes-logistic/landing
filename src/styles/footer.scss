@@ -24,4 +24,25 @@ footer {
       text-decoration: none;
     }
   }
+  @media (max-width: 550px) {
+    padding: 40px 10px;
+    .d-flex {
+      flex-wrap: wrap;
+      justify-content: center !important;
+      .social {
+        margin: 60px 0;
+        text-align: center;
+        width: 100%;
+      }
+    }
+    .terms {
+      display: flex;
+      flex-direction: column;
+      span, a {
+        display: block;
+        padding: 10px 0;
+        width: 100%;
+      }
+    }
+  }
 }

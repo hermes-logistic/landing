@@ -37,11 +37,27 @@ const FeaturesSlider: React.FC = () => {
     },
   ]
   return (
-    <Swiper id="features-slider" slidesPerView={3} modules={[Pagination]} pagination={{ clickable: true }}>
+    <Swiper
+      id="features-slider"
+      slidesPerView={1}
+      modules={[Pagination]}
+      pagination={{ clickable: true }}
+      breakpoints={{
+        640: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1100: {
+          slidesPerView: 3,
+        },
+      }}
+    >
       {data.map(item => (
         <SwiperSlide key={`card-${item.id}`}>
           <div className="feature-card">
-            <Image src={item.image} alt={item.name} width={360} />
+            <Image src={item.image} alt={item.name} width={360} className="feature-image mw-100" />
             <div className="feature-data">
               <h3 className="fs-18 mb-3 fw-semibold">{item.name}</h3>
               <p className="fs-6">{item.description}</p>
