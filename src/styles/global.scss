@@ -41,17 +41,32 @@ $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
 
 @import "~bootstrap/scss/utilities/api";
 
+// Custom classes
+.fs-5 {
+  font-size: 1rem !important;
+}
+.fs-12 {
+  font-size: 12px;
+}
 .fs-18 {
   font-size: 18px;
 }
+.text-sunset {
+  color: $sunset-orange;
+}
+.mw-1200 {
+  margin: 0 auto;
+  max-width: 1200px;
+}
 
+// styles for the whole page
 header, main, footer {
   margin: auto;
   max-width: 1920px;
 }
 
 nav.navbar {
-  z-index: 1;
+  z-index: 10;
   .container-fluid {
     padding: 30px 80px;
     transition: all 0.3s ease-in-out;
@@ -94,6 +109,11 @@ nav.navbar {
       }
     }
   }
+  @media (min-width: 1921px) {
+    .container-fluid {
+      background-color: $primary;
+    }
+  }
   @media (max-width: 991px) {
     .container-fluid {
       padding: 0 12px;
@@ -103,4 +123,5 @@ nav.navbar {
 
 
 // just to not have too much code in a single file
-@import "./header.scss"
+@import "./header.scss";
+@import "./home-body.scss";
