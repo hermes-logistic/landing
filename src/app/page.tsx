@@ -267,7 +267,7 @@ const Home: NextPage = () => {
           </div>
         </section>
       </main>
-      <footer className="w-100 bg-primary">
+      <footer className="w-100">
         <div className="mw-1200">
           <div className="d-flex justify-content-between align-items-center pb-0 pb-md-5">
             <Image src="/small-logo.svg" alt="Hermes Logistic" width={170} height={70} />

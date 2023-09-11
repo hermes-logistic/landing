@@ -96,18 +96,42 @@
       border-radius: 10px;
       margin: 0 auto 60px auto;
       max-width: 360px;
+      position: relative;
       width: 96%;
+      z-index: 1;
       .feature-data {
-        background-color: $bg;
+        background-color: rgba($color: $bg, $alpha: 0.55);
         border-radius: 0 0 10px 10px;
         text-align: center;
         padding: 25px;
         transition: all 0.3s ease-in-out;
       }
-      &:hover .feature-data {
-        background-color: $secondary;
-        color: $bg !important;
-        transition: all 0.3s ease-in-out;
+      &:hover {
+        &::before {
+          display: none;
+        }
+        .feature-data {
+          background-color: $secondary;
+          box-shadow: 0px 30px 40px 0px rgba(255, 193, 82, 0.15);
+          color: $bg !important;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 10px;
+        padding: 1px; 
+        background:linear-gradient(to bottom, $light-gray 0%,  transparent 90%);
+        mask:
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        mask-composite: exclude; 
+        -webkit-mask-composite: xor;
       }
     }
   }
@@ -128,12 +152,13 @@
     .plan-card {
       background: rgba($color: $bg, $alpha: 0.4);
       backdrop-filter: blur(15px);
-      // border: 1px solid $gray;
       border-radius: 10px;
       max-width: 295px;
       padding: 40px 30px;
-      width: 98%;
+      position: relative;
       transition: all 0.3s ease-in-out;
+      width: 98%;
+      z-index: 1;
       .price {
         align-items: flex-start;
         display: flex;
@@ -155,9 +180,11 @@
         font-weight: 600;
         margin: 20px 0 40px 0;
         padding: 12px 0;
+        position: relative;
         text-align: center;
-        width: 100%;
         transition: all 0.3s ease-in-out;
+        width: 100%;
+        z-index: 2;
       }
       .specs {
         padding: 0;
@@ -170,6 +197,22 @@
           }
         }
       }
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 10px;
+        padding: 1.5px; 
+        background: linear-gradient(to bottom, rgba($color: #2b4785, $alpha: 0.8) 0%,  transparent 80%);
+        mask:
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        mask-composite: exclude; 
+        -webkit-mask-composite: xor;
+      }
       &:hover {
         background: linear-gradient(20deg, rgba($color: $sunset-orange, $alpha: 0.29), rgba($color: $bg, $alpha: 0.23));
         transition: all 0.3s ease-in-out;
@@ -177,6 +220,9 @@
           background-color: $secondary;
           color: $bg;
           transition: all 0.3s ease-in-out;
+        }
+        &::before {
+          background: linear-gradient(to bottom, $gray 0%,  transparent 80%) !important;
         }
       }
     }
@@ -213,6 +259,22 @@
       right: 0;
       top: 0;
       transform: translateY(-17%)
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+      padding: 1.5px; 
+      background: linear-gradient(to right, rgba($color: $light-yellow, $alpha: 1) 0%,  transparent 80%);
+      mask:
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      mask-composite: exclude; 
+      -webkit-mask-composite: xor;
     }
   }
   @media (max-width: 900px) {
