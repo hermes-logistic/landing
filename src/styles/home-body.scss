@@ -36,7 +36,7 @@
   border-radius: 10px;
   box-shadow: 0px 55px 100px 0px rgba(183, 205, 245, 0.10), 0px 31px 40px 0px #01051D;
   justify-content: space-between;
-  margin: 50px auto 100px auto;
+  margin: 50px auto 120px auto;
   max-width: 1200px;
   padding: 70px 60px;
   width: 98%;
@@ -56,6 +56,119 @@
         font-weight: 700;
         padding: 0 0 10px 0;
       }
+    }
+  }
+}
+
+.features-section {
+  background: linear-gradient(to bottom, $bg, $primary);
+  padding: 100px 5px;
+  #features-slider {
+    margin-top: 100px;
+    .feature-card {
+      border-radius: 10px;
+      margin: 0 auto 60px auto;
+      max-width: 360px;
+      .feature-data {
+        background-color: $bg;
+        border-radius: 0 0 10px 10px;
+        text-align: center;
+        padding: 25px;
+        transition: all 0.3s ease-in-out;
+      }
+      &:hover .feature-data {
+        background-color: $secondary;
+        color: $bg !important;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+.plan-section {
+  padding: 20px 0 100px 0;
+  .plans-grid {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    .plan-card {
+      background: rgba($color: $bg, $alpha: 0.4);
+      backdrop-filter: blur(15px);
+      // border: 1px solid $gray;
+      border-radius: 10px;
+      max-width: 295px;
+      padding: 40px 30px;
+      width: 98%;
+      transition: all 0.3s ease-in-out;
+      .price {
+        align-items: flex-start;
+        display: flex;
+        font-weight: 600;
+        justify-content: flex-start;
+        span {
+          background-color: rgba($color: $gray, $alpha: 0.7);
+          border-radius: 5px;
+          margin: 5px 0 0 15px;
+          padding: 3px 12px;
+        }
+      }
+      .get-plan {
+        background-color: rgba($color: $gray, $alpha: 0.5);
+        border: 2px solid $secondary;
+        border-radius: 30px;
+        display: block;
+        color: $secondary;
+        font-weight: 600;
+        margin: 20px 0 40px 0;
+        padding: 12px 0;
+        text-align: center;
+        width: 100%;
+        transition: all 0.3s ease-in-out;
+      }
+      .specs {
+        padding: 0;
+        margin: 0;
+        li {
+          display: flex;
+          padding: 10px 0;
+          img {
+            margin: 5px 10px 0 0;
+          }
+        }
+      }
+      &:hover {
+        background: linear-gradient(20deg, rgba($color: $sunset-orange, $alpha: 0.29), rgba($color: $bg, $alpha: 0.23));
+        transition: all 0.3s ease-in-out;
+        .get-plan {
+          background-color: $secondary;
+          color: $bg;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+}
+
+.banner-section {
+  background: linear-gradient(to top, $sunset-orange, $primary);
+  padding: 100px 0 200px 0;
+  .banner {
+    background: linear-gradient(to right, $sunset-orange, transparent);
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 70px;
+    position: relative;
+    width: 98%;
+    button {
+      margin-top: 20px;
+      padding: 15px 65px;
+    }
+    img {
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: translateY(-17%)
     }
   }
 }

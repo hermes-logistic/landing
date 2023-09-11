@@ -1,11 +1,20 @@
 @import "~bootstrap/scss/functions";
 
+:root {
+  --swiper-pagination-bullet-inactive-color: #94A4C2;
+  --swiper-pagination-color: #FF734D;
+  --swiper-pagination-bullet-inactive-opacity: 0.8;
+  --swiper-pagination-bullet-width: 20px;
+  --swiper-pagination-bullet-height: 10px;
+  --swiper-pagination-bullet-border-radius: 10px;
+}
+
 $enable-cssgrid: false;
 $font-size-base: 0.875rem;
 $font-family-base: 'Poppins', sans-serif;
 
 $bg: #01051D;
-$primary: #001751;
+$primary: #031E72;
 $secondary: #61F0FF;
 $light-yellow: #FFC152;
 $sunset-orange: #FF734D;
@@ -121,7 +130,11 @@ nav.navbar {
   }
 }
 
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  width: 80px !important;
+}
 
 // just to not have too much code in a single file
 @import "./header.scss";
 @import "./home-body.scss";
+@import "./footer.scss";

@@ -1,7 +1,7 @@
 import type { NextPage, Metadata } from 'next'
 import Image from 'next/image'
 
-import { Navbar } from '../components'
+import { Navbar, Features, Plans } from '../components'
 import drop from '../assets/images/icons/drop.svg'
 import clock from '../assets/images/icons/clock.svg'
 import calendar from '../assets/images/icons/calendar.svg'
@@ -12,6 +12,11 @@ import visibility from '../assets/images/icons/visibility.svg'
 import customer from '../assets/images/icons/customer.svg'
 import error from '../assets/images/icons/error.svg'
 import integration from '../assets/images/icons/integration.svg'
+import banner from '../assets/images/banner.svg'
+import fb from '../assets/images/icons/fb.svg'
+import ins from '../assets/images/icons/ins.svg'
+import x from '../assets/images/icons/x.svg'
+import tel from '../assets/images/icons/tel.svg'
 
 export const metadata: Metadata = {
   title: 'Hermes Logistic',
@@ -69,7 +74,7 @@ const Home: NextPage = () => {
         </div>
       </header>
 
-      <main className="container-fluid pt-5">
+      <main className="container-fluid px-0 pt-5">
         <section className="py-3 py-lg-5 d-flex justify-content-evenly align-items-center mw-1200">
           <div style={{ maxWidth: '510px' }}>
             <span className="fs-12 text-sunset fw-semibold">WHO WE ARE</span>
@@ -103,6 +108,7 @@ const Home: NextPage = () => {
                 role="tab"
                 aria-controls="purpose-tab-pane"
                 aria-selected="true"
+                tabIndex={-1}
               >
                 Our Purpose
               </button>
@@ -117,6 +123,7 @@ const Home: NextPage = () => {
                 role="tab"
                 aria-controls="archive-tab-pane"
                 aria-selected="false"
+                tabIndex={-1}
               >
                 What do we Want To Archive?
               </button>
@@ -220,17 +227,67 @@ const Home: NextPage = () => {
             </div>
           </div>
         </section>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+
+        <Features />
+
+        <Plans />
+
+        <section className="w-100 banner-section">
+          <div className="banner">
+            <div>
+              <h2 className="display-5 fw-semibold">CTA title Banner Here</h2>
+              <p className="fs-5 mb-4">
+                Sed ut perspiciatis unde omnis iste natus error sit
+                <br />
+                voluptatem accusantium.
+              </p>
+              <button type="button" className="btn btn-secondary rounded-pill fs-5 fw-bold">
+                CTA Text Here
+              </button>
+            </div>
+            <Image src={banner} alt="Banner" width={440} height={565} />
+          </div>
+        </section>
       </main>
-      <footer className="container-fluid">footer</footer>
+      <footer className="w-100">
+        <div className="mw-1200">
+          <div className="d-flex justify-content-between align-items-center pb-5">
+            <Image src="/small-logo.svg" alt="Hermes Logistic" width={170} height={70} />
+            <ul className="social">
+              <li>
+                <a href="http://google.com" target="_blank" rel="noopener noreferrer">
+                  <Image src={fb} alt="Facebook" width={30} height={30} />
+                </a>
+              </li>
+              <li>
+                <a href="http://google.com" target="_blank" rel="noopener noreferrer">
+                  <Image src={ins} alt="Instagram" width={30} height={30} />
+                </a>
+              </li>
+              <li>
+                <a href="http://google.com" target="_blank" rel="noopener noreferrer">
+                  <Image src={x} alt="X" width={30} height={30} />
+                </a>
+              </li>
+              <li>
+                <a href="http://google.com" target="_blank" rel="noopener noreferrer">
+                  <Image src={tel} alt="Telegram" width={30} height={30} />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="terms">
+            <span className="fs-12">©Hermes Company. All Rights Reserved</span>
+            <a href="http://google.com" target="_blank" rel="noopener noreferrer" className="fs-12">
+              Privacy Policy
+            </a>
+            <a href="http://google.com" target="_blank" rel="noopener noreferrer" className="fs-12">
+              Terms & Conditions
+            </a>
+          </div>
+        </div>
+      </footer>
     </>
   )
 }
