@@ -94,17 +94,6 @@ export const Navbar: React.FC = () => {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                href="#products"
-                onClick={handleClick}
-                data-bs-toggle="collapse"
-                data-bs-target=".navbar-collapse.show"
-              >
-                Produtcs
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
                 href="#pricing"
                 onClick={handleClick}
                 data-bs-toggle="collapse"

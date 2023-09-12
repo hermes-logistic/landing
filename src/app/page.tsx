@@ -1,17 +1,12 @@
 import type { NextPage, Metadata } from 'next'
 import Image from 'next/image'
 
-import { Navbar, Features, Plans } from '../components'
+import { Navbar, Features, Plans, Benefits } from '../components'
 import drop from '../assets/images/icons/drop.svg'
 import clock from '../assets/images/icons/clock.svg'
 import calendar from '../assets/images/icons/calendar.svg'
 import whoWeAreMain from '../assets/images/WhoWeAreMain.svg'
 import purpose from '../assets/images/purpose.png'
-import savings from '../assets/images/icons/savings.svg'
-import visibility from '../assets/images/icons/visibility.svg'
-import customer from '../assets/images/icons/customer.svg'
-import error from '../assets/images/icons/error.svg'
-import integration from '../assets/images/icons/integration.svg'
 import banner from '../assets/images/banner.svg'
 import fb from '../assets/images/icons/fb.svg'
 import ins from '../assets/images/icons/ins.svg'
@@ -82,9 +77,9 @@ const Home: NextPage = () => {
           <div style={{ maxWidth: '510px' }}>
             <span className="fs-12 text-sunset fw-semibold">WHO WE ARE</span>
             <h2 className="display-5 fw-semibold lh-base py-4 mb-0">
-              Title for this
+              Hermes
               <br />
-              Section Here
+              Logistic Company
             </h2>
             <Image
               src={whoWeAreMain}
@@ -94,13 +89,13 @@ const Home: NextPage = () => {
               className="mw-100 d-inline-block d-lg-none"
             />
             <p className="fs-5">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
+              We are Hermes Fleet Management, a leading technology provider offering an innovative solution to
+              streamline vehicle fleet operations.
               <br />
               <br />
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur.
+              Our platform empowers companies to optimize their delivery routes, lower operational costs, and drive
+              customer satisfaction. By leveraging our advanced reporting and real-time analysis, businesses can make
+              strategic decisions for enhanced efficiency and profitability.
             </p>
           </div>
           <Image
@@ -159,13 +154,11 @@ const Home: NextPage = () => {
                   <h2 className="display-5 fw-semibold lh-base pb-4 mb-0">Our Purpose</h2>
                   <Image src={purpose} alt="Our purpose" width={550} className="mw-100 d-lg-inline-block d-lg-none" />
                   <p className="fs-5">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                    <br />
-                    <br />
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                    nulla pariatur.
+                    Use Intelligent Route Optimization to transform the way companies manage their vehicles fleet, using
+                    Hermes will help them to to optimize delivery routes. By considering factors like traffic, delivery
+                    windows, and package volume, businesses can reduce travel time, fuel consumption, and operational
+                    costs. The intelligent route optimization feature ensures efficient resource utilization and
+                    maximizes delivery efficiency.
                   </p>
                 </div>
               </div>
@@ -179,12 +172,11 @@ const Home: NextPage = () => {
             >
               <div className="tab-custom-content">
                 <div style={{ maxWidth: '410px' }}>
-                  <h2 className="display-5 fw-semibold pb-4 mb-0">What do we Want To Archive?</h2>
+                  <h2 className="display-5 fw-semibold pb-4 mb-0">What do we Want To Achieve?</h2>
                   <Image src={purpose} alt="Our purpose" width={550} className="mw-100 d-inline-block d-lg-none" />
                   <p className="fs-5">
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                    nulla pariatur.
+                    To lead the fleet management industry with cutting-edge technology and exceptional service,
+                    expanding nationally and internationally to positively impact the logistics of companies worldwide.
                   </p>
                 </div>
                 <Image src={purpose} alt="Our purpose" width={550} className="mw-100 d-none d-lg-inline-block" />
@@ -193,58 +185,7 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section id="benefits" className="mw-1200 pt-0 pt-md-5 px-3">
-          <span className="fs-12 text-sunset fw-semibold">BENEFITS</span>
-          <h2 className="display-5 fw-semibold pb-5 pt-4">Title for this Section Here</h2>
-
-          <div className="benefits-grid fs-5">
-            <div className="item">
-              <Image src={savings} alt="Time and Money Savings" width={50} height={50} />
-              <p>
-                <span>Time and Money Savings</span>
-                The route optimization offered by Hermes solution allows companies to save time and money in the process
-                of delivering their products. By planning routes efficiently, drivers can deliver more products in less
-                time, reducing operating costs and increasing efficiency.
-              </p>
-            </div>
-            <div className="item">
-              <Image src={visibility} alt="Increased Visibility and Control" width={50} height={50} />
-              <p>
-                <span>Increased Visibility and Control</span>
-                Hermes solution provides complete visibility of the vehicle fleet, allowing companies to monitor the
-                progress of deliveries and quickly respond to any issues or setbacks that arise. With Hermes solution,
-                companies can have greater control over their delivery operations.
-              </p>
-            </div>
-            <div className="item">
-              <Image src={customer} alt="Improved Customer Satisfaction" width={50} height={50} />
-              <p>
-                <span>Improved Customer Satisfaction</span>
-                With real-time monitoring and delivery to the correct areas thanks to geofencing, end customers receive
-                their products on time, improving their satisfaction with the service and increasing customer loyalty.
-              </p>
-            </div>
-            <div className="item">
-              <Image src={error} alt="Error and Delay Reduction" width={50} height={50} />
-              <p>
-                <span>Error and Delay Reduction</span>
-                The route optimization offered by Hermes solution allows companies to save time and money in the process
-                of delivering their products. By planning routes efficiently, drivers can deliver more products in less
-                time, reducing operating costs and increasing efficiency.
-              </p>
-            </div>
-            <div className="item">
-              <Image src={integration} alt="Easy integration with existing systems" width={50} height={50} />
-              <p>
-                <span>Easy integration with existing systems</span>
-                Hermes solution offers complete visibility of the vehicle fleet, allowing companies to monitor delivery
-                progress and respond quickly to any problems or setbacks that may arise. With Hermes solution, companies
-                can have greater control over their delivery operations and easily integrate with their existing
-                systems.
-              </p>
-            </div>
-          </div>
-        </section>
+        <Benefits />
 
         <Features />
 

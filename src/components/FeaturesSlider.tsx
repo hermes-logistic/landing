@@ -31,9 +31,21 @@ const FeaturesSlider: React.FC = () => {
     },
     {
       id: '4',
-      name: 'Customer Support',
+      name: 'GEO Fences',
       description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.',
       image: route,
+    },
+    {
+      id: '5',
+      name: 'Traffic Simulator',
+      description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.',
+      image: monitor,
+    },
+    {
+      id: '6',
+      name: 'API',
+      description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.',
+      image: mobile,
     },
   ]
   return (
