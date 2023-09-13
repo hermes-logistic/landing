@@ -136,7 +136,7 @@ const Home: NextPage = () => {
                 aria-selected="false"
                 tabIndex={-1}
               >
-                What do we Want To Archive?
+                What do we Want To Achieve?
               </button>
             </li>
           </ul>
