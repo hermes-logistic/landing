@@ -2,51 +2,48 @@ steps:
   # Download docker image cache
   - name: "gcr.io/cloud-builders/docker"
     entrypoint: "bash"
-    args:
-      [
-        "-c",
-        "docker pull us-central1-docker.pkg.dev/hermes-development-01/development/website:latest || exit 0",
-      ]
+    args: ["-c", "docker pull $_DOCKER_REGISTRY:latest || exit 0"]
+    env:
+      - "_DOCKER_REGISTRY=$_DOCKER_REGISTRY"
+
   # Build the container image
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "build",
         "-t",
-        "us-central1-docker.pkg.dev/hermes-development-01/development/website:latest",
+        "$_DOCKER_REGISTRY:latest",
         "--cache-from",
-        "us-central1-docker.pkg.dev/hermes-development-01/development/website:latest",
+        "$_DOCKER_REGISTRY:latest",
         ".",
       ]
+    env:
+      - "_DOCKER_REGISTRY=$_DOCKER_REGISTRY"
+
   # Push the container image to Container Registry
   - name: "gcr.io/cloud-builders/docker"
-    args:
-      [
-        "push",
-        "us-central1-docker.pkg.dev/hermes-development-01/development/website:latest",
-      ]
+    args: ["push", "$_DOCKER_REGISTRY:latest"]
+    env:
+      - "_DOCKER_REGISTRY=$_DOCKER_REGISTRY"
+
   # Deploy container image to Cloud Run
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: gcloud
-    # args:
-    #   [
-    #     "-c",
-    #     "gcloud run deploy website --image us-central1-docker.pkg.dev/hermes-development-01/development/website:latest --platform managed --region us-central1 --allow-unauthenticated --project hermes-development-01",
-    #   ]
     args:
       [
         "run",
         "deploy",
-        "development-website",
+        "$_CLOUD_RUN",
         "--image",
-        "us-central1-docker.pkg.dev/hermes-development-01/development/website:latest",
+        "$_DOCKER_REGISTRY:latest",
         "--region",
         "us-east4",
         "--allow-unauthenticated",
         "--project",
         "hermes-development-01",
       ]
-images:
-  [
-    "us-central1-docker.pkg.dev/hermes-development-01/development/website:latest",
-  ]
+    env:
+      - "_CLOUD_RUN=$_CLOUD_RUN"
+      - "_DOCKER_REGISTRY=$_DOCKER_REGISTRY"
+
+images: ["$_DOCKER_REGISTRY:latest"]
