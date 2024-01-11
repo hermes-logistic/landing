@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import Switcher from './Switcher'
 
@@ -41,6 +42,9 @@ export const Navbar: React.FC<{ lang: Record<string, string>; currentLang?: stri
     }
   }
 
+  const path = usePathname()
+  const isHome = path.replace(currentLang, '') === '/'
+
   return (
     <nav
       className={`navbar navbar-expand-lg position-fixed top-0 w-100 py-0 ${scrolled ? 'scrolled' : 'initial'}`}
@@ -63,66 +67,104 @@ export const Navbar: React.FC<{ lang: Record<string, string>; currentLang?: stri
         </button>
         <div className="collapse navbar-collapse" id="navbarToggler">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                href="#who-we-are"
-                onClick={handleClick}
-                data-bs-toggle="collapse"
-                data-bs-target=".navbar-collapse.show"
-              >
-                {lang.who}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                href="#benefits"
-                onClick={handleClick}
-                data-bs-toggle="collapse"
-                data-bs-target=".navbar-collapse.show"
-              >
-                {lang.benefits}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                href="#features"
-                onClick={handleClick}
-                data-bs-toggle="collapse"
-                data-bs-target=".navbar-collapse.show"
-              >
-                {lang.features}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                href="#pricing"
-                onClick={handleClick}
-                data-bs-toggle="collapse"
-                data-bs-target=".navbar-collapse.show"
-              >
-                {lang.pricing}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href={`/${currentLang}/services`}>
-                {lang.services}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                href="#contact"
-                onClick={handleClick}
-                data-bs-toggle="collapse"
-                data-bs-target=".navbar-collapse.show"
-              >
-                {lang.contact}
-              </Link>
-            </li>
+            {isHome ? (
+              <>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    href="#who-we-are"
+                    onClick={handleClick}
+                    data-bs-toggle="collapse"
+                    data-bs-target=".navbar-collapse.show"
+                  >
+                    {lang.who}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    href="#benefits"
+                    onClick={handleClick}
+                    data-bs-toggle="collapse"
+                    data-bs-target=".navbar-collapse.show"
+                  >
+                    {lang.benefits}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    href="#features"
+                    onClick={handleClick}
+                    data-bs-toggle="collapse"
+                    data-bs-target=".navbar-collapse.show"
+                  >
+                    {lang.features}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    href="#pricing"
+                    onClick={handleClick}
+                    data-bs-toggle="collapse"
+                    data-bs-target=".navbar-collapse.show"
+                  >
+                    {lang.pricing}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href={`/${currentLang}/services`}>
+                    {lang.services}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    href="#contact"
+                    onClick={handleClick}
+                    data-bs-toggle="collapse"
+                    data-bs-target=".navbar-collapse.show"
+                  >
+                    {lang.contact}
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" href={`/${currentLang}#who-we-are`}>
+                    {lang.who}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href={`/${currentLang}#benefits`}>
+                    {lang.benefits}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href={`/${currentLang}#features`}>
+                    {lang.features}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href={`/${currentLang}#pricing`}>
+                    {lang.pricing}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href={`/${currentLang}/services`}>
+                    {lang.services}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href={`/${currentLang}#contact`}>
+                    {lang.contact}
+                  </Link>
+                </li>
+              </>
+            )}
+
             <li className="nav-link">
               <Switcher />
             </li>
