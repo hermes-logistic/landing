@@ -40,7 +40,7 @@ steps:
         "us-east4",
         "--allow-unauthenticated",
         "--project",
-        "hermes-development-01",
+        "$_CLOUD_RUN",
       ]
     env:
       - "_CLOUD_RUN=$_CLOUD_RUN"
