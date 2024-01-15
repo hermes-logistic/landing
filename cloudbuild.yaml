@@ -39,8 +39,6 @@ steps:
         "--region",
         "us-east4",
         "--allow-unauthenticated",
-        "--project",
-        "$_CLOUD_RUN",
       ]
     env:
       - "_CLOUD_RUN=$_CLOUD_RUN"
