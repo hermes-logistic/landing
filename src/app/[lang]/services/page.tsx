@@ -70,7 +70,7 @@ const Services: NextPage<{ params: { lang: Locale } }> = async ({ params: { lang
           <div className="mw-1200">
             <div className="text-center mb-5 px-3">
               <span className="fw-semibold fs-12 text-sunset w-100 d-block">{info.section}</span>
-              <h2 style={{ maxWidth: '400px' }} className="mt-4 pb-3 display-5 fw-semibold mx-auto">
+              <h2 style={{ maxWidth: '600px' }} className="mt-4 pb-3 display-5 fw-semibold mx-auto">
                 {info.title}
               </h2>
               <p style={{ maxWidth: '550px' }} className="fs-5 mx-auto">

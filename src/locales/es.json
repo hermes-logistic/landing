@@ -8,7 +8,7 @@
     "services": "Servicios"
   },
   "mainSection": {
-    "title": "Una Nueva Forma De Gestionar Tu Flota Vehicular De Entrega",
+    "title": "Transforma la gestión de tu flota vehicular",
     "subtitle": "Aprovecha la tecnología para optimizar tus rutas, reducir costos y aumentar la eficiencia de tus entregas",
     "cta": "Solicita una demo",
     "fuel": "AHORRO DE COMBUSTIBLE",
@@ -17,20 +17,20 @@
   },
   "whoWeAre": {
     "section": "QUIENES SOMOS",
-    "title": "Hermes<br/>Compañía Logística",
-    "text": "Somos Hermes Fleet Management, un proveedor líder de tecnología que ofrece una solución innovadora para optimizar las operaciones de flotas de vehículos.<br /><br /> Nuestra plataforma permite a las empresas optimizar sus rutas de entrega, reducir costos operativos y aumentar la satisfacción del cliente. Al aprovechar nuestros informes avanzados y análisis en tiempo real, las empresas pueden tomar decisiones estratégicas para mejorar la eficiencia y la rentabilidad."
+    "title": "Hermes<br/>",
+    "text": "Nuestra plataforma permite a las empresas optimizar sus rutas de entrega, reducir costos operativos y aumentar la satisfacción del cliente. Al aprovechar nuestros informes avanzados y análisis en tiempo real, las empresas pueden tomar decisiones estratégicas para mejorar la eficiencia y la rentabilidad."
   },
   "purposeAchieve": {
     "tab1": "Nuestro Propósito",
     "tab2": "¿Qué queremos lograr?",
     "title1": "Nuestro Propósito",
     "title2": "¿Qué queremos lograr?",
-    "text1": "Utilizar la Optimización Inteligente de Rutas para transformar la forma en que las empresas gestionan su flota de vehículos, utilizando Hermes les ayudará a optimizar las rutas de entrega. Al tener en cuenta factores como el tráfico, las ventanas de entrega y el volumen de paquetes, las empresas pueden reducir el tiempo de viaje, el consumo de combustible y los costos operativos. La función de optimización inteligente de rutas garantiza una utilización eficiente de los recursos y maximiza la eficiencia en las entregas.",
+    "text1": "Revolucionar la gestión de flotas mediante la Optimización Inteligente de Rutas, con el propósito de reducir significativamente tiempos de viaje y costos operativos. A través de nuestra tecnología avanzada, buscamos maximizar la eficiencia y promover un ahorro sostenible de combustible. Nos esforzamos por liderar la transición hacia un futuro más inteligente y sostenible en la logística de entregas.",
     "text2": "Liderar la industria de gestión de flotas con tecnología de vanguardia y un servicio excepcional, expandiéndonos a nivel nacional e internacional para tener un impacto positivo en la logística de empresas en todo el mundo."
   },
   "benefits": {
     "section": "BENEFICIOS",
-    "title": "Tus Beneficios",
+    "title": "Ventajas Directas de Hermes",
     "benefits": [
       {
         "title": "Ahorro de Tiempo y Dinero",
@@ -96,7 +96,7 @@
         "features": [
           "Unidades 1-5"
         ],
-        "cta": "Obtener Basic Plan"
+        "cta": "Básico"
       },
       {
         "title": "Plan Estándar",
@@ -105,25 +105,25 @@
         "features": [
           "Unidades 6-24"
         ],
-        "cta": "Obtener Standard Plan"
+        "cta": "Estándar"
       },
       {
-        "title": "Plan Plata",
+        "title": "Premium",
         "description": "El Plan PLATA está diseñado para empresas en crecimiento con flotas considerables. Ofrece un control exhaustivo y opciones avanzadas de gestión para optimizar tus operaciones a gran escala",
         "price": "$30.00",
         "features": [
           "Unidades 25-60"
         ],
-        "cta": "Obtener Premium Plata"
+        "cta": "Premium"
       },
       {
         "title": "Plan Empresarial",
         "description": "El Plan EMPRESARIAL es la elección definitiva para las empresas más grandes con flotas extensas. Proporciona una solución de gestión de flotas a medida y de alto rendimiento que se adapta a tus necesidades a gran escala",
-        "price": "Contactanos",
+        "price": "",
         "features": [
           "Unidades 60+"
         ],
-        "cta": "Obtener Premium Empresarial"
+        "cta": "Contactanos"
       }
     ]
   },
@@ -133,21 +133,21 @@
     "cta": "FORMULARIO"
   },
   "services": {
-    "title": "Servicios",
+    "title": "Nuestras soluciones de servicios",
     "info": {
       "section": "SERVICES",
-      "title": "Title for this Section Here",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "title": "Impulsa tu transformación Digital",
+      "description": "Descubre cómo optimizamos tus operaciones con estrategias de consultoría y migración a la nube.",
       "grid": [
         {
-          "title": "Consulting and Cloud Strategy",
+          "title": "Consultoría y Migración a la Nube",
           "items": [
-            "Consultoría y Migración a la Nube",
+            "Cargas de trabajo en la Nube",
             "Diseño de Arquitectura Cloud"
           ]
         },
         {
-          "title": "Messaging and Collaboration",
+          "title": "Mensajería y Colaboración",
           "items": [
             "Google Workspace",
             "Office 360",
@@ -158,7 +158,7 @@
           ]
         },
         {
-          "title": "Servers and Domain",
+          "title": "Infraestructura y Servidores",
           "items": [
             "Mail Servers",
             "File Servers",
@@ -178,7 +178,7 @@
           ]
         },
         {
-          "title": "Automated IT and CI/CD",
+          "title": "Automatización y CI/CD",
           "items": [
             "Ansible y Ansible AWX/Tower",
             "Gitlab CI",
@@ -189,7 +189,7 @@
           ]
         },
         {
-          "title": "Security and Governance",
+          "title": "Seguridad y Gobernanza",
           "items": [
             "Secret Management (HashiCorp Vault)",
             "Infraestructura como Código (Terraform)",
@@ -201,10 +201,11 @@
           ]
         },
         {
-          "title": "Cloud Provider",
+          "title": "Proveedores Cloud",
           "items": [
             "Google Cloud Platform",
-            "Amazon Web Service"
+            "Amazon Web Service",
+            "Microsoft Azure"
           ]
         }
       ]
