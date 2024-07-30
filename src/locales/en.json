@@ -166,7 +166,7 @@
             "Web Servers (Apache, Nginx)",
             "Proxy Servers (Nginx, Kong, HAproxy, Traefik, Squid)",
             "Data Base Servers (PostgreSQL, MySQL, MongoDB)",
-            "Application Servers (PostgreSQL, MySQL, NodeJS)",
+            "Application Servers (Tomcat, JBoss, Wildfly, NodeJS)",
             "CDN Servers (AWS CloudFront, Google Cloud CDN, Cloud Flare)",
             "Virtualization Servers (KVM. VMWare, Google Compute Engine, AWS EC2, Proxmox)",
             "Cache Servers (Redis, Mem Cache)",
