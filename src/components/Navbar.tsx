@@ -44,7 +44,7 @@ export const Navbar: React.FC<{ lang: Record<string, string>; currentLang?: stri
 
   const path = usePathname()
   const isHome = path.replace(currentLang, '') === '/'
-
+  const appUrl = 'https://app.hermesv.dev' // TODO: move to env or global config
   return (
     <nav
       className={`navbar navbar-expand-lg position-fixed top-0 w-100 py-0 ${scrolled ? 'scrolled' : 'initial'}`}
@@ -119,15 +119,9 @@ export const Navbar: React.FC<{ lang: Record<string, string>; currentLang?: stri
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    href="#contact"
-                    onClick={handleClick}
-                    data-bs-toggle="collapse"
-                    data-bs-target=".navbar-collapse.show"
-                  >
-                    {lang.contact}
-                  </Link>
+                  <a className="nav-link" href={appUrl}>
+                    {lang.signin}
+                  </a>
                 </li>
               </>
             ) : (
@@ -158,9 +152,9 @@ export const Navbar: React.FC<{ lang: Record<string, string>; currentLang?: stri
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" href={`/${currentLang}#contact`}>
-                    {lang.contact}
-                  </Link>
+                  <a className="nav-link" href={appUrl}>
+                    {lang.signin}
+                  </a>
                 </li>
               </>
             )}
