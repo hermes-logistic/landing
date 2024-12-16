@@ -1,0 +1,60 @@
+name: Deploy Dev
+on: 
+  push:
+    tags:
+      - '*-rc'
+jobs:
+  registry:
+    permissions:
+      id-token: write
+      contents: read
+    uses: hermes-logistic/service-templates/.github/workflows/gcp-registry.yaml@main
+    secrets:
+      WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+      SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+      CLOUD_REGISTRY: ${{ secrets.CLOUD_REGISTRY }}
+      GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}
+      IMAGE_TAG: ${{ github.ref_name }}
+
+  deploy:
+    needs: registry
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v2
+        with:
+          ref: 'dev'
+
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          create_credentials_file: true
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: '>= 363.0.0'
+      
+      - name: 'Deploy Image'
+        run: |
+          gcloud run deploy ${{ secrets.SERVICE_NAME }} \
+            --image ${{ secrets.CLOUD_REGISTRY }}:${{ github.ref_name }} \
+            --region us-east4 \
+            --revision-suffix=${{ github.ref_name }} \
+            --service-account=${{ secrets.SERVICE_ACCOUNT }} \
+            --allow-unauthenticated
+
+      - name: Notify Google Chat
+        if: ${{ always() }}
+        uses: SimonScholz/google-chat-action@main
+        with:
+          webhookUrl: '${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}'
+          jobStatus: ${{ job.status }}
+          title: 'Deploy dev'
+          subtitle: "deploying to development"
