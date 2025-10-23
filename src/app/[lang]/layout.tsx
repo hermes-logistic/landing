@@ -4,6 +4,8 @@ import { Poppins } from 'next/font/google'
 
 import { Locale, i18n } from '../../../i18n.config'
 
+import { ErrorBoundary } from '@/components'
+
 import '@/styles/global.scss'
 
 export const metadata: Metadata = { title: 'Hermes Logistic' }
@@ -31,7 +33,7 @@ const RootLayout = ({ children, params }: { children: ReactNode; params: { lang:
         <meta name="theme-color" content="#001751" />
       </head>
       <body className={poppins.className}>
-        {children}
+        <ErrorBoundary>{children}</ErrorBoundary>
         <script
           src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"
           integrity="sha512-fHY2UiQlipUq0dEabSM4s+phmn+bcxSYzXP4vAXItBvBHU7zAM/mkhCZjtBEIJexhOMzZbgFlPLuErlJF2b+0g=="
