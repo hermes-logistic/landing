@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global font family (Poppins) as used in the Figma design */
+:root {
+  --font-sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  background-color: #01051D; /* ensure background is present early to avoid white flash */
+}
+
+/* Small utility to ensure images used in navbar are visually crisp */
+/* logo-img moved into Navbar component styles (scoped) */
