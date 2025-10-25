@@ -4,7 +4,7 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
-          <img src="/images/hermes-logo.svg" alt="Hermes" class="logo-img" />
+          <img src="/images/hermes-logo.svg" alt="Hermes" class="logo-img">
         </div>
 
         <!-- Desktop Navigation -->
@@ -34,14 +34,14 @@
             </button>
           </div>
           <div class="flex items-center space-x-2">
-            <button @click="setLocale('en')" :class="['text-sm px-3 py-1 rounded', locale === 'en' ? 'bg-white/10 text-white' : 'text-white/70']">EN</button>
-            <button @click="setLocale('es')" :class="['text-sm px-3 py-1 rounded', locale === 'es' ? 'bg-white/10 text-white' : 'text-white/70']">ES</button>
+            <button :class="['text-sm px-3 py-1 rounded', locale === 'en' ? 'bg-white/10 text-white' : 'text-white/70']" @click="setLocale('en')">EN</button>
+            <button :class="['text-sm px-3 py-1 rounded', locale === 'es' ? 'bg-white/10 text-white' : 'text-white/70']" @click="setLocale('es')">ES</button>
           </div>
         </div>
 
         <!-- Mobile menu button -->
         <div class="md:hidden">
-          <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white p-2">
+          <button class="text-white p-2" @click="mobileMenuOpen = !mobileMenuOpen">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
               <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -63,15 +63,15 @@
           {{ t('nav.contact') }}
         </button>
         <div class="flex items-center justify-center space-x-3 mt-3">
-          <button @click="setLocale('en')" :class="['px-3 py-1 rounded', locale === 'en' ? 'bg-white/10 text-white' : 'text-white/70']">EN</button>
-          <button @click="setLocale('es')" :class="['px-3 py-1 rounded', locale === 'es' ? 'bg-white/10 text-white' : 'text-white/70']">ES</button>
+          <button :class="['px-3 py-1 rounded', locale === 'en' ? 'bg-white/10 text-white' : 'text-white/70']" @click="setLocale('en')">EN</button>
+          <button :class="['px-3 py-1 rounded', locale === 'es' ? 'bg-white/10 text-white' : 'text-white/70']" @click="setLocale('es')">ES</button>
         </div>
       </div>
     </div>
   </nav>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="NavBar">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const mobileMenuOpen = ref(false)

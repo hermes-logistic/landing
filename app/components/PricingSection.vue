@@ -24,7 +24,7 @@
                 U: 1-5
               </div>
               <p class="text-sm text-[#EBF2FF]/70 mb-6">Payment specs here.</p>
-              <hr class="border-[#94A4C2] mb-6" />
+              <hr class="border-[#94A4C2] mb-6" >
               <ul class="space-y-3 text-sm text-[#EBF2FF]">
                 <li class="flex items-center gap-2">
                   <svg class="w-5 h-5 text-[#61F0FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,7 +87,7 @@
                 U: 1-5
               </div>
               <p class="text-sm text-[#EBF2FF]/70 mb-6">Payment specs here.</p>
-              <hr class="border-[#94A4C2] mb-6" />
+              <hr class="border-[#94A4C2] mb-6" >
               <ul class="space-y-3 text-sm text-[#EBF2FF]">
                 <li class="flex items-center gap-2">
                   <svg class="w-5 h-5 text-[#61F0FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,7 +150,7 @@
                 U: 1-5
               </div>
               <p class="text-sm text-[#EBF2FF]/70 mb-6">Payment specs here.</p>
-              <hr class="border-[#94A4C2] mb-6" />
+              <hr class="border-[#94A4C2] mb-6" >
               <ul class="space-y-3 text-sm text-[#EBF2FF]">
                 <li class="flex items-center gap-2">
                   <svg class="w-5 h-5 text-[#61F0FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

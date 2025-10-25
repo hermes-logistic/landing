@@ -1,13 +1,13 @@
 <template>
   <div class="min-h-screen bg-[#01051D]">
     <NuxtRouteAnnouncer />
-    <Navbar />
+    <AppNavbar />
     <HeroSection />
     <WhoWeAreSection />
     <BenefitsSection />
     <FeaturesSection />
     <PricingSection />
-    <Footer />
+    <AppFooter />
   </div>
 </template>
 
