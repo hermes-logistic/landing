@@ -7,17 +7,8 @@
     </div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 z-10">
-      <div class="text-center">
-        <h1 class="text-5xl md:text-7xl font-semibold text-white mb-6 leading-tight">
-          Lorem Ipsum Dolor Sit Amet
-        </h1>
-        <p class="text-lg md:text-xl text-white/90 mb-10 max-w-3xl mx-auto">
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
-        </p>
-        <button class="px-8 py-3 bg-[#61F0FF] text-[#031E72] rounded-full font-bold text-base hover:bg-[#4EC1D2] transition-all duration-300 transform hover:scale-105 shadow-lg">
-          Schedule a Demo
-        </button>
-      </div>
+      <IntroSection />
+      <ScheduleButton />
 
       <!-- Stats Section (optional based on design) -->
       <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -37,3 +28,8 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import IntroSection from './IntroSection.vue'
+import ScheduleButton from './ScheduleButton.vue'
+</script>
