@@ -10,15 +10,25 @@ export function useI18n() {
   // load locales under their locale codes
   i18n.store({ en, es })
 
-  // detect browser language
-  const browserLang = (typeof window === 'undefined') ? 'en' : (navigator.language || (navigator as any).userLanguage || 'en')
-  const initial = browserLang.split('-')[0]
+  // detect language
+  let detectedLang: string
+  if (typeof window === 'undefined') {
+    // Server-side: use Accept-Language header
+    const headers = useRequestHeaders()
+    const acceptLang: string = headers['accept-language'] || 'en'
+    const langParts = acceptLang.split(',')
+    detectedLang = (langParts[0]?.split('-')[0]) || 'en'
+  } else {
+    // Client-side: use navigator.language
+    const navLang = navigator.language || 'en'
+    detectedLang = navLang.split('-').shift() || 'en'
+  }
 
-  i18n.locale = initial in { en: true, es: true } ? initial : 'en'
+  i18n.locale = detectedLang in { en: true, es: true } ? detectedLang : 'en'
 
   const locale = ref(i18n.locale)
 
-  function t(key: string, opts?: Record<string, any>) {
+  function t(key: string, opts?: Record<string, unknown>) {
     return i18n.t(key, opts)
   }
 
