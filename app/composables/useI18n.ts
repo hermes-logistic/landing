@@ -1,46 +1,56 @@
 import { I18n } from 'i18n-js'
 import en from '../../locales/en.json'
 import es from '../../locales/es.json'
-import { ref } from 'vue'
+import { computed } from 'vue'
+
+// Global i18n instance
+let globalI18n: I18n | null = null
 
 export function useI18n() {
-  // create new I18n instance
-  const i18n = new I18n()
-  
-  // load locales under their locale codes
-  i18n.store({ en, es })
-
-  // detect language
-  let detectedLang: string
-  if (typeof window === 'undefined') {
-    // Server-side: use Accept-Language header
-    const headers = useRequestHeaders()
-    const acceptLang: string = headers['accept-language'] || 'en'
-    const langParts = acceptLang.split(',')
-    detectedLang = (langParts[0]?.split('-')[0]) || 'en'
-  } else {
-    // Client-side: use navigator.language
-    const navLang = navigator.language || 'en'
-    detectedLang = navLang.split('-').shift() || 'en'
+  if (!globalI18n) {
+    globalI18n = new I18n()
+    globalI18n.store({ en, es })
   }
 
-  i18n.locale = detectedLang in { en: true, es: true } ? detectedLang : 'en'
+  const i18n = globalI18n
 
-  const locale = ref(i18n.locale)
+  // Shared locale state
+  const locale = useState('i18n-locale', () => {
+    // Detect language
+    let detectedLang: string
+    if (typeof window === 'undefined') {
+      // Server-side: use Accept-Language header
+      const headers = useRequestHeaders()
+      const acceptLang: string = headers['accept-language'] || 'en'
+      const langParts = acceptLang.split(',')
+      detectedLang = (langParts[0]?.split('-')[0]) || 'en'
+    } else {
+      // Client-side: use navigator.language
+      const navLang = navigator.language || 'en'
+      detectedLang = navLang.split('-').shift() || 'en'
+    }
+    return detectedLang in { en: true, es: true } ? detectedLang : 'en'
+  })
+
+  // Set initial locale
+  i18n.locale = locale.value
 
   function t(key: string, opts?: Record<string, unknown>) {
-    return i18n.t(key, opts)
+    return computed(() => {
+      i18n.locale = locale.value
+      return i18n.t(key, opts)
+    })
   }
 
   function setLocale(l: string) {
-    i18n.locale = l
     locale.value = l
+    i18n.locale = l
     if (typeof window !== 'undefined') {
       document.documentElement.lang = l
     }
   }
 
-  // ensure document lang is set on client
+  // Ensure document lang is set on client
   if (typeof window !== 'undefined') {
     document.documentElement.lang = locale.value
   }
