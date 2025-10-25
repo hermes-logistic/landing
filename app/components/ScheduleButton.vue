@@ -1,7 +1,16 @@
 <template>
-  <div class="text-center">
-    <button class="px-8 py-3 bg-[#61F0FF] text-[#031E72] rounded-full font-bold text-base hover:bg-[#4EC1D2] transition-all duration-300 transform hover:scale-105 shadow-lg">
-      Schedule a Demo
-    </button>
+  <div class="relative w-full">
+    <img src="/images/schedule-demo-background.svg" alt="" class="w-full h-auto">
+    <div class="absolute inset-0 flex items-center justify-center z-10">
+      <button class="bg-[#61F0FF] text-[#031E72] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#50D8E6] transition-colors">
+        {{ t('hero.schedule') }}
+      </button>
+    </div>
   </div>
 </template>
+
+<script setup>
+import { useI18n } from '../composables/useI18n'
+
+const { t } = useI18n()
+</script>
