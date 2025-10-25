@@ -13,23 +13,7 @@
 
       <ScheduleButton class="mt-[60px]" />
 
-      <div class="max-w-7xl mx-auto">
-        <!-- Stats Section (optional based on design) -->
-        <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div class="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10">
-            <div class="text-4xl font-bold text-[#61F0FF] mb-2">10%</div>
-            <div class="text-sm text-white/80 uppercase tracking-wider">Fuel Savings</div>
-          </div>
-          <div class="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10">
-            <div class="text-4xl font-bold text-[#61F0FF] mb-2">20%</div>
-            <div class="text-sm text-white/80 uppercase tracking-wider">Savings in Work Hours</div>
-          </div>
-          <div class="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10">
-            <div class="text-4xl font-bold text-[#61F0FF] mb-2">40%</div>
-            <div class="text-sm text-white/80 uppercase tracking-wider">Cost Production from Error Delays</div>
-          </div>
-        </div>
-      </div>
+      <StatsSection />
     </div>
   </section>
 </template>
