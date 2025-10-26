@@ -1,7 +1,6 @@
 import { I18n } from 'i18n-js'
 import en from '../../locales/en.json'
 import es from '../../locales/es.json'
-import { computed } from 'vue'
 
 // Global i18n instance
 let globalI18n: I18n | null = null
@@ -36,10 +35,8 @@ export function useI18n() {
   i18n.locale = locale.value
 
   function t(key: string, opts?: Record<string, unknown>) {
-    return computed(() => {
-      i18n.locale = locale.value
-      return i18n.t(key, opts)
-    })
+    i18n.locale = locale.value
+    return i18n.t(key, opts)
   }
 
   function setLocale(l: string) {

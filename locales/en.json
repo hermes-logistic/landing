@@ -11,5 +11,10 @@
     "title": "Transform your fleet",
     "description": "Leverage technology to optimize your routes, reduce costs, and increase the efficiency of your deliveries.",
     "schedule": "Schedule a Demo"
+  },
+  "stats": {
+    "fuelSavings": "Fuel Savings",
+    "savingsWorkHours": "Savings in Work<br>Hours",
+    "costProductionErrorDelays": "Cost<br>Production<br>from<br>Error Delays."
   }
 }

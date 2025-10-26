@@ -8,7 +8,7 @@
         <div class="w-full h-0.5 bg-gradient-to-r from-[#B7CDF5] to-transparent my-[15px]" />
         <p class="flex">
           <span class="text-[35px] pr-4 font-semibold leading-[1.5em] tracking-[0.01em] text-[#EBF2FF]">10%</span>
-          <span class="text-sm font-normal leading-[1.5em] tracking-[0.05em] uppercase text-[#EBF2FF] text-justify">Fuel Savings</span>
+          <span class="text-sm font-normal leading-[1.5em] tracking-[0.05em] uppercase text-[#EBF2FF] text-justify">{{ t('stats.fuelSavings') }}</span>
         </p>
       </div>
 
@@ -18,8 +18,7 @@
         <div class="w-full h-0.5 bg-gradient-to-r from-[#B7CDF5] to-transparent my-[15px]" />
         <p class="flex">
           <span class="text-[35px] pr-4 font-semibold leading-[1.5em] tracking-[0.01em] text-[#EBF2FF]">20%</span>
-          <span class="text-sm font-normal leading-[1.5em] tracking-[0.05em] uppercase text-[#EBF2FF] text-justify">
-            Savings in Work<br>Hours
+          <span class="text-sm font-normal leading-[1.5em] tracking-[0.05em] uppercase text-[#EBF2FF] text-justify" v-html="t('stats.savingsWorkHours')">
           </span>
         </p>
       </div>
@@ -30,8 +29,7 @@
         <div class="w-full h-0.5 bg-gradient-to-r from-[#B7CDF5] to-transparent my-[15px]" />
         <p class="flex">
           <span class="text-[35px] pr-4 font-semibold leading-[1.5em] tracking-[0.01em] text-[#EBF2FF]">40%</span>
-          <span class="text-sm font-normal leading-[1.5em] tracking-[0.05em] uppercase text-[#EBF2FF] text-justify">
-            Cost<br>Production<br>from<br>Error Delays.
+          <span class="text-sm font-normal leading-[1.5em] tracking-[0.05em] uppercase text-[#EBF2FF] text-justify" v-html="t('stats.costProductionErrorDelays')">
           </span>
         </p>
       </div>
@@ -40,5 +38,7 @@
 </template>
 
 <script setup>
-// No additional setup needed
+import { useI18n } from '~/composables/useI18n'
+
+const { t } = useI18n()
 </script>

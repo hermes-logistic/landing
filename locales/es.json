@@ -11,5 +11,10 @@
     "title": "Transforma tu flota",
     "description": "Aprovecha la tecnología para optimizar tus rutas, reducir costos y aumentar la eficiencia de tus entregas",
     "schedule": "Agendar una Demo"
+  },
+  "stats": {
+    "fuelSavings": "Combustible",
+    "savingsWorkHours": "Ahorro en Horas de Trabajo",
+    "costProductionErrorDelays": "Costo de<br>Producción por<br>Retrasos de<br>Error."
   }
 }
