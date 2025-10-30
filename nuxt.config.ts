@@ -10,6 +10,12 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
 
+  image: {
+    // Configuración para evitar el warning de sharp
+    provider: 'none',
+    domains: []
+  },
+
   app: {
     head: {
       link: [

@@ -16,5 +16,11 @@
     "fuelSavings": "Fuel Savings",
     "savingsWorkHours": "Savings in Work<br>Hours",
     "costProductionErrorDelays": "Cost<br>Production<br>from<br>Error Delays."
+  },
+  "whoWeAre": {
+    "label": "Who We Are",
+    "title": "Hermes Logistics",
+    "description1": "Our platform enables companies to optimize their delivery routes, reduce operational costs, and increase customer satisfaction.",
+    "description2": "By leveraging our advanced reporting and real-time analytics, businesses can make strategic decisions to improve efficiency and profitability."
   }
 }
