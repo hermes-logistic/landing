@@ -1,89 +1,48 @@
 <template>
-  <section id="benefits" class="relative py-20 bg-[#01051D]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="text-[#FF734D] text-sm font-semibold tracking-widest uppercase">Benefits</span>
-        <h2 class="text-4xl md:text-5xl font-semibold text-[#EBF2FF] mt-4">
-          Title for this Section Here
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Benefit Card 1 -->
-        <div class="relative">
-          <div class="bg-[#8V5BWB] rounded-lg p-6 h-full">
-            <div class="w-12 h-12 bg-[#8V5BWB] rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-[#EBF2FF] mb-3">Time and Money Savings</h3>
-            <p class="text-[#EBF2FF]/80 text-sm leading-relaxed">
-              The route optimization offered by Hermes solution allows companies to save time and money in the process of delivering their products. By planning routes efficiently, drivers can deliver more products in less time, reducing operating costs and increasing efficiency.
-            </p>
-          </div>
-        </div>
-
-        <!-- Benefit Card 2 -->
-        <div class="relative">
-          <div class="bg-[#EBF2FF] rounded-lg p-6 h-full">
-            <div class="w-12 h-12 bg-[#FFC152] rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-[#01051D] mb-3">Increased Visibility and Control</h3>
-            <p class="text-[#01051D]/80 text-sm leading-relaxed">
-              Hermes solution provides complete visibility of the vehicle fleet, allowing companies to monitor the progress of deliveries and quickly respond to any issues or setbacks that arise. With Hermes solution, companies can have greater control over their delivery operations.
-            </p>
-          </div>
-        </div>
-
-        <!-- Benefit Card 3 -->
-        <div class="relative">
-          <div class="bg-[#FF734D] rounded-lg p-6 h-full">
-            <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-3">Improved Customer Satisfaction</h3>
-            <p class="text-white/90 text-sm leading-relaxed">
-              With real-time monitoring and delivery to the correct areas thanks to geofencing, end customers receive their products on time, improving their satisfaction with the service and increasing customer loyalty.
-            </p>
-          </div>
-        </div>
-
-        <!-- Benefit Card 4 -->
-        <div class="relative">
-          <div class="bg-white/5 backdrop-blur-lg rounded-lg p-6 h-full border border-white/10">
-            <div class="w-12 h-12 bg-[#4EC1D2] rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-[#EBF2FF] mb-3">Error and Delay Reduction</h3>
-            <p class="text-[#EBF2FF]/80 text-sm leading-relaxed">
-              The route optimization offered by Hermes solution allows companies to save time and money in the process of delivering their products. By planning routes efficiently, drivers can deliver more products in less time, reducing operating costs and increasing efficiency.
-            </p>
-          </div>
-        </div>
-
-        <!-- Benefit Card 5 -->
-        <div class="relative">
-          <div class="bg-white/5 backdrop-blur-lg rounded-lg p-6 h-full border border-white/10">
-            <div class="w-12 h-12 bg-gradient-to-br from-[#FFC152] to-[#FF734D] rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-[#EBF2FF] mb-3">Easy integration with existing systems</h3>
-            <p class="text-[#EBF2FF]/80 text-sm leading-relaxed">
-              Hermes solution offers complete visibility of the vehicle fleet, allowing companies to monitor delivery progress and respond quickly to any problems or setbacks that may arise. With Hermes solution, companies can have greater control over their delivery operations and easily integrate with their existing systems.
-            </p>
-          </div>
-        </div>
+  <section id="benefits" class="relative py-20 lg:py-32 overflow-hidden">
+  <!-- Background with visual effects -->
+    <BenefitsBackground />
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Section title -->
+      <BenefitsTitle />
+      
+  <!-- Benefits grid - 3 columns on desktop -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 lg:gap-x-12 lg:gap-y-20">
+        <BenefitCard
+          v-for="(benefit, index) in benefits"
+          :key="index"
+          :title="benefit.title"
+          :description="benefit.description"
+          :variant="getVariant(index)"
+        />
       </div>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useI18n } from '~/composables/useI18n'
+import BenefitsBackground from './Benefits/BenefitsBackground.vue'
+import BenefitsTitle from './Benefits/BenefitsTitle.vue'
+import BenefitCard from './Benefits/BenefitCard.vue'
+
+const { t } = useI18n()
+
+// Get benefits from i18n
+const benefits = computed(() => t('benefits.items') as Array<{ title: string; description: string }>)
+
+// Function to determine each item's variant according to the Figma design
+const getVariant = (index: number): 'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'quinary' => {
+  const variants: Array<'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'quinary'> = [
+    'primary',    // Item 1: Cyan (#61F0FF) - Time and Money Savings
+    'secondary',  // Item 2: Yellow (#FFC152) - Increased Visibility and Control
+    'tertiary',   // Item 3: Orange (#FF734D) - Improved Customer Satisfaction
+    'quaternary', // Item 4: Very light blue (#EBF2FF) - Error and Delay Reduction
+    'quinary'     // Item 5: Turquoise (#4EC1D2) - Easy Integration with Existing Systems
+  ]
+  return variants[index % variants.length]
+}
+</script>
+
