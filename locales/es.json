@@ -48,8 +48,31 @@
         "description": "La optimización de rutas ofrecida por la solución de Hermes permite a las empresas ahorrar tiempo y dinero en el proceso de entrega de sus productos. Al planificar las rutas de manera eficiente, los conductores pueden entregar más productos en menos tiempo, reduciendo los costos operativos y aumentando la eficiencia."
       },
       {
-        "title": "Integración Sencilla con Sistemas Existentes",
-        "description": "La solución de Hermes ofrece una visibilidad completa de la flota de vehículos, permitiendo a las empresas supervisar el progreso de las entregas y responder rápidamente a cualquier problema o contratiempo que pueda surgir. Con la solución de Hermes, las empresas pueden tener un mayor control sobre sus operaciones de entrega y una fácil integración con sus sistemas existentes."
+        "title": "Fácil integración con sistemas existentes",
+        "description": "La solución de Hermes ofrece una visibilidad completa de la flota de vehículos, lo que permite a las empresas supervisar el progreso de las entregas y responder rápidamente a cualquier problema o contratiempo que surja. Con la solución de Hermes, las empresas pueden tener un mayor control sobre sus operaciones de entrega y una fácil integración con sus sistemas existentes."
+      }
+    ]
+  },
+  "features": {
+    "label": "Características",
+    "title": "Características asombrosas",
+    "description": "Descubre las innovadoras características que te ayudarán a llevar tu logística al siguiente nivel.",
+    "slides": [
+      {
+        "title": "Optimización de Rutas",
+        "description": "Maximiza la eficiencia de tus entregas planificando las rutas más rápidas y rentables para tu flota."
+      },
+      {
+        "title": "Monitoreo en Tiempo Real",
+        "description": "Supervisa y controla tus vehículos y envíos en tiempo real para una gestión precisa y reacción rápida."
+      },
+      {
+        "title": "Aplicación Web Móvil",
+        "description": "Accede a todas las funcionalidades desde cualquier dispositivo móvil, lo que te permite mantener el control incluso mientras te desplazas."
+      },
+      {
+        "title": "Geovalla",
+        "description": "Define áreas geográficas específicas y recibe alertas instantáneas cuando tus vehículos entren o salgan de ellas, garantizando la seguridad y el cumplimiento."
       }
     ]
   }

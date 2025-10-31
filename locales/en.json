@@ -48,8 +48,31 @@
         "description": "The route optimization offered by Hermes solution allows companies to save time and money in the process of delivering their products. By planning routes efficiently, drivers can deliver more products in less time, reducing operating costs and increasing efficiency."
       },
       {
-        "title": "Easy Integration with Existing Systems",
-        "description": "Hermes solution offers complete visibility of the vehicle fleet, allowing companies to monitor delivery progress and respond quickly to any problems or setbacks that may arise. With Hermes solution, companies can have greater control over their delivery operations and easy integration with their existing systems."
+        "title": "Easy integration with existing systems",
+        "description": "Hermes solution offers complete visibility of the vehicle fleet, allowing companies to monitor delivery progress and respond quickly to any problems or setbacks that may arise. With Hermes solution, companies can have greater control over their delivery operations and easily integrate with their existing systems."
+      }
+    ]
+  },
+  "features": {
+    "label": "Features",
+    "title": "Amazing Features",
+    "description": "Discover the innovative features that will help you take your logistics to the next level.",
+    "slides": [
+      {
+        "title": "Route Optimization",
+        "description": "Maximize the efficiency of your deliveries by planning the fastest and most profitable routes for your fleet."
+      },
+      {
+        "title": "Real-Time Monitoring",
+        "description": "Monitor and control your vehicles and shipments in real-time for precise management and rapid response."
+      },
+      {
+        "title": "Mobile Web Application",
+        "description": "Access all functionalities from any mobile device, allowing you to maintain control even while on the move."
+      },
+      {
+        "title": "Geofence",
+        "description": "Define specific geographic areas and receive instant alerts when your vehicles enter or leave them, ensuring safety and compliance."
       }
     ]
   }
