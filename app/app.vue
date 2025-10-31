@@ -4,6 +4,7 @@
     <AppNavbar />
     <HeroSection />
     <WhoWeAreSection />
+    <OurPurposeSection />
     <BenefitsSection />
     <FeaturesSection />
     <PricingSection />

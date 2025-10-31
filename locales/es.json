@@ -22,5 +22,9 @@
     "title": "Hermes Logistics",
     "description1": "Nuestra plataforma permite a las empresas optimizar sus rutas de entrega, reducir costos operativos y aumentar la satisfacción del cliente.",
     "description2": "Al aprovechar nuestros informes avanzados y análisis en tiempo real, las empresas pueden tomar decisiones estratégicas para mejorar la eficiencia y la rentabilidad."
+  },
+  "ourPurpose": {
+    "title": "Nuestro Propósito",
+    "description": "Revolucionar la gestión de flotas mediante la Optimización Inteligente de Rutas, con el propósito de reducir significativamente tiempos de viaje y costos operativos. A través de nuestra tecnología avanzada, buscamos maximizar la eficiencia y promover un ahorro sostenible de combustible. Nos esforzamos por liderar la transición hacia un futuro más inteligente y sostenible en la logística de entregas."
   }
 }
