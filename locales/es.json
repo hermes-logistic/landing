@@ -75,5 +75,75 @@
         "description": "Define áreas geográficas específicas y recibe alertas instantáneas cuando tus vehículos entren o salgan de ellas, garantizando la seguridad y el cumplimiento."
       }
     ]
+  },
+  "pricing": {
+    "label": "PRECIOS",
+    "title": "Elige Tu Plan Perfecto",
+    "plans": [
+      {
+        "name": "Básico",
+        "units": "U: 1-5",
+        "price": "$40.00",
+        "description": "El Plan Básico es ideal para pequeñas empresas o emprendedores que desean una solución de gestión de flotas eficiente y económica. Cubre tus necesidades sin importar el tamaño de tu flota.",
+        "paymentSpecs": "Especificaciones de pago aquí.",
+        "button": "Obtener Plan",
+        "features": [
+          "Optimización de rutas",
+          "Monitoreo en tiempo real",
+          "Aplicación móvil",
+          "Geocercas",
+          "Reportes básicos",
+          "Soporte por email"
+        ]
+      },
+      {
+        "name": "Estándar",
+        "units": "U: 6-24",
+        "price": "$35.00",
+        "description": "El Plan Estándar es perfecto para negocios medianos que buscan controlar y optimizar sus operaciones de flota. Ofrece una solución completa y escalable que se adapta a tus necesidades.",
+        "paymentSpecs": "Especificaciones de pago aquí.",
+        "button": "Obtener Plan",
+        "features": [
+          "Todo en Básico",
+          "Análisis avanzado",
+          "Soporte prioritario",
+          "Reportes personalizados",
+          "Integración API",
+          "Acceso multi-usuario"
+        ]
+      },
+      {
+        "name": "Premium",
+        "units": "U: 25-60",
+        "price": "$30.00",
+        "description": "El Plan Premium está diseñado para empresas en crecimiento con flotas considerables. Ofrece un control exhaustivo y opciones avanzadas para optimizar tus operaciones a gran escala.",
+        "paymentSpecs": "Especificaciones de pago aquí.",
+        "button": "Obtener Plan",
+        "features": [
+          "Todo en Estándar",
+          "Análisis predictivo",
+          "Soporte dedicado",
+          "Opciones de marca blanca",
+          "Automatización avanzada",
+          "Garantías SLA"
+        ]
+      },
+      {
+        "name": "A medida",
+        "units": "U: +60",
+        "price": "Custom",
+        "description": "El Plan Empresarial es la elección definitiva para las empresas más grandes con flotas extensas. Proporciona una solución de gestión de flotas personalizada y de alto rendimiento.",
+        "paymentSpecs": "Especificaciones de pago aquí.",
+        "button": "Obtener Plan",
+        "features": [
+          "Todo en Premium",
+          "Desarrollo personalizado",
+          "Soporte 24/7 por teléfono",
+          "Implementación local",
+          "Sesiones de capacitación",
+          "Gerente de cuenta"
+        ]
+      }
+    ]
   }
 }
