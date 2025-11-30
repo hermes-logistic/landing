@@ -8,6 +8,7 @@
     <BenefitsSection />
     <FeaturesSection />
     <PricingSection />
+    <ContactSection />
     <AppFooter />
   </div>
 </template>

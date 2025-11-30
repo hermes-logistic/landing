@@ -145,5 +145,10 @@
         ]
       }
     ]
+  },
+  "contact": {
+    "title": "Contáctanos en Hermes",
+    "description": "¿Listo para transformar la gestión de tu flota? Contáctanos hoy y descubre cómo Hermes puede optimizar tus operaciones logísticas.",
+    "cta": "Contáctanos"
   }
 }

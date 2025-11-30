@@ -145,5 +145,10 @@
         ]
       }
     ]
+  },
+  "contact": {
+    "title": "Get in Touch with Hermes",
+    "description": "Ready to transform your fleet management? Contact us today and discover how Hermes can optimize your logistics operations.",
+    "cta": "Contact Us"
   }
 }
