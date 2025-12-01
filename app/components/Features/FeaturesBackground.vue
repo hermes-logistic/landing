@@ -1,7 +1,10 @@
 <template>
-  <div class="absolute inset-0 -z-10 overflow-hidden">
-    <!-- Gradient background from Figma design -->
-    <div class="absolute inset-0 w-full h-full bg-gradient-to-b from-[#01051D] to-[#031E72]" />
+  <div class="absolute inset-0 z-0 overflow-visible">
+    <!-- Gradient that extends into Pricing section -->
+    <div 
+      class="absolute inset-x-0 top-0 bottom-[-300px]"
+      style="background: linear-gradient(180deg, #01051D 0%, #031E72 100%);" 
+    />
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <section id="pricing" class="relative py-20 lg:py-32 overflow-hidden">
+  <section id="pricing" class="relative py-20 lg:py-32">
     <!-- Background with Ellipses -->
     <PricingBackground />
 

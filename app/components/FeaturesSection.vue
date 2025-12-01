@@ -1,5 +1,5 @@
 <template>
-  <section id="features" class="relative py-20 bg-[#01051D]">
+  <section id="features" class="relative py-20 bg-gradient-to-b from-[#01051D] to-[#031E72]">
     <!-- Background -->
     <FeaturesBackground />
     
