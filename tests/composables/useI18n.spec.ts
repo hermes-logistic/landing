@@ -3,14 +3,14 @@ import { useI18n } from '../../app/composables/useI18n'
 
 // Provide minimal global stubs in case not initialized
 // useState and useRequestHeaders may already exist from setup, but ensure fallback
-// @ts-ignore
+// @ts-expect-error - Stubbing useState for tests
 if (!globalThis.useState) {
-  // @ts-ignore
-  globalThis.useState = (key: string, init: () => any) => ({ value: init() })
+  // @ts-expect-error - Stubbing useState for tests
+  globalThis.useState = (key: string, init: () => unknown) => ({ value: init() })
 }
-// @ts-ignore
+// @ts-expect-error - Stubbing useRequestHeaders for tests
 if (!globalThis.useRequestHeaders) {
-  // @ts-ignore
+  // @ts-expect-error - Stubbing useRequestHeaders for tests
   globalThis.useRequestHeaders = () => ({ 'accept-language': 'en' })
 }
 
