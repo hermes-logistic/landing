@@ -24,3 +24,5 @@ logs
 !.env.example
 
 .vscode/mcp.json
+
+coverage/*
