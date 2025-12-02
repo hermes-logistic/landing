@@ -20,9 +20,7 @@ const { t } = useI18n()
 
 // Get slides data from translations
 const slides = computed(() => {
-  return t('features.slides', [], { returnObjects: true }) as Array<{
-    title: string
-    description: string
-  }>
+  const rawSlides = t('features.slides', { returnObjects: true }) as unknown;
+  return Array.isArray(rawSlides) ? rawSlides as Array<{ title: string; description: string }> : [];
 })
 </script>

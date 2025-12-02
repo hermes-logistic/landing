@@ -10,24 +10,12 @@
 
       <!-- Pricing Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-        <!-- Plan 1: Basic -->
-        <div class="h-full w-[295px] h-[779px] mx-[20px]">
-          <PricingCard :plan="plans[0]" />
-        </div>
-
-        <!-- Plan 2: Standard (Featured) -->
-        <div class="h-full w-[295px] h-[779px] mx-[20px]">
-          <PricingCard :plan="plans[1]" />
-        </div>
-
-        <!-- Plan 3: Premium -->
-        <div class="h-full w-[295px] h-[779px] mx-[20px]">
-          <PricingCard :plan="plans[2]" />
-        </div>
-
-        <!-- Plan 4: Enterprise -->
-        <div class="h-full w-[295px] h-[779px] mx-[20px]">
-          <PricingCard :plan="plans[3]" />
+        <div
+          v-for="(plan, idx) in plans"
+          :key="idx"
+          class="h-full w-[295px] h-[779px] mx-[20px]"
+        >
+          <PricingCard :plan="plan" />
         </div>
       </div>
     </div>
@@ -39,6 +27,20 @@ import { useI18n } from '~/composables/useI18n'
 
 const { t } = useI18n()
 
-// Get plans from i18n translations
-const plans = computed(() => t('pricing.plans'))
+// Local type matching `PricingCard.vue`
+interface Plan {
+  name: string
+  units: string
+  price: string
+  description: string
+  paymentSpecs: string
+  button: string
+  features: string[]
+}
+
+// Get plans from i18n translations (ensure array return)
+const plans = computed<Plan[]>(() => {
+  const data = t('pricing.plans', { returnObjects: true }) as unknown
+  return (data as Plan[]) || []
+})
 </script>
