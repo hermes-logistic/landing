@@ -18,8 +18,7 @@
         <div class="w-full h-0.5 bg-gradient-to-r from-[#B7CDF5] to-transparent my-[15px]" />
         <p class="flex">
           <span class="text-[35px] pr-4 font-semibold leading-[1.5em] tracking-[0.01em] text-[#EBF2FF]">20%</span>
-          <span class="text-sm font-normal leading-[1.5em] tracking-[0.05em] uppercase text-[#EBF2FF] text-justify" v-html="t('stats.savingsWorkHours')">
-          </span>
+          <span class="text-sm font-normal leading-[1.5em] tracking-[0.05em] uppercase text-[#EBF2FF] text-justify">{{ t('stats.savingsWorkHours') }}</span>
         </p>
       </div>
 
@@ -29,8 +28,7 @@
         <div class="w-full h-0.5 bg-gradient-to-r from-[#B7CDF5] to-transparent my-[15px]" />
         <p class="flex">
           <span class="text-[35px] pr-4 font-semibold leading-[1.5em] tracking-[0.01em] text-[#EBF2FF]">40%</span>
-          <span class="text-sm font-normal leading-[1.5em] tracking-[0.05em] uppercase text-[#EBF2FF] text-justify" v-html="t('stats.costProductionErrorDelays')">
-          </span>
+          <span class="text-sm font-normal leading-[1.5em] tracking-[0.05em] uppercase text-[#EBF2FF] text-justify">{{ t('stats.costProductionErrorDelays') }}</span>
         </p>
       </div>
     </div>
