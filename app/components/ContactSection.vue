@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="relative min-h-[700px] md:h-[716px] overflow-hidden">
+  <section id="contact" class="relative min-h-[700px] md:h-[716px] overflow-hidden" aria-labelledby="contact-heading">
     <!-- Background -->
     <ContactBackground />
 

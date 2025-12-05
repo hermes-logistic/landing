@@ -9,8 +9,12 @@
 
 html, body {
   font-family: var(--font-sans);
-  background-color: #01051D; /* ensure background is present early to avoid white flash */
+  background-color: #01051D;
+  margin: 0;
+  padding: 0;
 }
 
-/* Small utility to ensure images used in navbar are visually crisp */
-/* logo-img moved into Navbar component styles (scoped) */
+/* Optimize above-the-fold hero section rendering */
+.min-h-screen {
+  min-height: 100vh;
+}

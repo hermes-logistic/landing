@@ -41,9 +41,17 @@ useHead({
     lang: 'en'
   },
   link: [
-    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap' },
+    // Preload critical fonts with high priority (above the fold)
+    { rel: 'preload', href: '/fonts/poppins-400.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+    { rel: 'preload', href: '/fonts/poppins-600.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+    // Preload hero background image (LCP element)
+    { rel: 'preload', href: '/images/backgrounds/chicago-hero-lg.webp', as: 'image', type: 'image/webp', media: '(min-width: 1025px)' },
+    { rel: 'preload', href: '/images/backgrounds/chicago-hero-md.webp', as: 'image', type: 'image/webp', media: '(min-width: 641px) and (max-width: 1024px)' },
+    { rel: 'preload', href: '/images/backgrounds/chicago-hero-sm.webp', as: 'image', type: 'image/webp', media: '(max-width: 640px)' },
+    // Load font stylesheet asynchronously with media query to avoid blocking render
+    { rel: 'stylesheet', href: '/fonts/poppins.css', media: 'print', onload: "this.media='all'" },
+    // Fallback for no-JavaScript environments
+    { rel: 'stylesheet', href: '/fonts/poppins.css', media: '(prefers-color-scheme: no-preference)' },
     { rel: 'canonical', href: 'https://www.hermesv.io' }
   ],
   meta: [

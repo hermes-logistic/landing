@@ -6,7 +6,7 @@
     </h3>
     
     <!-- Title -->
-    <h2 class="font-poppins font-semibold text-4xl md:text-5xl lg:text-6xl leading-[1.5] text-[#EBF2FF]">
+    <h2 id="pricing-heading" class="font-poppins font-semibold text-4xl md:text-5xl lg:text-6xl leading-[1.5] text-[#EBF2FF]">
       {{ t('pricing.title') }}
     </h2>
   </div>

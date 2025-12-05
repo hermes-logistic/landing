@@ -55,10 +55,10 @@ const props = defineProps<Props>()
 
 // Image paths for each slide based on Figma design
 const imagePaths = [
-  '/images/features/slide-1-image.png', // Route Optimization
-  '/images/features/slide-2-image.png', // Real-Time Monitoring
-  '/images/features/slide-3-image.png', // Mobile App
-  '/images/features/slide-4-image.png', // Geofence
+  '/images/features/slide-1-image.webp', // Route Optimization
+  '/images/features/slide-2-image.webp', // Real-Time Monitoring
+  '/images/features/slide-3-image.webp', // Mobile App
+  '/images/features/slide-4-image.webp', // Geofence
 ]
 
 const currentSlide = ref(0)

@@ -1,10 +1,12 @@
 <template>
-  <nav :class="['fixed top-0 left-0 right-0 z-50 border-b', isTop ? 'nav-transparent backdrop-blur-lg' : 'nav-solid']">
+  <nav :class="['fixed top-0 left-0 right-0 z-50 border-b', isTop ? 'nav-transparent backdrop-blur-lg' : 'nav-solid']" role="navigation" aria-label="Main navigation">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
-          <img src="/images/hermes-logo.svg" alt="Hermes" class="logo-img">
+          <a href="/" aria-label="Hermes - Home">
+            <img src="/images/hermes-logo.svg" alt="Hermes Logistics logo" width="120" height="40" class="logo-img" loading="lazy" decoding="async" fetchpriority="low">
+          </a>
         </div>
 
         <!-- Desktop Navigation -->
@@ -41,8 +43,14 @@
 
         <!-- Mobile menu button -->
         <div class="md:hidden">
-          <button class="text-white p-2" @click="mobileMenuOpen = !mobileMenuOpen">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button 
+            class="text-white p-2" 
+            :aria-expanded="mobileMenuOpen" 
+            aria-label="Toggle navigation menu"
+            aria-controls="mobile-menu"
+            @click="mobileMenuOpen = !mobileMenuOpen"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
               <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -52,7 +60,7 @@
     </div>
 
     <!-- Mobile Navigation -->
-        <div v-if="mobileMenuOpen" class="md:hidden bg-[#001751] border-t border-white/10">
+        <div v-if="mobileMenuOpen" id="mobile-menu" class="md:hidden bg-[#001751] border-t border-white/10">
       <div class="px-4 py-4 space-y-3">
         <a href="#who-we-are" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.who') }}</a>
         <a href="#benefits" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.benefits') }}</a>

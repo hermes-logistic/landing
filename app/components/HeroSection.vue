@@ -1,8 +1,29 @@
 <template>
   <section class="relative min-h-screen flex flex-col justify-center bg-[#01051D] overflow-hidden pt-20">
-    <!-- Background Image (Layer 0) -->
+    <!-- Background Image (Layer 0) - Responsive with srcset -->
     <div class="absolute inset-0 z-0">
-      <img src="/images/backgrounds/chicago-al-atardecer-1.png" alt="Chicago background" class="w-full h-full object-cover opacity-20">
+      <picture>
+        <source
+          media="(max-width: 640px)"
+          srcset="/images/backgrounds/chicago-hero-sm.webp"
+          type="image/webp"
+        >
+        <source
+          media="(max-width: 1024px)"
+          srcset="/images/backgrounds/chicago-hero-md.webp"
+          type="image/webp"
+        >
+        <img
+          src="/images/backgrounds/chicago-hero-lg.webp"
+          alt=""
+          width="1920"
+          height="1080"
+          class="w-full h-full object-cover opacity-20"
+          loading="eager"
+          decoding="sync"
+          fetchpriority="high"
+        >
+      </picture>
       <div class="absolute inset-0 bg-gradient-to-b from-[#031E72]/70 via-transparent to-[#01051D]" />
     </div>
 
