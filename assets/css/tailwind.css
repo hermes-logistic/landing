@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global font family (Poppins) as used in the Figma design */
+:root {
+  --font-sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  background-color: #01051D;
+  margin: 0;
+  padding: 0;
+}
+
+/* Optimize above-the-fold hero section rendering */
+.min-h-screen {
+  min-height: 100vh;
+}

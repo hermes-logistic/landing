@@ -1,23 +1,44 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.js
 
-# testing
+# Testing
 /coverage
+/tests
 
-# next.js
-/.next/
-/out/
-
-# production
+# Build outputs
+/.nuxt
+/.output
+/dist
 /build
 
-# misc
+# Development
+.vscode
+.idea
 .DS_Store
+*.log
 *.pem
+.git
+.gitignore
+.env*
+!.env.production
+
+# Documentation
+README.md
+CHANGELOG.md
+*.md
+
+# Config files for development
+vitest.config.ts
+nuxt.config.ts.bak
+tsconfig.json.bak
+eslint.config.mjs.bak
+
+# Local
+.devcontainer
+docker-compose.dev.yaml
+.env.local
 
 # debug
 npm-debug.log*

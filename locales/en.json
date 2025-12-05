@@ -1,0 +1,154 @@
+{
+  "nav": {
+    "who": "Who We Are",
+    "benefits": "Benefits",
+    "features": "Features",
+    "products": "Products",
+    "pricing": "Pricing",
+    "contact": "Contact Us"
+  },
+  "hero": {
+    "title": "Transform your fleet",
+    "description": "Leverage technology to optimize your routes, reduce costs, and increase the efficiency of your deliveries.",
+    "schedule": "Schedule a Demo"
+  },
+  "stats": {
+    "fuelSavings": "Fuel Savings",
+    "savingsWorkHours": "Savings in Work<br>Hours",
+    "costProductionErrorDelays": "Cost Production<br>from Error<br>Delays"
+  },
+  "whoWeAre": {
+    "label": "Who We Are",
+    "title": "Hermes Logistics",
+    "description1": "Our platform enables companies to optimize their delivery routes, reduce operational costs, and increase customer satisfaction.",
+    "description2": "By leveraging our advanced reporting and real-time analytics, businesses can make strategic decisions to improve efficiency and profitability."
+  },
+  "ourPurpose": {
+    "title": "Our Purpose",
+    "description": "Revolutionize fleet management through Intelligent Route Optimization, with the purpose of significantly reducing travel times and operational costs. Through our advanced technology, we seek to maximize efficiency and promote sustainable fuel savings. We strive to lead the transition towards a smarter and more sustainable future in delivery logistics."
+  },
+  "benefits": {
+    "label": "Benefits",
+    "title": "Direct Advantages of Hermes",
+    "items": [
+      {
+        "title": "Time and Money Savings",
+        "description": "The route optimization offered by Hermes solution allows companies to save time and money in the process of delivering their products. By planning routes efficiently, drivers can deliver more products in less time, reducing operating costs and increasing efficiency."
+      },
+      {
+        "title": "Increased Visibility and Control",
+        "description": "Hermes solution provides complete visibility of the vehicle fleet, allowing companies to monitor the progress of deliveries and quickly respond to any issues or setbacks that arise. With Hermes solution, companies can have greater control over their delivery operations."
+      },
+      {
+        "title": "Improved Customer Satisfaction",
+        "description": "With real-time monitoring and delivery to specific areas thanks to geofencing, end customers receive their products on time, improving their satisfaction with the service and increasing customer loyalty."
+      },
+      {
+        "title": "Error and Delay Reduction",
+        "description": "The route optimization offered by Hermes solution allows companies to save time and money in the process of delivering their products. By planning routes efficiently, drivers can deliver more products in less time, reducing operating costs and increasing efficiency."
+      },
+      {
+        "title": "Easy integration with existing systems",
+        "description": "Hermes solution offers complete visibility of the vehicle fleet, allowing companies to monitor delivery progress and respond quickly to any problems or setbacks that may arise. With Hermes solution, companies can have greater control over their delivery operations and easily integrate with their existing systems."
+      }
+    ]
+  },
+  "features": {
+    "label": "Features",
+    "title": "Amazing Features",
+    "description": "Discover the innovative features that will help you take your logistics to the next level.",
+    "slides": [
+      {
+        "title": "Route Optimization",
+        "description": "Maximize the efficiency of your deliveries by planning the fastest and most profitable routes for your fleet."
+      },
+      {
+        "title": "Real-Time Monitoring",
+        "description": "Monitor and control your vehicles and shipments in real-time for precise management and rapid response."
+      },
+      {
+        "title": "Mobile Web Application",
+        "description": "Access all functionalities from any mobile device, allowing you to maintain control even while on the move."
+      },
+      {
+        "title": "Geofence",
+        "description": "Define specific geographic areas and receive instant alerts when your vehicles enter or leave them, ensuring safety and compliance."
+      }
+    ]
+  },
+  "pricing": {
+    "label": "PRICING",
+    "title": "Choose Your Perfect Plan",
+    "plans": [
+      {
+        "name": "Basic",
+        "units": "U: 1-5",
+        "price": "$40.00",
+        "description": "The Basic Plan is ideal for small businesses or entrepreneurs seeking an efficient and economical fleet management solution. It covers all your needs regardless of fleet size.",
+        "paymentSpecs": "Payment specs here.",
+        "button": "Get Plan",
+        "features": [
+          "Route optimization",
+          "Real-time monitoring",
+          "Mobile application",
+          "Geofencing",
+          "Basic reports",
+          "Email support"
+        ]
+      },
+      {
+        "name": "Standard",
+        "units": "U: 6-24",
+        "price": "$35.00",
+        "description": "The Standard Plan is perfect for mid-sized businesses seeking to control and optimize their fleet operations. It offers a complete and scalable solution that adapts to your needs.",
+        "paymentSpecs": "Payment specs here.",
+        "button": "Get Plan",
+        "features": [
+          "Everything in Basic",
+          "Advanced analytics",
+          "Priority support",
+          "Custom reports",
+          "API integration",
+          "Multi-user access"
+        ]
+      },
+      {
+        "name": "Premium",
+        "units": "U: 25-60",
+        "price": "$30.00",
+        "description": "The Premium Plan is designed for growing companies with considerable fleets. It offers comprehensive control and advanced options to optimize your operations at scale.",
+        "paymentSpecs": "Payment specs here.",
+        "button": "Get Plan",
+        "features": [
+          "Everything in Standard",
+          "Predictive analytics",
+          "Dedicated support",
+          "White-label options",
+          "Advanced automation",
+          "SLA guarantees"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "units": "U: +60",
+        "price": "Custom",
+        "description": "The Enterprise Plan is the definitive choice for the largest companies with extensive fleets. It provides a customized, high-performance solution that adapts to your needs.",
+        "paymentSpecs": "Payment specs here.",
+        "button": "Get Plan",
+        "features": [
+          "Everything in Premium",
+          "Custom development",
+          "24/7 phone support",
+          "On-premise deployment",
+          "Training sessions",
+          "Account manager"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get in Touch with Hermes",
+    "description": "Ready to transform your fleet management? Contact us today and discover how Hermes can optimize your logistics operations.",
+    "cta": "Contact Us"
+  }
+}

@@ -1,13 +1,58 @@
-<!-- public/sitemap.xml -->
-<xml version="1.0" encoding="UTF-8">
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Main page -->
   <url>
     <loc>https://www.hermesv.io/</loc>
-    <lastmod>2023-09-11</lastmod>
+    <lastmod>2025-12-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.hermesv.io/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.hermesv.io/es/" />
   </url>
+
+  <!-- Sections (anchors) -->
   <url>
-    <loc>https://www.hermesv.io/404</loc>
-    <lastmod>2023-09-11</lastmod>
+    <loc>https://www.hermesv.io/#who-we-are</loc>
+    <lastmod>2025-12-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://www.hermesv.io/#our-purpose</loc>
+    <lastmod>2025-12-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hermesv.io/#benefits</loc>
+    <lastmod>2025-12-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hermesv.io/#features</loc>
+    <lastmod>2025-12-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hermesv.io/#pricing</loc>
+    <lastmod>2025-12-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hermesv.io/#contact</loc>
+    <lastmod>2025-12-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
-</xml>

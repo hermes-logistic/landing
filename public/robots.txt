@@ -1,2 +1,13 @@
-User-agent: *
+# Hermes Logistics - Robots.txt
+User-Agent: *
 Allow: /
+
+# Disallow admin or private sections (if any in the future)
+# Disallow: /admin
+# Disallow: /_nuxt/
+
+# Sitemap location
+Sitemap: https://www.hermesv.io/sitemap.xml
+
+# Crawl-delay (optional, for rate limiting)
+Crawl-delay: 1
