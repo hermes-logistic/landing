@@ -14,8 +14,8 @@
   },
   "stats": {
     "fuelSavings": "Combustible",
-    "savingsWorkHours": "Ahorro en Horas<br>de Trabajo",
-    "costProductionErrorDelays": "Costo de<br>Producción por<br>Retrasos de<br>Error"
+    "savingsWorkHours": "Ahorro en Horas\nde Trabajo",
+    "costProductionErrorDelays": "Costo de\nProducción por\nRetrasos de\nError"
   },
   "whoWeAre": {
     "label": "Quiénes Somos",
@@ -149,6 +149,22 @@
   "contact": {
     "title": "Contáctanos en Hermes",
     "description": "¿Listo para transformar la gestión de tu flota? Contáctanos hoy y descubre cómo Hermes puede optimizar tus operaciones logísticas.",
-    "cta": "Contáctanos"
+    "cta": "Contáctanos",
+    "modal": {
+      "title": "Contáctanos",
+      "name": "Nombre Completo",
+      "namePlaceholder": "Juan Pérez",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "juan@example.com",
+      "company": "Nombre de la Empresa",
+      "companyPlaceholder": "Tu Empresa",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos sobre tus necesidades de gestión de flota...",
+      "send": "Enviar Mensaje",
+      "sending": "Enviando...",
+      "successMessage": "¡Gracias! Tu mensaje ha sido enviado exitosamente. Te contactaremos pronto.",
+      "errorMessage": "Algo salió mal. Por favor intenta de nuevo.",
+      "privacy": "Respetamos tu privacidad. Tu información está segura con nosotros."
+    }
   }
 }
