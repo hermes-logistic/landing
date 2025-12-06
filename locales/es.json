@@ -14,8 +14,8 @@
   },
   "stats": {
     "fuelSavings": "Combustible",
-    "savingsWorkHours": "Ahorro en Horas<br>de Trabajo",
-    "costProductionErrorDelays": "Costo de<br>Producción por<br>Retrasos de<br>Error"
+    "savingsWorkHours": "Ahorro en Horas\nde Trabajo",
+    "costProductionErrorDelays": "Costo de\nProducción por\nRetrasos de\nError"
   },
   "whoWeAre": {
     "label": "Quiénes Somos",
