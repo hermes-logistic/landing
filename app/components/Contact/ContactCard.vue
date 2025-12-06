@@ -4,6 +4,12 @@
     <ContactCardBackground />
 
     <!-- Card Content -->
-    <ContactCardContent />
+    <ContactCardContent @open-modal="emit('open-modal')" />
   </div>
 </template>
+
+<script setup lang="ts">
+const emit = defineEmits<{
+  'open-modal': []
+}>()
+</script>

@@ -17,15 +17,21 @@
         />
       </div>
       <!-- Card for mobile -->
-      <ContactCard />
+      <ContactCard @open-modal="emit('open-modal')" />
     </div>
 
     <!-- Desktop Layout -->
     <div class="relative z-10 hidden md:flex items-center justify-center h-full px-4">
-      <ContactCard />
+      <ContactCard @open-modal="emit('open-modal')" />
     </div>
 
     <!-- Illustration for desktop -->
     <ContactIllustration />
   </section>
 </template>
+
+<script setup lang="ts">
+const emit = defineEmits<{
+  'open-modal': []
+}>()
+</script>

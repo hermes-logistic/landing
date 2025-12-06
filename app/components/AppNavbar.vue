@@ -20,9 +20,6 @@
           <a href="#features" class="text-white hover:text-[#61F0FF] transition-colors duration-200 text-base font-normal">
             {{ t('nav.features') }}
           </a>
-          <a href="#products" class="text-white hover:text-[#61F0FF] transition-colors duration-200 text-base font-normal">
-            {{ t('nav.products') }}
-          </a>
           <a href="#pricing" class="text-white hover:text-[#61F0FF] transition-colors duration-200 text-base font-normal">
             {{ t('nav.pricing') }}
           </a>
@@ -31,7 +28,10 @@
         <!-- CTA Button -->
         <div class="hidden md:flex items-center space-x-4">
           <div>
-            <button class="px-6 py-2.5 border-[1.5px] border-[#FF734D] text-[#EBF2FF] rounded-full hover:bg-[#FF734D] hover:text-white transition-all duration-300 font-bold text-sm tracking-wide">
+            <button
+              class="px-6 py-2.5 border-[1.5px] border-[#FF734D] text-[#EBF2FF] rounded-full hover:bg-[#FF734D] hover:text-white transition-all duration-300 font-bold text-sm tracking-wide"
+              @click="openContactModal"
+            >
               {{ t('nav.contact') }}
             </button>
           </div>
@@ -60,14 +60,17 @@
     </div>
 
     <!-- Mobile Navigation -->
-        <div v-if="mobileMenuOpen" id="mobile-menu" class="md:hidden bg-[#001751] border-t border-white/10">
+    <div v-if="mobileMenuOpen" id="mobile-menu" class="md:hidden bg-[#001751] border-t border-white/10">
       <div class="px-4 py-4 space-y-3">
         <a href="#who-we-are" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.who') }}</a>
         <a href="#benefits" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.benefits') }}</a>
         <a href="#features" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.features') }}</a>
-        <a href="#products" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.products') }}</a>
+        <a href="#features" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.products') }}</a>
         <a href="#pricing" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.pricing') }}</a>
-        <button class="w-full mt-4 px-6 py-2.5 border-[1.5px] border-[#FF734D] text-[#EBF2FF] rounded-full hover:bg-[#FF734D] hover:text-white transition-all duration-300 font-bold text-sm tracking-wide">
+        <button
+          class="w-full mt-4 px-6 py-2.5 border-[1.5px] border-[#FF734D] text-[#EBF2FF] rounded-full hover:bg-[#FF734D] hover:text-white transition-all duration-300 font-bold text-sm tracking-wide"
+          @click="openContactModal"
+        >
           {{ t('nav.contact') }}
         </button>
         <div class="flex items-center justify-center space-x-3 mt-3">
@@ -77,19 +80,29 @@
       </div>
     </div>
   </nav>
+
+  <!-- Contact Modal -->
+  <ContactModal :is-open="isContactModalOpen" @close="isContactModalOpen = false" />
 </template>
 
 <script setup lang="ts" name="NavBar">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import ContactModal from './ContactModal.vue'
 
 const mobileMenuOpen = ref(false)
 const isTop = ref(true)
+const isContactModalOpen = ref(false)
 
 // i18n composable (auto-imported from app/composables)
 const { t, locale, setLocale } = useI18n()
 
 function onScroll() {
   isTop.value = window.scrollY < 20
+}
+
+function openContactModal() {
+  isContactModalOpen.value = true
+  mobileMenuOpen.value = false
 }
 
 onMounted(() => {

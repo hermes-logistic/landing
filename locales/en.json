@@ -149,6 +149,22 @@
   "contact": {
     "title": "Get in Touch with Hermes",
     "description": "Ready to transform your fleet management? Contact us today and discover how Hermes can optimize your logistics operations.",
-    "cta": "Contact Us"
+    "cta": "Contact Us",
+    "modal": {
+      "title": "Contact Us",
+      "name": "Full Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "john@example.com",
+      "company": "Company Name",
+      "companyPlaceholder": "Your Company",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your fleet management needs...",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "successMessage": "Thank you! Your message has been sent successfully. We'll get back to you soon.",
+      "errorMessage": "Something went wrong. Please try again.",
+      "privacy": "We respect your privacy. Your information is safe with us."
+    }
   }
 }
