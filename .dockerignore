@@ -1,0 +1,59 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+/tests
+
+# Build outputs
+/.nuxt
+/.output
+/dist
+/build
+
+# Development
+.vscode
+.idea
+.DS_Store
+*.log
+*.pem
+.git
+.gitignore
+.env*
+!.env.production
+
+# Documentation
+README.md
+CHANGELOG.md
+*.md
+
+# Config files for development
+vitest.config.ts
+nuxt.config.ts.bak
+tsconfig.json.bak
+eslint.config.mjs.bak
+
+# Local
+.devcontainer
+docker-compose.dev.yaml
+.env.local
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+Dockerfile
+*docker-compose*
