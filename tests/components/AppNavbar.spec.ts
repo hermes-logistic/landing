@@ -23,4 +23,23 @@ describe('AppNavbar', () => {
     const hasLinks = wrapper.findAll('a').length > 0
     expect(hasNav || hasLinks).toBe(true)
   })
+
+  it('renders signup link with correct href', () => {
+    const wrapper = mount(AppNavbar, {
+      global: { stubs: globalStubs }
+    })
+
+    const signupLink = wrapper.find('a[href="/signup"]')
+    expect(signupLink.exists()).toBe(true)
+  })
+
+  it('shows signup link in mobile menu when opened', async () => {
+    const wrapper = mount(AppNavbar, {
+      global: { stubs: globalStubs }
+    })
+    const toggle = wrapper.find('button[aria-label="Toggle navigation menu"]')
+    await toggle.trigger('click')
+    const mobileSignup = wrapper.find('a[href="/signup"]')
+    expect(mobileSignup.exists()).toBe(true)
+  })
 })
