@@ -23,6 +23,9 @@
           <a href="#pricing" class="text-white hover:text-[#61F0FF] transition-colors duration-200 text-base font-normal">
             {{ t('nav.pricing') }}
           </a>
+          <a href="/signup" class="text-white hover:text-[#61F0FF] transition-colors duration-200 text-base font-semibold">
+            {{ t('auth.signup.heading') }}
+          </a>
         </div>
 
         <!-- CTA Button -->
@@ -62,6 +65,7 @@
     <!-- Mobile Navigation -->
     <div v-if="mobileMenuOpen" id="mobile-menu" class="md:hidden bg-[#001751] border-t border-white/10">
       <div class="px-4 py-4 space-y-3">
+        <a href="/signup" class="block text-white hover:text-[#61F0FF] py-2">{{ t('auth.signup.heading') }}</a>
         <a href="#who-we-are" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.who') }}</a>
         <a href="#benefits" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.benefits') }}</a>
         <a href="#features" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.features') }}</a>

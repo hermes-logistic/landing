@@ -166,5 +166,31 @@
       "errorMessage": "Something went wrong. Please try again.",
       "privacy": "We respect your privacy. Your information is safe with us."
     }
+  },
+  "auth": {
+    "signup": {
+      "title": "Welcome!",
+      "subtitle": "Start optimizing routes and managing your fleet.",
+      "heading": "Sign Up",
+      "description": "Create your Hermes account to start optimizing routes, reduce delivery costs, and manage your fleet with real-time insights. Get set up quickly and securely.",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "placeholderName": "John Doe",
+      "placeholderEmail": "you@example.com",
+      "placeholderPassword": "At least 8 characters",
+      "buttonSubmit": "Sign Up",
+      "buttonSocial": "Continue with",
+      "already": "Already have an account?",
+      "signin": "Sign in",
+      "orChoose": "Or choose other option",
+      "forgotPassword": "Forgot your password?",
+      "success": "Account created. Check your email to verify your account.",
+      "validationRequired": "This field is required",
+      "validationEmail": "Please enter a valid email address",
+      "validationPasswordMin": "Password must be at least 8 characters",
+      "socialGoogle": "Sign up with Google",
+      "socialMicrosoft": "Sign up with Microsoft"
+    }
   }
 }

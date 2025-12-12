@@ -166,5 +166,31 @@
       "errorMessage": "Algo salió mal. Por favor intenta de nuevo.",
       "privacy": "Respetamos tu privacidad. Tu información está segura con nosotros."
     }
+  },
+  "auth": {
+    "signup": {
+      "title": "¡Bienvenido!",
+      "subtitle": "Empieza a optimizar rutas y gestionar tu flota.",
+      "heading": "Registrarse",
+      "description": "Crea tu cuenta en Hermes para empezar a optimizar rutas, reducir costos de entrega y gestionar tu flota con información en tiempo real. Configúralo rápido y de forma segura.",
+      "name": "Nombre",
+      "email": "Email",
+      "password": "Contraseña",
+      "placeholderName": "Juan Pérez",
+      "placeholderEmail": "tu@ejemplo.com",
+      "placeholderPassword": "Al menos 8 caracteres",
+      "buttonSubmit": "Registrarse",
+      "buttonSocial": "Continuar con",
+      "already": "¿Ya tienes cuenta?",
+      "signin": "Iniciar sesión",
+      "orChoose": "O elige otra opción",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "success": "Cuenta creada. Revisa tu correo para verificar tu cuenta.",
+      "validationRequired": "Este campo es obligatorio",
+      "validationEmail": "Por favor introduce un correo válido",
+      "validationPasswordMin": "La contraseña debe tener al menos 8 caracteres",
+      "socialGoogle": "Registrarse con Google",
+      "socialMicrosoft": "Registrarse con Microsoft"
+    }
   }
 }

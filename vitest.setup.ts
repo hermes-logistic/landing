@@ -22,6 +22,10 @@ beforeAll(() => {
       setLocale: (l: string) => { localeRef.value = l },
     }
   }
+  // @ts-expect-error - Stubbing definePageMeta for tests
+  globalThis.definePageMeta = () => {}
+  // @ts-expect-error - Stubbing useHead for tests
+  globalThis.useHead = (_meta?: Record<string, unknown>) => {}
 })
 
 // Provide minimal stubs for Vue global components when mounting

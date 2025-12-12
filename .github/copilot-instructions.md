@@ -1,142 +1,81 @@
 <!-- GitHub Copilot / AI Agent instructions for contributors -->
 
-This repository is a small Nuxt 4-based landing site. The goal of this file is to give an AI coding agent the minimal, high-value context it needs to be productive without asking for clarification.
+Este repositorio es un sitio de aterrizaje pequeño basado en Nuxt 4 y TypeScript. Este documento recopila prácticas actuales y cambios recientes importantes para que un agente AI o colaborador sea productivo sin pedir aclaraciones.
 
-## Project Overview
-- **Framework**: Nuxt 4 with TypeScript.
-- **Purpose**: A landing site with modular components for sections like benefits, features, pricing, and more.
-- **Key Directories**:
-  - `app/`: Contains the main application structure, including pages, components, and composables.
-  - `assets/`: Static assets like CSS (e.g., Tailwind).
-  - `locales/`: JSON files for internationalization (e.g., `en.json`, `es.json`).
-  - `public/`: Publicly accessible files (e.g., `robots.txt`, images).
-  - `scripts/`: Utility scripts (e.g., `generate-favicon.js`).
+## Resumen rápido
+- **Framework**: Nuxt 4 con TypeScript.
+- **Administrador de paquetes**: `bun` (usar para todos los comandos y scripts).
+- **Propósito**: Sitio de landing modular con secciones reutilizables.
 
-## Component Tree
-The site is composed of modular sections and nested components. Use `app/components/` for reusable UI.
+## Puntos clave y estructura
+- `app/`: páginas, componentes y composables.
+- `assets/`: CSS y Tailwind (`assets/css/tailwind.css`).
+- `locales/`: `en.json`, `es.json` para traducciones.
+- `public/`: archivos públicos (robots, sitemap, images).
 
-Top-level components in `app/components/`:
-- `AppNavbar.vue`, `AppFooter.vue`, `ScheduleButton.vue`
-- Section blocks: `HeroSection.vue`, `IntroSection.vue`, `BenefitsSection.vue`, `FeaturesSection.vue`, `PricingSection.vue`, `ContactSection.vue`, `StatsSection.vue`, `OurPurposeSection.vue`, `WhoWeAreSection.vue`
+### Layouts
+- Los layouts se encuentran en `app/layouts/` y proporcionan scaffolding por tipo de página.
+- Layouts incluidos: `landing.vue`, `auth.vue`, `dashboard.vue`, `kyc.vue`.
+- Para usar un layout distinto al por defecto, llama a `definePageMeta({ layout: 'auth' })` en la página.
+- `landing.vue` incluye el header, footer y contenedor de secciones; `auth.vue` es minimal para formularios de sign-in/up.
 
-Nested component structure:
-- `Benefits/`
-  - `BenefitCard.vue`
-  - `BenefitsBackground.vue`
-  - `BenefitsTitle.vue`
-- `Contact/`
-  - `ContactBackground.vue`
-  - `ContactCard.vue`
-  - `ContactCardBackground.vue`
-  - `ContactCardContent.vue`
-  - `ContactIllustration.vue`
-- `Features/`
-  - `FeaturesBackground.vue`
-  - `FeaturesCarousel.vue`
-  - `FeaturesSlide.vue`
-  - `FeaturesTitle.vue`
-- `Pricing/`
-  - `PricingBackground.vue`
-  - `PricingCard.vue`
-  - `PricingCardFeatured.vue`
-  - `PricingTitle.vue`
-- `OurPurpose/`
-  - `OurPurposeBackground.vue`
-  - `OurPurposeContent.vue`
-  - `OurPurposeIllustration.vue`
-- `WhoWeAre/`
-  - `WhoWeAreBackground.vue`
-  - `WhoWeAreContent.vue`
-  - `WhoWeAreIllustration.vue`
+### Componentes
+- Componentes top-level en `app/components/` (por ejemplo `AppNavbar.vue`, `AppFooter.vue`, `HeroSection.vue`).
+- Secciones compuestas en subcarpetas (p. ej. `Benefits/`, `Contact/`, `Features/`, `Pricing/`, `OurPurpose/`, `WhoWeAre/`).
 
-## Developer Workflows
-- **Package Manager**: Always use `bun` for all package management and script execution.
-- **Development**:
-  - Install dependencies: `bun install`.
-  - Start the dev server: `bun run dev`.
-  - Default dev server URL: `http://localhost:3000`.
-- **Build and Preview**:
-  - Build for production: `bun run build`.
-  - Preview production build: `bun run preview`.
-- **Testing**:
-  - Run tests once: `bun run test`.
-  - Run tests in watch mode: `bun run test:watch`.
-  - Run tests with coverage: `bun run test:coverage`.
-  - Coverage threshold: Minimum 80% for lines, branches, functions, and statements.
-- **Linting**:
-  - Check for linting issues: `bun run lint`.
-  - Auto-fix linting issues: `bun run lint:fix`.
-- **Docker**:
-  - Build image: `docker build .`.
-  - Run with Docker Compose: `docker-compose up` (uses volume mounts for local edits).
+## Workflows y comandos
+- Instalar dependencias: `bun install`.
+- Desarrollo: `bun run dev` (dev server por defecto en http://localhost:3000).
+- Build: `bun run build`.
+- Preview: `bun run preview`.
+- Tests (Vitest): `bun run test`.
+- Tests en watch: `bun run test:watch`.
+- Coverage: `bun run test:coverage`.
+- Lint: `bun run lint` / `bun run lint:fix`.
 
-## Patterns and Conventions
-- **Component Structure**:
-  - Use the `app/components/` directory for reusable Vue components.
-  - Prefer composing section components from nested folders (see Component Tree).
-- **Routing**:
-  - Follow Nuxt's file-based routing in `app/pages/`.
-  - Example: `app/pages/about.vue` creates the `/about` route.
-- **Styling**:
-  - Use Tailwind CSS (`assets/css/tailwind.css`).
-  - Keep styles scoped to components where possible.
-- **Internationalization**:
-  - Use `useI18n` composable from `app/composables/useI18n.ts`.
-  - Add translations in `locales/` (e.g., `en.json`, `es.json`).
-- **Image Optimization**:
-  - Use the `@nuxt/image` module and `<NuxtImage>` component for optimized images.
+## Testing y stubs (cambios recientes)
 
-## Key Files
-- `package.json`: Scripts and dependencies.
-- `nuxt.config.ts`: Nuxt configuration, including enabled modules (`@nuxt/eslint`, `@nuxt/image`, etc.).
-- `app/app.vue`: Application entry point with global components like `NuxtRouteAnnouncer`.
-- `Dockerfile` and `docker-compose.yaml`: Container setup and development mounts.
-- `README.md`: Basic usage and hints.
+- Framework: Vitest con Vue Test Utils y entorno `jsdom`.
+- Stubs globales: `vitest.setup.ts` declara stubs y helpers globales — importante para montar componentes sin necesidad de todas las dependencias de Nuxt.
+  - Stubs comunes incluyen: `useState`, `useRequestHeaders`, `useI18n`, `NuxtLink`, `NuxtImage`.
+- Uso del composable real en tests: algunos tests reemplazan deliberadamente el stub global por el composable real. Ejemplo: en `tests/pages/landing.i18n.spec.ts` se hace `global.useI18n = realUseI18n` para validar traducciones reales.
+- Recomendación: cuando montes componentes en tests, reutiliza los stubs compartidos desde `vitest.setup.ts`. Si necesitas el comportamiento real de `useI18n`, reasigna `global.useI18n` dentro del test (documenta con `@ts-expect-error` y una explicación).
 
-Entry layout:
-- `app/app.vue` should import and arrange section components for the landing page.
+## Notes on .well-known and test stubs
 
-## Testing and Debugging
-- **Testing**:
-  - Framework: Vitest with Vue Test Utils and jsdom environment.
-  - Test location: Place unit tests in `tests/` directory (e.g., `tests/components/`, `tests/composables/`).
-  - Run tests: `bun run test` (exits after run, no interaction required).
-  - Watch mode: `bun run test:watch` for active development.
-  - Coverage: `bun run test:coverage` to generate coverage report.
-  - Coverage scope: Only `app/components/**` (top-level sections) and `app/composables/**` are included.
-  - Coverage exclusions: Nested component subfolders, static files, config files, and assets.
-  - Minimum coverage: 80% for lines, branches, functions, and statements.
-  - Global stubs: `useState`, `useRequestHeaders`, `useI18n`, `NuxtLink`, `NuxtImage` are stubbed in `vitest.setup.ts`.
-- **Debugging**:
-  - Reproduce issues locally with `bun run dev`.
-  - Validate production output with `bun run build`.
-  - Check test failures with `bun run test` for detailed error output.
+- `/.well-known` handling: Some clients (for example Chrome DevTools or browser extensions) may request `/.well-known/appspecific/com.chrome.devtools.json`. Missing that file can produce noisy 404s or router warnings in logs. We include a placeholder at `public/.well-known/appspecific/com.chrome.devtools.json` and a lightweight middleware (`server/middleware/wellknown.ts`) that serves `/.well-known/*` from `public/` to avoid log noise. Ensure this folder is deployed in production or keep the middleware enabled in Nitro.
+- Test stubs: `vitest.setup.ts` contains shared stubs for tests (`useState`, `useRequestHeaders`, `useI18n`, `useHead`, `definePageMeta`) so components mount without Nuxt runtime. Tests that require real composables should overwrite the global stub inside the test.
 
-Recommended quick checks:
-- Run `bun run preview` to inspect optimized build output.
-- Run `bun run test:coverage` to verify coverage thresholds are met.
+## Cobertura
+- Ámbito de cobertura: `app/components/**` (solo componentes top-level) y `app/composables/**`.
+- Excluir carpetas de componentes puramente presentacionales (subcarpetas dentro de `app/components`) y archivos estáticos.
+- Umbral mínimo: 80% para líneas, ramas, funciones y statements (configurado en `vitest.config.ts`).
 
-## Common Pitfalls
-- Avoid editing `.nuxt` autogenerated files or committing them.
-- Ensure Node.js version compatibility (Dockerfile uses Node 21).
-- Do not introduce global runtime configuration in `.nuxt/*`.
+## I18n
+- Usar el composable `useI18n` en `app/composables/useI18n.ts`.
+- Añadir claves en `locales/en.json` y `locales/es.json`.
+- Para tests que requieren la selección de idioma por `navigator.language`, puedes simular `global.navigator` en el test.
 
-## Examples
-- **Adding a Page**:
-  - Create `app/pages/contact.vue` with a default export and Nuxt page template.
-- **Adding a Component**:
-  - Add `app/components/TestimonialSection.vue` and import it where needed.
-- **Using Translations**:
-  - Add keys to `locales/en.json` and reference them using `useI18n`.
+## Routing y advertencias comunes
+- Nuxt usa routing file-based por `app/pages/`.
+- Si ves advertencias de Vue Router del tipo "No match found for location with path \"/forgot-password\"", añade una página simple en `app/pages/forgot-password.vue` que haga `router.replace('/signin')` o crea una ruta válida para evitar ruido en dev server.
 
-## Integration Points
-- **Modules**:
-  - `@nuxt/image`: For image optimization.
-  - `@nuxt/eslint`: For linting.
-  - `@nuxt/ui`: For UI components.
-- **Scripts**:
-  - `scripts/generate-favicon.js`: Generates favicons for the site.
+## Buenas prácticas
+- Usa `bun` para todos los comandos relacionados con el proyecto.
+- No editar archivos generados en `.nuxt` o `.output`.
+- Mantén los tests pequeños y usa stubs compartidos para evitar montar subcomponentes pesados.
+- Documenta explícitamente cuando un test sobrescribe un stub global (usa `@ts-expect-error: explanation` si es necesario).
 
-If unsure about a non-trivial change, create a small PR with a clear description and a minimal repro (page or component) and ask maintainers for review.
+## Ejemplos rápidos
+- Añadir página: crear `app/pages/contact.vue` con un template y export default.
+- Reemplazar stub en test: importar el composable real, luego `global.useI18n = realUseI18n` (añadir comentario `@ts-expect-error` con explicación).
 
-Please ask the human maintainer for missing runtime secrets or deployment keys — do not attempt to invent them.
+## Archivos relevantes
+- `app/composables/useI18n.ts` — composable i18n.
+- `vitest.setup.ts` — stubs y configuraciones globales para tests.
+- `vitest.config.ts` — configuración de tests y coverage.
+- `nuxt.config.ts` — configuración de Nuxt y módulos.
+- `Dockerfile` — imagen multi-stage con bun.
+
+Si no estás seguro sobre un cambio no trivial, crea un PR pequeño con un repro mínimo y pide revisión de mantenedores.
+
