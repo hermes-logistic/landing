@@ -191,6 +191,28 @@
       "validationPasswordMin": "La contraseña debe tener al menos 8 caracteres",
       "socialGoogle": "Registrarse con Google",
       "socialMicrosoft": "Registrarse con Microsoft"
+    },
+    "signin": {
+      "title": "¡Bienvenido de vuelta!",
+      "subtitle": "Accede a tu panel de gestión de flotas.",
+      "heading": "Iniciar sesión",
+      "description": "Inicia sesión en tu cuenta de Hermes para acceder a tu panel, gestionar rutas y monitorear tu flota en tiempo real.",
+      "email": "Email",
+      "password": "Contraseña",
+      "placeholderEmail": "tu@ejemplo.com",
+      "placeholderPassword": "Ingresa tu contraseña",
+      "buttonSubmit": "Iniciar sesión",
+      "buttonSocial": "Continuar con",
+      "noAccount": "¿No tienes cuenta?",
+      "signup": "Regístrate",
+      "orChoose": "O elige otra opción",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "invalidCredentials": "Email o contraseña inválido.",
+      "validationRequired": "Este campo es obligatorio",
+      "validationEmail": "Por favor introduce un correo válido",
+      "validationPasswordMin": "La contraseña debe tener al menos 8 caracteres",
+      "socialGoogle": "Inicia sesión con Google",
+      "socialMicrosoft": "Inicia sesión con Microsoft"
     }
   }
 }

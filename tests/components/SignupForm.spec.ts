@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import type { VueWrapper } from '@vue/test-utils'
 import SignupForm from '../../app/components/Signup/SignupForm.vue'
@@ -121,6 +121,8 @@ describe('SignupForm', () => {
   })
 
   it('clears form after successful submission', async () => {
+    vi.useFakeTimers()
+    
     const form = wrapper.find('form')
     
     // Fill form
@@ -130,12 +132,14 @@ describe('SignupForm', () => {
     // Submit
     await form.trigger('submit')
     
-    // Wait for async operation
-    await new Promise(resolve => setTimeout(resolve, 1600))
+    // Advance timers to simulate the 1500ms delay
+    await vi.advanceTimersByTimeAsync(1500)
     await wrapper.vm.$nextTick()
     
     // Check if form is cleared (name field was removed)
     expect((wrapper.find('#email').element as HTMLInputElement).value).toBe('')
     expect((wrapper.find('#password').element as HTMLInputElement).value).toBe('')
+    
+    vi.useRealTimers()
   })
 })

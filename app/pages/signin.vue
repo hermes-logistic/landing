@@ -1,11 +1,41 @@
 <template>
-  <div class="flex items-center justify-center min-h-screen">
-    <h1 class="text-white text-3xl">Sign In</h1>
-  </div>
+  <SigninForm />
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  layout: 'auth'
+import SigninForm from '../components/Signin/SigninForm.vue'
+
+import { useI18n } from '../composables/useI18n'
+
+definePageMeta({ layout: 'auth' })
+
+const { t, locale } = useI18n()
+
+useHead({
+  title: `${t('auth.signin.title')} - ${t('whoWeAre.title')}`,
+  meta: [
+    { name: 'description', content: t('auth.signin.description') },
+    { name: 'keywords', content: 'fleet management, route optimization, sign in, login, logistics, delivery' },
+    { name: 'author', content: 'Hermes Logistics' },
+    { name: 'robots', content: 'index, follow' },
+
+    // Open Graph
+    { property: 'og:title', content: `${t('auth.signin.title')} - ${t('whoWeAre.title')}` },
+    { property: 'og:description', content: t('auth.signin.description') },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:image', content: '/images/og-image.png' },
+    { property: 'og:url', content: 'https://www.hermesv.io/signin' },
+    { property: 'og:locale', content: locale.value === 'es' ? 'es_ES' : 'en_US' },
+    { property: 'og:locale:alternate', content: locale.value === 'es' ? 'en_US' : 'es_ES' },
+
+    // Twitter
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: `${t('auth.signin.title')} - ${t('whoWeAre.title')}` },
+    { name: 'twitter:description', content: t('auth.signin.description') },
+    { name: 'twitter:image', content: '/images/og-image.png' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://www.hermesv.io/signin' }
+  ]
 })
 </script>

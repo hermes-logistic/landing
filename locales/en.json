@@ -191,6 +191,28 @@
       "validationPasswordMin": "Password must be at least 8 characters",
       "socialGoogle": "Sign up with Google",
       "socialMicrosoft": "Sign up with Microsoft"
+    },
+    "signin": {
+      "title": "Welcome Back!",
+      "subtitle": "Access your fleet management dashboard.",
+      "heading": "Sign In",
+      "description": "Sign in to your Hermes account to access your dashboard, manage routes, and monitor your fleet in real-time.",
+      "email": "Email",
+      "password": "Password",
+      "placeholderEmail": "you@example.com",
+      "placeholderPassword": "Enter your password",
+      "buttonSubmit": "Sign In",
+      "buttonSocial": "Continue with",
+      "noAccount": "Don't have an account?",
+      "signup": "Sign up",
+      "orChoose": "Or choose other option",
+      "forgotPassword": "Forgot your password?",
+      "invalidCredentials": "Invalid email or password.",
+      "validationRequired": "This field is required",
+      "validationEmail": "Please enter a valid email address",
+      "validationPasswordMin": "Password must be at least 8 characters",
+      "socialGoogle": "Sign in with Google",
+      "socialMicrosoft": "Sign in with Microsoft"
     }
   }
 }

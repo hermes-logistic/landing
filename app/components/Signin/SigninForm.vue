@@ -17,18 +17,18 @@
           </div>
 
           <h1 class="text-[#FFFFFF] text-2xl md:text-4xl lg:text-[40px] font-bold leading-[34px] md:leading-[44px]">
-            {{ t('auth.signup.title') }}
+            {{ t('auth.signin.title') }}
           </h1>
 
           <p class="text-[#FFFFFF] text-sm md:text-sm leading-relaxed max-w-[430px]">
-            {{ t('auth.signup.description') }}
+            {{ t('auth.signin.description') }}
           </p>
         </div>
 
         <!-- Form Section -->
         <div class="space-y-6">
           <h2 class="text-[#C5D1E7] text-2xl font-medium">
-            {{ t('auth.signup.heading') }}
+            {{ t('auth.signin.heading') }}
           </h2>
 
           <form class="space-y-3" @submit.prevent="handleSubmit">
@@ -38,8 +38,8 @@
                 id="email"
                 v-model="formData.email"
                 type="email"
-                :placeholder="t('auth.signup.email') + '*'"
-                :aria-label="t('auth.signup.email')"
+                :placeholder="t('auth.signin.email') + '*'"
+                :aria-label="t('auth.signin.email')"
                 class="w-full px-3 py-2 bg-[#FFFFFF] border rounded-lg text-gray-900 placeholder-[#4F4F4F] text-sm focus:outline-none focus:ring-2 focus:ring-[#61F0FF] focus:border-transparent transition-all"
                 :class="{ 'border-red-500': errors.email, 'border-[#C5D1E7]': !errors.email }"
                 @blur="validateField('email')"
@@ -53,8 +53,8 @@
                 id="password"
                 v-model="formData.password"
                 type="password"
-                :placeholder="t('auth.signup.password') + '*'"
-                :aria-label="t('auth.signup.password')"
+                :placeholder="t('auth.signin.password') + '*'"
+                :aria-label="t('auth.signin.password')"
                 class="w-full px-3 py-2 bg-[#FFFFFF] border rounded-lg text-gray-900 placeholder-[#4F4F4F] text-sm focus:outline-none focus:ring-2 focus:ring-[#61F0FF] focus:border-transparent transition-all"
                 :class="{ 'border-red-500': errors.password, 'border-[#C5D1E7]': !errors.password }"
                 @blur="validateField('password')"
@@ -62,23 +62,20 @@
               <p v-if="errors.password" class="mt-1 text-xs text-red-500">{{ errors.password }}</p>
             </div>
 
-            <!-- Forgot Password Link -->
-            <!-- submit button sits here inside card -->
-
             <!-- Submit Button -->
             <button
               type="submit"
               :disabled="isLoading"
               class="w-full px-6 py-2.5 bg-[#61F0FF] text-[#001751] font-medium text-sm rounded-full hover:bg-[#4EC1D2] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#61F0FF] focus:ring-offset-2 focus:ring-offset-[#01051D] disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {{ isLoading ? 'Loading...' : t('auth.signup.buttonSubmit') }}
+              {{ isLoading ? 'Loading...' : t('auth.signin.buttonSubmit') }}
             </button>
 
-            <!-- Already have account -->
+            <!-- Don't have account -->
             <div class="mt-3 text-center text-sm text-[#C5D1E7]">
-              <span class="opacity-80">{{ t('auth.signup.already') }} </span>
-              <NuxtLink to="/signin" class="ml-2 inline-block text-[#4EC1D2] font-medium hover:underline" aria-label="Sign in">
-                {{ t('auth.signup.signin') }}
+              <span class="opacity-80">{{ t('auth.signin.noAccount') }} </span>
+              <NuxtLink to="/signup" class="ml-2 inline-block text-[#4EC1D2] font-medium hover:underline" aria-label="Sign up">
+                {{ t('auth.signin.signup') }}
               </NuxtLink>
             </div>
           </form>
@@ -90,14 +87,14 @@
                 to="/forgot-password"
                 class="text-[#4EC1D2] text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-[#4EC1D2] rounded"
               >
-                {{ t('auth.signup.forgotPassword') }}
+                {{ t('auth.signin.forgotPassword') }}
               </NuxtLink>
             </div>
 
             <div class="space-y-4">
               <div class="relative flex items-center">
                 <div class="flex-grow border-t border-[#94A4C2]" />
-                <span class="mx-4 text-[#94A4C2] text-base">{{ t('auth.signup.orChoose') }}</span>
+                <span class="mx-4 text-[#94A4C2] text-base">{{ t('auth.signin.orChoose') }}</span>
                 <div class="flex-grow border-t border-[#94A4C2]" />
               </div>
 
@@ -114,14 +111,14 @@
         to="/forgot-password"
         class="text-[#4EC1D2] text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-[#4EC1D2] rounded"
       >
-        {{ t('auth.signup.forgotPassword') }}
+        {{ t('auth.signin.forgotPassword') }}
       </NuxtLink>
     </div>
 
     <div class="md:hidden mt-6 space-y-4">
       <div class="relative flex items-center">
         <div class="flex-grow border-t border-[#94A4C2]" />
-        <span class="mx-4 text-[#94A4C2] text-base">{{ t('auth.signup.orChoose') }}</span>
+        <span class="mx-4 text-[#94A4C2] text-base">{{ t('auth.signin.orChoose') }}</span>
         <div class="flex-grow border-t border-[#94A4C2]" />
       </div>
 
@@ -135,7 +132,7 @@
 import { ref, reactive } from 'vue'
 import { useI18n } from '../../composables/useI18n'
 import { isValidEmail, isValidPassword, isValidOAuthProvider } from '../../utils/validation'
-import SocialLoginButtons from './SocialLoginButtons.vue'
+import SocialLoginButtons from '../Signup/SocialLoginButtons.vue'
 
 const { t } = useI18n()
 
@@ -155,20 +152,20 @@ const validateField = (field: keyof typeof formData) => {
   errors[field] = ''
 
   if (!formData[field]) {
-    errors[field] = t('auth.signup.validationRequired')
+    errors[field] = t('auth.signin.validationRequired')
     return false
   }
 
   if (field === 'email') {
     if (!isValidEmail(formData.email)) {
-      errors.email = t('auth.signup.validationEmail')
+      errors.email = t('auth.signin.validationEmail')
       return false
     }
   }
 
   if (field === 'password') {
     if (!isValidPassword(formData.password)) {
-      errors.password = t('auth.signup.validationPasswordMin')
+      errors.password = t('auth.signin.validationPasswordMin')
       return false
     }
   }
@@ -197,7 +194,7 @@ const handleSubmit = async () => {
   isLoading.value = true
 
   try {
-    // TODO: Implement actual signup API call
+    // TODO: Implement actual signin API call
     await new Promise(resolve => setTimeout(resolve, 1500))
     
     // Reset form

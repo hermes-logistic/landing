@@ -18,6 +18,7 @@ export default defineConfig({
       include: [
         'app/components/**',
         'app/composables/**',
+        'app/utils/**',
       ],
       exclude: [
         // Exclude nested section subfolders to avoid counting purely presentational files
