@@ -21,7 +21,9 @@ Este repositorio es un sitio de aterrizaje pequeño basado en Nuxt 4 y TypeScrip
 
 ### Componentes
 - Componentes top-level en `app/components/` (por ejemplo `AppNavbar.vue`, `AppFooter.vue`, `HeroSection.vue`).
-- Secciones compuestas en subcarpetas (p. ej. `Benefits/`, `Contact/`, `Features/`, `Pricing/`, `OurPurpose/`, `WhoWeAre/`).
+- Secciones compuestas en subcarpetas (p. ej. `Benefits/`, `Contact/`, `Features/`, `Pricing/`, `OurPurpose/`, `WhoWeAre/`, `Signin/`, `Signup/`).
+- **Auth components**: `SigninForm.vue` y `SignupForm.vue` usan validaciones compartidas desde `app/utils/validation.ts` para consistencia.
+- Los formularios de auth implementan validación en runtime para prevenir ataques de open redirect en OAuth providers.
 
 ## Workflows y comandos
 - Instalar dependencias: `bun install`.
@@ -42,6 +44,8 @@ Este repositorio es un sitio de aterrizaje pequeño basado en Nuxt 4 y TypeScrip
   - Usa `globalThis` (no `global`) para sobrescribir stubs en tests individuales.
 - Uso del composable real en tests: algunos tests reemplazan deliberadamente el stub global por el composable real. Ejemplo: en `tests/pages/landing.i18n.spec.ts` se hace `globalThis.useI18n = realUseI18n` para validar traducciones reales.
 - Recomendación: cuando montes componentes en tests, reutiliza los stubs compartidos desde `vitest.setup.ts`. Si necesitas el comportamiento real, reasigna en `globalThis` dentro del test.
+- **Fake timers**: Para tests con delays (setTimeout), usar `vi.useFakeTimers()` y `vi.advanceTimersByTimeAsync()` en lugar de `await new Promise()`. Restaurar con `vi.useRealTimers()` al final del test.
+- **Mocking window.location**: Para tests que asignan `window.location.href`, mockear con `delete window.location` + reasignación, documentar con `@ts-expect-error`.
 
 ## Notes on .well-known and test stubs
 
@@ -49,7 +53,7 @@ Este repositorio es un sitio de aterrizaje pequeño basado en Nuxt 4 y TypeScrip
 - Test stubs: `vitest.setup.ts` contains shared stubs for tests (`useState`, `useRequestHeaders`, `useI18n`, `useHead`, `definePageMeta`) so components mount without Nuxt runtime. Tests that require real composables should overwrite the global stub inside the test.
 
 ## Cobertura
-- Ámbito de cobertura: `app/components/**` (solo componentes top-level) y `app/composables/**`.
+- Ámbito de cobertura: `app/components/**` (solo componentes top-level), `app/composables/**` y `app/utils/**`.
 - Excluir carpetas de componentes puramente presentacionales (subcarpetas dentro de `app/components`) y archivos estáticos.
 - Umbral mínimo: 80% para líneas, ramas, funciones y statements (configurado en `vitest.config.ts`).
 
@@ -67,6 +71,9 @@ Este repositorio es un sitio de aterrizaje pequeño basado en Nuxt 4 y TypeScrip
 - No editar archivos generados en `.nuxt` o `.output`.
 - Mantén los tests pequeños y usa stubs compartidos para evitar montar subcomponentes pesados.
 - Documenta explícitamente cuando un test sobrescribe un stub global (usa `@ts-expect-error: explanation` si es necesario).
+- **Validaciones**: Para validaciones de formularios, usar funciones compartidas de `app/utils/validation.ts` (email, password, OAuth providers).
+- **Seguridad OAuth**: Validar siempre providers OAuth contra la allowlist `VALID_OAUTH_PROVIDERS` antes de redireccionar con `isValidOAuthProvider()`.
+- **Tests asíncronos**: Preferir fake timers (`vi.useFakeTimers()`) sobre delays reales para tests más rápidos y robustos.
 
 ## Ejemplos rápidos
 - Añadir página: crear `app/pages/contact.vue` con un template y export default.
@@ -74,12 +81,30 @@ Este repositorio es un sitio de aterrizaje pequeño basado en Nuxt 4 y TypeScrip
 
 ## Archivos relevantes
 - `app/composables/useI18n.ts` — composable i18n.
+- `app/utils/validation.ts` — utilidades de validación compartidas (email, password, OAuth providers).
 - `vitest.setup.ts` — stubs y configuraciones globales para tests.
 - `vitest.config.ts` — configuración de tests y coverage.
 - `tsconfig.json` — configuración principal de TypeScript (referencias a sub-configs).
 - `tsconfig.test.json` — configuración específica para tests con reglas menos estrictas.
 - `nuxt.config.ts` — configuración de Nuxt y módulos.
 - `Dockerfile` — imagen multi-stage con bun.
+
+## Páginas de autenticación
+
+### Signin (`/signin`)
+- **Página**: `app/pages/signin.vue` con layout `auth`.
+- **Componente**: `app/components/Signin/SigninForm.vue`.
+- **Traducciones**: `locales/{en,es}.json` bajo `auth.signin.*`.
+- **Validaciones**: Email y password usando `isValidEmail()` y `isValidPassword()` de `app/utils/validation.ts`.
+- **OAuth**: Social login con Google y Microsoft, validado con `isValidOAuthProvider()` para prevenir open redirect.
+- **Tests**: `tests/components/SigninForm.spec.ts` (24 tests, 100% coverage), `tests/components/SigninForm.security.spec.ts` (2 tests OAuth), `tests/pages/signin.spec.ts` (7 tests SEO + integración).
+- **SEO**: Meta tags completos (title, description, OG, Twitter, canonical).
+
+### Signup (`/signup`)
+- **Página**: `app/pages/signup.vue` con layout `auth`.
+- **Componente**: `app/components/Signup/SignupForm.vue`.
+- **Validaciones**: Mismas funciones compartidas de `app/utils/validation.ts`.
+- **OAuth**: Misma protección contra open redirect que signin.
 
 Si no estás seguro sobre un cambio no trivial, crea un PR pequeño con un repro mínimo y pide revisión de mantenedores.
 
