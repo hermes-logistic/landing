@@ -2,21 +2,22 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
 	"name": "landing-page",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+	// Build from Dockerfile for better layer caching and performance
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "."
+	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/shyim/devcontainers-features/bun:0": {},
 		"ghcr.io/dhoeric/features/google-cloud-cli:1": {}
 	},
-	// Install system dependencies for sharp
-	"postStartCommand": "sudo apt-get update && sudo apt-get install -y libvips-dev",
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
 		3000
 	],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "bun install",
+	"postCreateCommand": "bun install --frozen",
 	"customizations": {
 		"vscode": {
 			"extensions": [
