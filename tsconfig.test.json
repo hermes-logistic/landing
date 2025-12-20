@@ -1,0 +1,19 @@
+{
+  "extends": "./.nuxt/tsconfig.app.json",
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": false,
+    "strictBindCallApply": false,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false,
+    "types": ["vitest/globals", "@vue/test-utils"]
+  },
+  "include": [
+    "tests/**/*.ts",
+    "tests/**/*.spec.ts",
+    "vitest.setup.ts",
+    "vitest.config.ts"
+  ]
+}

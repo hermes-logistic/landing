@@ -36,10 +36,12 @@ Este repositorio es un sitio de aterrizaje pequeño basado en Nuxt 4 y TypeScrip
 ## Testing y stubs (cambios recientes)
 
 - Framework: Vitest con Vue Test Utils y entorno `jsdom`.
+- TypeScript config: `tsconfig.test.json` con reglas menos estrictas para archivos de test, referenciado desde `tsconfig.json`.
 - Stubs globales: `vitest.setup.ts` declara stubs y helpers globales — importante para montar componentes sin necesidad de todas las dependencias de Nuxt.
-  - Stubs comunes incluyen: `useState`, `useRequestHeaders`, `useI18n`, `NuxtLink`, `NuxtImage`.
-- Uso del composable real en tests: algunos tests reemplazan deliberadamente el stub global por el composable real. Ejemplo: en `tests/pages/landing.i18n.spec.ts` se hace `global.useI18n = realUseI18n` para validar traducciones reales.
-- Recomendación: cuando montes componentes en tests, reutiliza los stubs compartidos desde `vitest.setup.ts`. Si necesitas el comportamiento real de `useI18n`, reasigna `global.useI18n` dentro del test (documenta con `@ts-expect-error` y una explicación).
+  - Stubs comunes incluyen: `useState`, `useRequestHeaders`, `useI18n`, `NuxtLink`, `NuxtImage`, `useHead`, `definePageMeta`.
+  - Usa `globalThis` (no `global`) para sobrescribir stubs en tests individuales.
+- Uso del composable real en tests: algunos tests reemplazan deliberadamente el stub global por el composable real. Ejemplo: en `tests/pages/landing.i18n.spec.ts` se hace `globalThis.useI18n = realUseI18n` para validar traducciones reales.
+- Recomendación: cuando montes componentes en tests, reutiliza los stubs compartidos desde `vitest.setup.ts`. Si necesitas el comportamiento real, reasigna en `globalThis` dentro del test.
 
 ## Notes on .well-known and test stubs
 
@@ -74,6 +76,8 @@ Este repositorio es un sitio de aterrizaje pequeño basado en Nuxt 4 y TypeScrip
 - `app/composables/useI18n.ts` — composable i18n.
 - `vitest.setup.ts` — stubs y configuraciones globales para tests.
 - `vitest.config.ts` — configuración de tests y coverage.
+- `tsconfig.json` — configuración principal de TypeScript (referencias a sub-configs).
+- `tsconfig.test.json` — configuración específica para tests con reglas menos estrictas.
 - `nuxt.config.ts` — configuración de Nuxt y módulos.
 - `Dockerfile` — imagen multi-stage con bun.
 
