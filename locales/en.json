@@ -168,6 +168,13 @@
     }
   },
   "auth": {
+    "confirmEmail": {
+      "title": "Confirm Your Email",
+      "welcome": "Hello, User",
+      "description": "Thank you for signing up! We've sent a confirmation email to your inbox. Please check your email and click the verification link to activate your account. If you don't see it, check your spam folder.",
+      "buttonSignup": "Sign Up",
+      "buttonSignin": "Sign In"
+    },
     "signup": {
       "title": "Welcome!",
       "subtitle": "Start optimizing routes and managing your fleet.",

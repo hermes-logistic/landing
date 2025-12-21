@@ -1,5 +1,6 @@
 <template>
-  <div class="w-full max-w-[662px]">
+  <div class="min-h-screen flex items-center justify-end py-8 px-8">
+    <div class="w-full max-w-[662px]">
     <!-- Card Container -->
     <div class="relative bg-[#01051D] rounded-[10px] border border-transparent bg-gradient-to-b from-[#94A4C2] to-[#FF734D] p-[1px]">
       <div class="bg-[#01051D] rounded-[10px] px-6 md:px-12 py-4 md:py-6 shadow-[0px_0px_4px_rgba(235,242,255,0.15)] md:h-[calc(100vh-4rem)] md:flex md:flex-col md:justify-between">
@@ -128,6 +129,7 @@
       <SocialLoginButtons @social-login="handleSocialLogin" />
     </div>
 
+  </div>
   </div>
 </template>
 

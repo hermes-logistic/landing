@@ -20,16 +20,16 @@
           >
         </picture>
         
-        <!-- Gradient Overlays (Figma: linear-gradient(0deg, rgba(1, 5, 29, 0.5), rgba(1, 5, 29, 0.5))) -->
-        <div class="absolute inset-0 bg-[#01051D]/50" />
+        <!-- Dark overlay (Figma: linear-gradient(0deg, rgba(1, 5, 29, 0.9), rgba(1, 5, 29, 0.9))) -->
+        <div class="absolute inset-0 bg-[#01051D]/90" />
         
         <!-- Gradient from right to left (Figma: linear-gradient(270deg, #01051D 37.4%, rgba(1, 5, 29, 0) 100%)) -->
         <div class="absolute inset-0 bg-gradient-to-l from-[#01051D] from-[37.4%] to-transparent to-100%" />
       </div>
     </div>
 
-    <!-- Content -->
-    <div class="relative z-10 min-h-screen flex items-center justify-end py-8 px-8">
+    <!-- Content - z-10 to be above background -->
+    <div class="relative z-10 min-h-screen">
       <slot />
     </div>
   </div>

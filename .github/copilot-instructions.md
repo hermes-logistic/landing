@@ -28,6 +28,7 @@ Este repositorio es un sitio de aterrizaje pequeño basado en Nuxt 4 y TypeScrip
 ## Workflows y comandos
 - Instalar dependencias: `bun install`.
 - Desarrollo: `bun run dev` (dev server por defecto en http://localhost:3000).
+ - Nota: antes de ejecutar tests o inspecciones, verifica que el servidor de desarrollo esté arriba (`bun run dev`) para evitar errores de routing o recursos faltantes.
 - Build: `bun run build`.
 - Preview: `bun run preview`.
 - Tests (Vitest): `bun run test`.
