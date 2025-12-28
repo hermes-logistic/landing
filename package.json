@@ -21,6 +21,7 @@
     "@nuxt/image": "1.11.0",
     "@nuxt/test-utils": "3.19.2",
     "@nuxt/ui": "4.1.0",
+    "country-state-city": "^3.2.1",
     "eslint": "^9.0.0",
     "i18n-js": "^4.5.1",
     "nuxt": "^4.1.3",
