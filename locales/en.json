@@ -252,8 +252,8 @@
       "placeholders": {
         "country": "Select a country",
         "city": "Select a city",
-        "firstName": "Rafael",
-        "lastName": "Alfaro",
+        "firstName": "Enter your first name",
+        "lastName": "Enter your last name",
         "phone": "0000 0000",
         "address1": "Enter your address",
         "address2": "Apartment, suite, etc."
