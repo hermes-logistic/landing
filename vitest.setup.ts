@@ -26,6 +26,17 @@ beforeAll(() => {
   globalThis.definePageMeta = () => {}
   // @ts-expect-error - Stubbing useHead for tests
   globalThis.useHead = (_meta?: Record<string, unknown>) => {}
+  // @ts-expect-error - Stubbing useRouter for tests
+  globalThis.useRouter = () => ({
+    push: () => Promise.resolve(),
+    replace: () => Promise.resolve(),
+    back: () => {},
+    forward: () => {},
+    go: () => {},
+    currentRoute: ref({ path: '/', params: {}, query: {} })
+  })
+  // @ts-expect-error - Stubbing onMounted for tests
+  globalThis.onMounted = (fn: () => void) => fn()
 })
 
 // Provide minimal stubs for Vue global components when mounting

@@ -221,5 +221,63 @@
       "socialGoogle": "Sign in with Google",
       "socialMicrosoft": "Sign in with Microsoft"
     }
+  },
+  "kyc": {
+    "wizard": {
+      "steps": {
+        "profile": "Complete your profile",
+        "subscription": "Choose a subscription",
+        "drivers": "Add the drivers",
+        "payment": "Payment method",
+        "done": "You're done!"
+      },
+      "stepOf": "Step {current} of {total}",
+      "completed": "Completed",
+      "current": "Current step",
+      "pending": "Pending"
+    },
+    "profile": {
+      "title": "Profile",
+      "subtitle": "Please complete your profile.",
+      "illustrationAlt": "Profile verification illustration",
+      "fields": {
+        "country": "Country",
+        "city": "City",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "phone": "Phone Number",
+        "address1": "Address Line 1",
+        "address2": "Address Line 2 (Optional)"
+      },
+      "placeholders": {
+        "country": "Select a country",
+        "city": "Select a city",
+        "firstName": "Enter your first name",
+        "lastName": "Enter your last name",
+        "phone": "0000 0000",
+        "address1": "Enter your address",
+        "address2": "Apartment, suite, etc."
+      },
+      "terms": {
+        "text": "Privacy policy demo text, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      },
+      "validation": {
+        "countryRequired": "Please select a country",
+        "cityRequired": "Please select a city",
+        "firstNameRequired": "First name is required",
+        "firstNameMin": "First name must be at least 2 characters",
+        "lastNameRequired": "Last name is required",
+        "lastNameMin": "Last name must be at least 2 characters",
+        "phoneRequired": "Phone number is required",
+        "phoneInvalid": "Please enter a valid phone number",
+        "address1Required": "Address is required",
+        "termsRequired": "You must accept the terms and conditions"
+      },
+      "submit": "Next Step",
+      "meta": {
+        "title": "Complete Your Profile - Hermes KYC",
+        "description": "Complete your profile to get started with Hermes fleet management."
+      }
+    }
   }
 }

@@ -221,5 +221,63 @@
       "socialGoogle": "Inicia sesión con Google",
       "socialMicrosoft": "Inicia sesión con Microsoft"
     }
+  },
+  "kyc": {
+    "wizard": {
+      "steps": {
+        "profile": "Completa tu perfil",
+        "subscription": "Elige una suscripción",
+        "drivers": "Agrega conductores",
+        "payment": "Método de pago",
+        "done": "¡Listo!"
+      },
+      "stepOf": "Paso {current} de {total}",
+      "completed": "Completado",
+      "current": "Paso actual",
+      "pending": "Pendiente"
+    },
+    "profile": {
+      "title": "Perfil",
+      "subtitle": "Por favor completa tu perfil.",
+      "illustrationAlt": "Ilustración de verificación de perfil",
+      "fields": {
+        "country": "País",
+        "city": "Ciudad",
+        "firstName": "Nombre",
+        "lastName": "Apellido",
+        "phone": "Número de teléfono",
+        "address1": "Dirección Línea 1",
+        "address2": "Dirección Línea 2 (Opcional)"
+      },
+      "placeholders": {
+        "country": "Selecciona un país",
+        "city": "Selecciona una ciudad",
+        "firstName": "Ingresa tu nombre",
+        "lastName": "Ingresa tu apellido",
+        "phone": "0000 0000",
+        "address1": "Ingresa tu dirección",
+        "address2": "Apartamento, suite, etc."
+      },
+      "terms": {
+        "text": "Texto de demostración de política de privacidad, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      },
+      "validation": {
+        "countryRequired": "Por favor selecciona un país",
+        "cityRequired": "Por favor selecciona una ciudad",
+        "firstNameRequired": "El nombre es obligatorio",
+        "firstNameMin": "El nombre debe tener al menos 2 caracteres",
+        "lastNameRequired": "El apellido es obligatorio",
+        "lastNameMin": "El apellido debe tener al menos 2 caracteres",
+        "phoneRequired": "El número de teléfono es obligatorio",
+        "phoneInvalid": "Por favor ingresa un número de teléfono válido",
+        "address1Required": "La dirección es obligatoria",
+        "termsRequired": "Debes aceptar los términos y condiciones"
+      },
+      "submit": "Siguiente paso",
+      "meta": {
+        "title": "Completa tu Perfil - Hermes KYC",
+        "description": "Completa tu perfil para comenzar con la gestión de flotas de Hermes."
+      }
+    }
   }
 }
