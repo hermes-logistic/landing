@@ -23,10 +23,11 @@
             class="relative flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 transition-all duration-300"
             :class="getStepCircleClasses(index + 1)"
           >
-            <!-- Completed checkmark -->
+            <!-- Completed checkmark (for completed steps including when navigating past them) -->
             <svg
-              v-if="index + 1 < currentStep || (index + 1 === steps.length && isCompleted)"
-              class="w-6 h-6 text-white"
+              v-if="isStepCompleted(index + 1)"
+              class="w-5 h-5"
+              :class="isStepCompleted(index + 1) ? 'text-[#14C16E]' : 'text-white'"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -34,15 +35,15 @@
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="2"
+                stroke-width="2.5"
                 d="M5 13l4 4L19 7"
               />
             </svg>
-            <!-- Step number -->
+            <!-- Step number (only shown for non-completed steps) -->
             <span
               v-else
               class="text-lg font-bold"
-              :class="currentStep === index + 1 ? 'text-[#01051D]' : 'text-white'"
+              :class="currentStep === index + 1 ? 'text-[#01051D]' : 'text-[#2F4D94]'"
             >
               {{ index + 1 }}
             </span>
@@ -57,7 +58,7 @@
           <!-- Step Label -->
           <span
             class="text-xs lg:text-sm font-medium text-center max-w-[80px] lg:max-w-[100px] leading-tight"
-            :class="currentStep === index + 1 ? 'text-white' : 'text-gray-400'"
+            :class="getStepLabelClasses(index + 1)"
           >
             {{ step.label }}
           </span>
@@ -67,7 +68,7 @@
         <div
           v-if="index < steps.length - 1"
           class="w-8 lg:w-16 h-0.5 mx-2 lg:mx-4 transition-all duration-300"
-          :class="index + 1 < currentStep ? 'bg-[#61F0FF]' : 'bg-gray-600'"
+          :class="isStepCompleted(index + 1) ? 'bg-[#4E6DB5]' : 'bg-[#2F4D94]'"
         />
       </div>
     </div>
@@ -132,18 +133,39 @@ function navigateToStep(step: number): void {
   }
 }
 
+function isStepCompleted(step: number): boolean {
+  return props.completedSteps.includes(step)
+}
+
 function getStepCircleClasses(step: number): string[] {
   const classes: string[] = []
   
-  if (step < props.currentStep || (step === steps.value.length && props.isCompleted)) {
-    // Completed step
-    classes.push('border-[#61F0FF]', 'bg-[#61F0FF]')
+  if (isStepCompleted(step)) {
+    // Completed step - darker background with green check
+    classes.push('border-[#2F4D94]', 'bg-[#001751]')
   } else if (step === props.currentStep) {
-    // Current step
+    // Current step - cyan/blue active color
     classes.push('border-[#61F0FF]', 'bg-[#61F0FF]')
   } else {
-    // Future step
-    classes.push('border-gray-600', 'bg-transparent')
+    // Future step - dark border, transparent background
+    classes.push('border-[#2F4D94]', 'bg-[#001751]')
+  }
+  
+  return classes
+}
+
+function getStepLabelClasses(step: number): string[] {
+  const classes: string[] = []
+  
+  if (isStepCompleted(step)) {
+    // Completed step - muted color
+    classes.push('text-[#2F4D94]')
+  } else if (step === props.currentStep) {
+    // Current step - highlighted cyan
+    classes.push('text-[#61F0FF]')
+  } else {
+    // Future step - muted color
+    classes.push('text-[#2F4D94]')
   }
   
   return classes
