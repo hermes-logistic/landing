@@ -94,6 +94,14 @@
           "Geofencing",
           "Basic reports",
           "Email support"
+        ],
+        "featureDescriptions": [
+          "Route optimization allows you to find the most efficient paths for your deliveries, saving time and fuel.",
+          "Real-time monitoring gives you complete visibility over your fleet's location and status at any moment.",
+          "The mobile application enables drivers to receive updates and manage their tasks directly from their devices.",
+          "Geofencing lets you define virtual boundaries and receive alerts when vehicles enter or exit specific areas.",
+          "Basic reports provide essential insights into your fleet's performance and operational costs.",
+          "Email support ensures you have assistance whenever you need it, with response times within 24 hours."
         ]
       },
       {
@@ -110,6 +118,14 @@
           "Custom reports",
           "API integration",
           "Multi-user access"
+        ],
+        "featureDescriptions": [
+          "Includes all features from the Basic plan, providing a solid foundation for your fleet management.",
+          "Advanced analytics offer deep dives into data trends, helping you make data-driven decisions.",
+          "Priority support grants you faster response times and dedicated assistance for critical issues.",
+          "Custom reports allow you to tailor data outputs to your specific business KPIs and requirements.",
+          "API integration enables seamless connectivity with your existing ERP or CRM systems.",
+          "Multi-user access lets your entire team collaborate with different roles and permissions."
         ]
       },
       {
@@ -126,6 +142,14 @@
           "White-label options",
           "Advanced automation",
           "SLA guarantees"
+        ],
+        "featureDescriptions": [
+          "Includes all features from the Standard plan, ensuring you have every tool at your disposal.",
+          "Predictive analytics use AI to forecast maintenance needs and potential route disruptions.",
+          "Dedicated support provides you with a personal account manager for personalized service.",
+          "White-label options allow you to brand the platform as your own for client-facing interactions.",
+          "Advanced automation streamlines complex workflows, reducing manual intervention.",
+          "SLA guarantees ensure maximum uptime and reliability for your mission-critical operations."
         ]
       },
       {
@@ -142,6 +166,14 @@
           "On-premise deployment",
           "Training sessions",
           "Account manager"
+        ],
+        "featureDescriptions": [
+          "Includes all features from the Premium plan, offering the ultimate fleet management suite.",
+          "Custom development ensures the platform is tailored exactly to your unique operational workflows.",
+          "24/7 phone support gives you round-the-clock access to expert assistance whenever you need it.",
+          "On-premise deployment options provide maximum security and control over your data infrastructure.",
+          "Training sessions ensure your team is fully proficient in utilizing all platform capabilities.",
+          "A dedicated account manager works closely with you to optimize your long-term fleet strategy."
         ]
       }
     ]
@@ -277,6 +309,21 @@
       "meta": {
         "title": "Complete Your Profile - Hermes KYC",
         "description": "Complete your profile to get started with Hermes fleet management."
+      }
+    },
+    "subscription": {
+      "title": "Choose your Plan",
+      "subtitle": "Select the subscription plan that best fits your fleet management needs.",
+      "selectPlan": "Select a subscription plan",
+      "featuresTitle": "Features included",
+      "back": "Back",
+      "nextStep": "Next Step",
+      "validation": {
+        "planRequired": "Please select a subscription plan to continue"
+      },
+      "meta": {
+        "title": "Choose Your Subscription - Hermes KYC",
+        "description": "Select a subscription plan to continue with your Hermes fleet management setup."
       }
     }
   }

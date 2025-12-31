@@ -109,8 +109,8 @@ describe('KycWizard', () => {
       })
 
       const connectors = wrapper.findAll('.hidden.md\\:flex .h-0\\.5')
-      expect(connectors.at(0)?.classes()).toContain('bg-[#61F0FF]')
-      expect(connectors.at(1)?.classes()).toContain('bg-[#61F0FF]')
+      expect(connectors.at(0)?.classes()).toContain('bg-[#4E6DB5]')
+      expect(connectors.at(1)?.classes()).toContain('bg-[#4E6DB5]')
     })
   })
 

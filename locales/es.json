@@ -94,6 +94,14 @@
           "Geocercas",
           "Reportes básicos",
           "Soporte por email"
+        ],
+        "featureDescriptions": [
+          "La optimización de rutas te permite encontrar los caminos más eficientes para tus entregas, ahorrando tiempo y combustible.",
+          "El monitoreo en tiempo real te da visibilidad completa sobre la ubicación y estado de tu flota en cualquier momento.",
+          "La aplicación móvil permite a los conductores recibir actualizaciones y gestionar sus tareas directamente desde sus dispositivos.",
+          "Las geocercas te permiten definir límites virtuales y recibir alertas cuando los vehículos entran o salen de áreas específicas.",
+          "Los reportes básicos proporcionan información esencial sobre el rendimiento de tu flota y los costos operativos.",
+          "El soporte por email asegura que tengas asistencia cuando la necesites, con tiempos de respuesta dentro de 24 horas."
         ]
       },
       {
@@ -110,6 +118,14 @@
           "Reportes personalizados",
           "Integración API",
           "Acceso multi-usuario"
+        ],
+        "featureDescriptions": [
+          "Incluye todas las características del plan Básico, proporcionando una base sólida para la gestión de tu flota.",
+          "El análisis avanzado ofrece profundización en tendencias de datos, ayudándote a tomar decisiones basadas en datos.",
+          "El soporte prioritario te garantiza tiempos de respuesta más rápidos y asistencia dedicada para problemas críticos.",
+          "Los reportes personalizados te permiten adaptar las salidas de datos a tus KPIs y requisitos comerciales específicos.",
+          "La integración API permite una conectividad perfecta con tus sistemas ERP o CRM existentes.",
+          "El acceso multi-usuario permite que todo tu equipo colabore con diferentes roles y permisos."
         ]
       },
       {
@@ -126,6 +142,14 @@
           "Opciones de marca blanca",
           "Automatización avanzada",
           "Garantías SLA"
+        ],
+        "featureDescriptions": [
+          "Incluye todas las características del plan Estándar, asegurando que tengas todas las herramientas a tu disposición.",
+          "El análisis predictivo utiliza IA para pronosticar necesidades de mantenimiento y posibles interrupciones en las rutas.",
+          "El soporte dedicado te proporciona un gerente de cuenta personal para un servicio personalizado.",
+          "Las opciones de marca blanca te permiten marcar la plataforma como propia para interacciones con clientes.",
+          "La automatización avanzada agiliza flujos de trabajo complejos, reduciendo la intervención manual.",
+          "Las garantías SLA aseguran el máximo tiempo de actividad y confiabilidad para tus operaciones de misión crítica."
         ]
       },
       {
@@ -142,6 +166,14 @@
           "Implementación local",
           "Sesiones de capacitación",
           "Gerente de cuenta"
+        ],
+        "featureDescriptions": [
+          "Incluye todas las características del plan Premium, ofreciendo la suite definitiva de gestión de flotas.",
+          "El desarrollo personalizado asegura que la plataforma se adapte exactamente a tus flujos de trabajo operativos únicos.",
+          "El soporte 24/7 por teléfono te da acceso las 24 horas a asistencia experta cuando la necesites.",
+          "Las opciones de implementación local proporcionan máxima seguridad y control sobre tu infraestructura de datos.",
+          "Las sesiones de capacitación aseguran que tu equipo sea completamente competente en el uso de todas las capacidades de la plataforma.",
+          "Un gerente de cuenta dedicado trabaja estrechamente contigo para optimizar tu estrategia de flota a largo plazo."
         ]
       }
     ]
@@ -277,6 +309,21 @@
       "meta": {
         "title": "Completa tu Perfil - Hermes KYC",
         "description": "Completa tu perfil para comenzar con la gestión de flotas de Hermes."
+      }
+    },
+    "subscription": {
+      "title": "Elige tu Plan",
+      "subtitle": "Selecciona el plan de suscripción que mejor se adapte a tus necesidades de gestión de flotas.",
+      "selectPlan": "Selecciona un plan de suscripción",
+      "featuresTitle": "Características incluidas",
+      "back": "Volver",
+      "nextStep": "Siguiente paso",
+      "validation": {
+        "planRequired": "Por favor selecciona un plan de suscripción para continuar"
+      },
+      "meta": {
+        "title": "Elige tu Suscripción - Hermes KYC",
+        "description": "Selecciona un plan de suscripción para continuar con la configuración de gestión de flotas de Hermes."
       }
     }
   }
