@@ -14,3 +14,6 @@ RUN mkdir -p /opt/google/chrome && \
 # Set permissions and create symlink
 RUN chmod +x /opt/google/chrome/chrome-wrapper && \
     ln -sf /opt/google/chrome/chrome-wrapper /opt/google/chrome/chrome
+
+# Install Claude CLI globally
+RUN npm install -g @anthropic-ai/claude-code
