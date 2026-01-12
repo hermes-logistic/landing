@@ -325,6 +325,26 @@
         "title": "Choose Your Subscription - Hermes KYC",
         "description": "Select a subscription plan to continue with your Hermes fleet management setup."
       }
+    },
+    "drivers": {
+      "title": "Add your Drivers",
+      "subtitle": "Configure your fleet size",
+      "description": "Specify the number of drivers in your fleet. This helps us configure your account with the appropriate features and ensures optimal route planning for your team.",
+      "numberOfDriversLabel": "Number of Drivers",
+      "save": "Save",
+      "edit": "Edit",
+      "back": "Back",
+      "nextStep": "Next Step",
+      "illustrationAlt": "Drivers management illustration",
+      "validation": {
+        "driversRequired": "Please add at least one driver",
+        "driversMax": "Maximum 100 drivers allowed",
+        "driversInvalid": "Number of drivers must be a whole number"
+      },
+      "meta": {
+        "title": "Add Your Drivers - Hermes KYC",
+        "description": "Add your drivers to continue with your Hermes fleet management setup."
+      }
     }
   }
 }

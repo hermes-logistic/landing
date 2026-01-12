@@ -325,6 +325,26 @@
         "title": "Elige tu Suscripción - Hermes KYC",
         "description": "Selecciona un plan de suscripción para continuar con la configuración de gestión de flotas de Hermes."
       }
+    },
+    "drivers": {
+      "title": "Agrega tus Conductores",
+      "subtitle": "Configura el tamaño de tu flota",
+      "description": "Especifica el número de conductores en tu flota. Esto nos ayuda a configurar tu cuenta con las características apropiadas y asegura una planificación de rutas óptima para tu equipo.",
+      "numberOfDriversLabel": "Número de Conductores",
+      "save": "Guardar",
+      "edit": "Editar",
+      "back": "Volver",
+      "nextStep": "Siguiente paso",
+      "illustrationAlt": "Ilustración de gestión de conductores",
+      "validation": {
+        "driversRequired": "Por favor agrega al menos un conductor",
+        "driversMax": "Máximo 100 conductores permitidos",
+        "driversInvalid": "El número de conductores debe ser un número entero"
+      },
+      "meta": {
+        "title": "Agrega tus Conductores - Hermes KYC",
+        "description": "Agrega tus conductores para continuar con la configuración de gestión de flotas de Hermes."
+      }
     }
   }
 }
