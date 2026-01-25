@@ -24,7 +24,7 @@
         <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8 xl:gap-12">
           <!-- Form Section -->
           <div class="flex-1 order-2 lg:order-1 lg:w-1/2">
-            <KycDriversForm @submit="handleSubmit" />
+            <KycDriversForm ref="driversFormRef" />
           </div>
 
           <!-- Illustration Section -->
@@ -65,8 +65,8 @@
           <button
             type="button"
             class="inline-flex items-center gap-2 px-4 lg:px-6 py-2.5 lg:py-3 border border-[#61F0FF] text-sm font-medium rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-[#61F0FF] focus:ring-offset-2 focus:ring-offset-[#01051D]"
-            :class="kycState.driversData ? 'text-[#61F0FF] hover:bg-[#61F0FF] hover:bg-opacity-10' : 'text-[#94A4C2] border-[#94A4C2] cursor-not-allowed opacity-50'"
-            :disabled="!kycState.driversData"
+            :class="isFormSaved ? 'text-[#61F0FF] hover:bg-[#61F0FF] hover:bg-opacity-10' : 'text-[#94A4C2] border-[#94A4C2] cursor-not-allowed opacity-50'"
+            :disabled="!isFormSaved"
             @click="handleNext"
           >
             {{ t('kyc.drivers.nextStep') }}
@@ -90,6 +90,18 @@ definePageMeta({
 
 const { t } = useI18n()
 const router = useRouter()
+
+// Reference to the drivers form component
+const driversFormRef = ref<{
+  getDriversData: () => KycDriversData
+  isValid: () => boolean
+  isSaved: () => boolean
+} | null>(null)
+
+// Computed property to check if form data is saved
+const isFormSaved = computed(() => {
+  return driversFormRef.value?.isSaved() ?? false
+})
 
 // SEO Meta
 useHead({
@@ -167,18 +179,16 @@ function handleBack(): void {
 }
 
 function handleNext(): void {
-  // Check if drivers data is saved
-  if (!kycState.value.driversData) {
-    // If not saved, user needs to click save first
+  // Get data from the form component
+  if (!driversFormRef.value) return
+
+  // Validate that the data is valid
+  if (!driversFormRef.value.isValid()) {
     return
   }
 
-  // Navigate to payment step
-  handleNavigate(4)
-}
-
-function handleSubmit(data: KycDriversData): void {
-  // Save drivers data
+  // Save the data
+  const data = driversFormRef.value.getDriversData()
   kycState.value.driversData = data
 
   // Mark step 3 as completed
@@ -186,11 +196,11 @@ function handleSubmit(data: KycDriversData): void {
     kycState.value.completedSteps.push(3)
   }
 
-  // Move to next step
+  // Move to the next step
   kycState.value.currentStep = 4
   saveKycState(kycState.value)
 
-  // Navigate to payment page (placeholder for now)
+  // Navigate to the payment page
   router.push('/kyc/payment')
 }
 

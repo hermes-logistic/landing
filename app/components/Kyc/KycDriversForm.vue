@@ -77,7 +77,7 @@
           <!-- Edit Button -->
           <button
             type="button"
-            class="ml-4 px-6 py-2.5 bg-[#6C8AD0] text-white text-sm font-medium rounded-full hover:bg-[#5B79BF] transition-colors focus:outline-none focus:ring-2 focus:ring-[#61F0FF] focus:ring-offset-2 focus:ring-offset-[#01051D]"
+            class="ml-4 px-6 py-2.5 bg-[#FF6B47] text-white text-sm font-medium rounded-full hover:bg-[#E55A38] transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF6B47] focus:ring-offset-2 focus:ring-offset-[#01051D]"
             @click="handleEdit"
           >
             {{ t('kyc.drivers.edit') }}
@@ -95,12 +95,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { KycDriversData } from '../../utils/kyc-drivers-validation'
 import { validateNumberOfDrivers } from '../../utils/kyc-drivers-validation'
-
-const emit = defineEmits<{
-  submit: [data: KycDriversData]
-}>()
 
 const { t } = useI18n()
 
@@ -108,6 +103,13 @@ const numberOfDrivers = ref<number>(1)
 const error = ref<string>('')
 const saved = ref<boolean>(false)
 const savedValue = ref<number | null>(null)
+
+// Expose methods for parent component to access form data
+defineExpose({
+  getDriversData: () => ({ numberOfDrivers: savedValue.value || numberOfDrivers.value }),
+  isValid: () => !validateNumberOfDrivers(savedValue.value || numberOfDrivers.value),
+  isSaved: () => saved.value
+})
 
 function decreaseDrivers(): void {
   if (numberOfDrivers.value > 1) {
@@ -155,7 +157,8 @@ function handleSave(): void {
   error.value = ''
   saved.value = true
   savedValue.value = numberOfDrivers.value
-  emit('submit', { numberOfDrivers: numberOfDrivers.value })
+  // NOTE: We don't emit submit here, only change the visual state
+  // The actual submission happens when user navigates to the next step
 }
 
 function handleEdit(): void {

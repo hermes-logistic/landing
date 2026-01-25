@@ -158,16 +158,24 @@ describe('KycDriversForm', () => {
     })
   })
 
-  describe('Form submission', () => {
-    it('emits submit event with correct data when save button is clicked', async () => {
+  describe('Form state management', () => {
+    it('transitions to saved state when save button is clicked', async () => {
       const saveButton = wrapper.findAll('button').at(2)
       const input = wrapper.find<HTMLInputElement>('#numberOfDrivers')
 
       await input.setValue(5)
       await saveButton?.trigger('click')
 
-      expect(wrapper.emitted('submit')).toBeTruthy()
-      expect(wrapper.emitted('submit')![0]).toEqual([{ numberOfDrivers: 5 }])
+      // Component should expose the data
+      const vm = wrapper.vm as unknown as {
+        getDriversData: () => { numberOfDrivers: number }
+        isValid: () => boolean
+        isSaved: () => boolean
+      }
+
+      expect(vm.getDriversData()).toEqual({ numberOfDrivers: 5 })
+      expect(vm.isValid()).toBe(true)
+      expect(vm.isSaved()).toBe(true)
     })
 
     it('does not show error for valid input', async () => {
@@ -189,8 +197,11 @@ describe('KycDriversForm', () => {
       expect((input.element as HTMLInputElement).value).toBe('1')
       await saveButton?.trigger('click')
 
-      expect(wrapper.emitted('submit')).toBeTruthy()
-      expect(wrapper.emitted('submit')![0]).toEqual([{ numberOfDrivers: 1 }])
+      const vm = wrapper.vm as unknown as {
+        getDriversData: () => { numberOfDrivers: number }
+      }
+
+      expect(vm.getDriversData()).toEqual({ numberOfDrivers: 1 })
     })
 
     it('handles exactly 100 drivers (maximum edge case)', async () => {
@@ -200,8 +211,11 @@ describe('KycDriversForm', () => {
       await input.setValue(100)
       await saveButton?.trigger('click')
 
-      expect(wrapper.emitted('submit')).toBeTruthy()
-      expect(wrapper.emitted('submit')![0]).toEqual([{ numberOfDrivers: 100 }])
+      const vm = wrapper.vm as unknown as {
+        getDriversData: () => { numberOfDrivers: number }
+      }
+
+      expect(vm.getDriversData()).toEqual({ numberOfDrivers: 100 })
     })
 
     it('handles rapid button clicks', async () => {
