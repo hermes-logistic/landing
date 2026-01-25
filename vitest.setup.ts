@@ -51,4 +51,62 @@ export const globalStubs = {
     template: '<img />',
     props: ['src', 'alt'],
   },
+  NuxtImg: {
+    name: 'NuxtImg',
+    template: '<img />',
+    props: ['src', 'alt'],
+  },
+  // Section components
+  StatsSection: {
+    name: 'StatsSection',
+    template: '<div><slot /></div>',
+  },
+  FeaturesBackground: {
+    name: 'FeaturesBackground',
+    template: '<div><slot /></div>',
+  },
+  FeaturesTitle: {
+    name: 'FeaturesTitle',
+    template: '<div><slot /></div>',
+  },
+  FeaturesCarousel: {
+    name: 'FeaturesCarousel',
+    template: '<div><slot /></div>',
+  },
+  OurPurposeBackground: {
+    name: 'OurPurposeBackground',
+    template: '<div><slot /></div>',
+  },
+  OurPurposeIllustration: {
+    name: 'OurPurposeIllustration',
+    template: '<div><slot /></div>',
+  },
+  OurPurposeContent: {
+    name: 'OurPurposeContent',
+    template: '<div><slot /></div>',
+  },
+  WhoWeAreBackground: {
+    name: 'WhoWeAreBackground',
+    template: '<div><slot /></div>',
+  },
+  WhoWeAreContent: {
+    name: 'WhoWeAreContent',
+    template: '<div><slot /></div>',
+  },
+  WhoWeAreIllustration: {
+    name: 'WhoWeAreIllustration',
+    template: '<div><slot /></div>',
+  },
+  ContactBackground: {
+    name: 'ContactBackground',
+    template: '<div><slot /></div>',
+  },
+  ContactCard: {
+    name: 'ContactCard',
+    template: '<div><slot /></div>',
+  },
+  ContactIllustration: {
+    name: 'ContactIllustration',
+    template: '<div><slot /></div>',
+  },
 }
