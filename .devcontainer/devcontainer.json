@@ -3,32 +3,100 @@
 {
 	"name": "landing-page",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+	// "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"TZ": "${localEnv:TZ:America/El_Salvador}",
+			"CLAUDE_CODE_VERSION": "latest",
+			"ZSH_IN_DOCKER_VERSION": "1.2.0"
+		}
+	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/shyim/devcontainers-features/bun:0": {},
-		"ghcr.io/dhoeric/features/google-cloud-cli:1": {}
+		// "ghcr.io/dhoeric/features/google-cloud-cli:1": {},
+		"ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
 	},
+	"runArgs": ["--cap-add=NET_ADMIN", "--cap-add=NET_RAW", "--gpus", "all"],
 	// Install system dependencies for sharp
-	"postStartCommand": "sudo apt-get update && sudo apt-get install -y libvips-dev",
+	// "postStartCommand": "sudo apt-get update && sudo apt-get install -y libvips-dev",
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
 		3000
 	],
+	"portsAttributes": {
+		"3000": {
+		"label": "Vite (app)",
+		"onAutoForward": "notify"
+		}
+	},
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "bun install",
+	"postCreateCommand": "bun install --frozen",
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"anthropic.claude-code",
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"eamodio.gitlens",
 				"ms-azuretools.vscode-docker",
 				"esbenp.prettier-vscode",
 				"Vue.volar",
-				"bradlc.vscode-tailwindcss"
-			]
+				"bradlc.vscode-tailwindcss",
+				"unifiedjs.vscode-mdx",
+				"highagency.pencildev"
+			],
+			"settings": {
+				"editor.formatOnSave": true,
+				"editor.defaultFormatter": "esbenp.prettier-vscode",
+				"editor.codeActionsOnSave": {
+					"source.fixAll.eslint": "explicit"
+				},
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "bash",
+						"icon": "terminal-bash"
+					},
+					"zsh": {
+						"path": "zsh"
+					}
+				}
+			},
+			"mcp.servers": {
+				"claude": {
+					"path": "/home/node/.claude/claude",
+					"args": ["--server"],
+					"env": {
+						"CLAUDE_CONFIG_DIR": "/home/node/.claude"
+					}
+				},
+				"chrome-devtools": {
+					"path": "/usr/bin/chromium",
+					"args": [
+						"--remote-debugging-port=9222",
+						"--no-sandbox",
+						"--enable-gpu",
+						"--use-gl=angle",
+						"--headless"
+					]
+				}
+			}
 		}
-	}
-	// Configure tool-specific properties.
-	// "customizations": {},
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+	},
+	"remoteUser": "node",
+	"mounts": [
+		"source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
+		"source=claude-code-config-${devcontainerId},target=/home/node/.claude,type=volume",
+		"source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
+	],
+	"containerEnv": {
+		"CLAUDE_CONFIG_DIR": "/home/node/.claude",
+		"HISTFILE": "/commandhistory/.zsh_history",
+		"NVIDIA_VISIBLE_DEVICES": "all",
+		"NVIDIA_DRIVER_CAPABILITIES": "compute,utility,graphics"
+	},
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
+	"workspaceFolder": "/workspace"
 }

@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "chrome-devtools-mcp@latest",
+        "--executablePath=/usr/bin/chromium",
+        "--enable-gpu",
+        "--use-gl=angle",
+        "--headless",
+        "--chrome-arg=--no-sandbox"
+      ]
+    },
+    "pencil": {
+      "type": "stdio",
+      "command": "/home/node/.pencil/mcp/visual_studio_code/out/mcp-server-linux-x64",
+      "args": ["--app", "visual_studio_code"]
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["playwright-mcp@latest"]
+    }
+  }
+}

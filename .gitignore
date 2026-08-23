@@ -29,3 +29,6 @@ logs
 .vscode/mcp.json
 
 coverage/*
+
+.agents/*
+.claude/*
