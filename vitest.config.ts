@@ -11,12 +11,13 @@ export default defineConfig({
     coverage: {
       reporter: ['text', 'html'],
       all: true,
-      // Gate de cobertura por trinquete: fijado al suelo real medido, no al objetivo.
-      // Objetivo 80/80/80/80 — subir por escalones a medida que entren tests, nunca bajar.
+      // Gate de cobertura por trinquete: suelo medido menos holgura, no el objetivo.
+      // La atribución de `functions` de v8 varía entre ejecuciones (~66-70% observado),
+      // así que se fija por debajo a propósito. Subir por escalones, nunca bajar.
       thresholds: {
         statements: 90,
-        branches: 57,
-        functions: 23,
+        branches: 80,
+        functions: 60,
         lines: 90,
       },
       include: [
