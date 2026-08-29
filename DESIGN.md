@@ -12,6 +12,7 @@ colors:
   background: "#01051D"
   surface: "#001751"
   surface-raised: "#152E6D"
+  surface-translucent: "#00175180"
   surface-warm: "#0E0C0A"
   surface-warm-raised: "#201A12"
 
@@ -25,8 +26,10 @@ colors:
 
   # --- Overlay & borders ---
   surface-overlay: "#0A1740"
+  scrim: "#01051DCC"
   border: "#B7CDF5"
   border-hairline: "#D8D0C214"
+  border-hairline-cool: "#B7CDF51F"
   border-cool: "#B7CDF547"
 
   # --- Brand primaries (dark mode) ---
@@ -193,6 +196,24 @@ typography:
     fontWeight: 700
     lineHeight: 1.5
     letterSpacing: 0.08em
+  # --- Navigation scale (responsive; see "Navigation type scale") ---
+  # nav-md and nav-sm are aliases of label-lg / label-md at the same values.
+  # Only nav-lg introduces a new size, and only for the horizontal nav bar.
+  nav-lg:
+    fontFamily: Poppins
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 1.5
+  nav-md:
+    fontFamily: Poppins
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.429
+  nav-sm:
+    fontFamily: Poppins
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1.333
 
 rounded:
   none: 0px
@@ -258,6 +279,20 @@ components:
     textColor: "{colors.on-accent}"
     typography: "{typography.label-lg}"
     rounded: "{rounded.md}"
+  # Sanctioned exception — marketing navbar CTA only. See "Sanctioned exceptions".
+  # It is an OUTLINE button at rest, not a filled one: the orange is the stroke.
+  button-cta-marketing:
+    backgroundColor: transparent
+    borderColor: "{colors.sunset-orange}"
+    borderWidth: 1px
+    textColor: "{colors.foreground}"
+    hoverBackgroundColor: "{colors.sunset-orange}"
+    hoverTextColor: "{colors.on-accent}"
+    typography: "{typography.label-lg}"
+    rounded: "{rounded.full}"
+    paddingY: "{spacing.8}"
+    paddingX: "{spacing.16}"
+    scope: marketing-navbar
   icon-button:
     size: 36px
     rounded: "{rounded.md}"
@@ -311,6 +346,53 @@ components:
     height: 64px
     paddingX: "{spacing.32}"
     gap: "{spacing.16}"
+  # Marketing landing navigation bar. Distinct from `topbar`, which is the
+  # product app shell. Breakpoint-indexed values are ordered
+  # 390 / 768 / 844 / 1024 / 1440.
+  navbar:
+    height: [64, 80, 80, 80, 80]
+    paddingX:
+      ["{spacing.20}", "{spacing.32}", "{spacing.32}", "{spacing.48}", "{spacing.80}"]
+    backgroundColor: "{colors.surface-translucent}"
+    scrolledBackgroundColor: "{colors.surface}"
+    borderBottomColor: "{colors.border-hairline-cool}"
+    borderBottomWidth: 1px
+    logoWidth: [130, 150, 150, 190, 238]
+    logoAspectRatio: 4.409
+    linkTypography:
+      [null, "{typography.nav-sm}", "{typography.nav-md}", "{typography.nav-md}", "{typography.nav-lg}"]
+    linkColor: "{colors.foreground}"
+    linkActiveColor: "{colors.blue-sky}"
+    linkGap: [null, "{spacing.16}", "{spacing.16}", "{spacing.24}", "{spacing.32}"]
+    groupGap: ["{spacing.16}", "{spacing.16}", "{spacing.16}", "{spacing.24}", "{spacing.32}"]
+    ctaPaddingX:
+      [null, "{spacing.16}", "{spacing.16}", "{spacing.20}", "{spacing.24}"]
+    menuIconSize: 24px
+  navbar-lang-chip:
+    rounded: "{rounded.sm}"
+    typography:
+      ["{typography.nav-sm}", "{typography.nav-sm}", "{typography.nav-sm}", "{typography.nav-md}", "{typography.nav-md}"]
+    paddingY: "{spacing.4}"
+    paddingX: [null, "{spacing.8}", "{spacing.8}", "{spacing.12}", "{spacing.12}"]
+    gap: "{spacing.8}"
+    activeBackgroundColor: "{colors.deep-blue-200}"
+    activeTextColor: "{colors.neutral-000}"
+    inactiveBackgroundColor: transparent
+    inactiveTextColor: "{colors.foreground-muted}"
+  navbar-drawer:
+    backgroundColor: "{colors.surface}"
+    scrimColor: "{colors.scrim}"
+    rounded: "{rounded.2xl}"
+    roundedTop: "{rounded.none}"
+    borderColor: "{colors.border-hairline-cool}"
+    borderWidth: 1px
+    padding: "{spacing.20}"
+    groupGap: "{spacing.24}"
+    itemHeight: 44px
+    itemGap: "{spacing.4}"
+    linkTypography: "{typography.nav-lg}"
+    ctaTypography: "{typography.nav-md}"
+    utilityTypography: "{typography.nav-sm}"
   content-area:
     padding: "{spacing.32}"
     gap: "{spacing.16}"
@@ -382,13 +464,29 @@ Read it with the pencil MCP tools; never with `Read`/`Grep`.
 | Canvas | `background` | `#01051D` | The page itself. Never used on text. |
 | Surface | `surface` | `#001751` | Cards, panels, elevated blocks on the canvas. |
 | Raised surface | `surface-raised` | `#152E6D` | Hover, selected rows, nested panels, secondary buttons. |
+| Translucent surface | `surface-translucent` | `#00175180` | `surface` at 50%, for a sticky bar sitting *over* scrolling content and paired with a backdrop blur. The one sanctioned use of alpha on a brand fill; it is a scrim, not a tint. Never use it as a flat fill on an opaque parent — there, use `surface`. |
 | Primary accent | `blue-sky` | `#61F0FF` | The single most important action or datum on a screen. |
 | Warning / value accent | `light-yellow` | `#FFC152` | Attention states, pricing highlights, in-transit. |
 | Alert accent | `sunset-orange` | `#FF734D` | Destructive actions, delays, exceptions. |
 | Supporting accent | `turquoise` | `#4EC1D2` | Charts and secondary data series only. |
 | Body text | `foreground` | `#EBF2FF` | All primary copy on dark surfaces. |
 | Secondary text | `foreground-muted` | `#94A4C2` | Labels, captions, placeholder, disabled. |
-| Hairline | `border-hairline` | `#D8D0C214` | 1px separators; borders are whispers, never lines. |
+| Hairline (warm) | `border-hairline` | `#D8D0C214` | 1px separators on the warm bronze dashboard. |
+| Hairline (cool) | `border-hairline-cool` | `#B7CDF51F` | 1px separators on the cool navy surfaces. |
+| Scrim | `scrim` | `#01051DCC` | The dimmed field behind a modal, sheet or drawer. |
+
+Borders are whispers, never lines — but a whisper has to be the right
+temperature. `border-hairline` is a **warm** cream (`#D8D0C2`) and belongs to the
+Warm / Bronze family; laid over navy it reads as a dirty, yellowed edge.
+`border-hairline-cool` is the same `#B7CDF5` base as `border-cool`, dropped from
+28% to 12% alpha. Use the cool hairline on `background` / `surface` /
+`surface-translucent`, the warm one on `surface-warm*`. Picking the hairline is
+the same decision as picking the surface family — they travel together.
+
+A surface gets **one** hairline value, not one per state. A bar that changes its
+alpha on scroll changes its *fill*; the border stays put. Two different border
+alphas for the scrolled and unscrolled state of the same element is an invented
+intermediate step, and the ramps exist precisely so that does not happen.
 
 Light mode swaps the primaries for their deeper LM variants —
 `deep-blue-lm` `#031E72`, `blue-sky-lm` `#00DBFF`, `sunset-orange-lm` `#FF501A`,
@@ -440,8 +538,12 @@ Rules that follow from it: **the three bright accents always carry dark text**
 
 ## Typography
 
-Poppins, single family, loaded at 300/400/600/700/800 from `public/fonts/`.
-The scale is Material-style with five tiers (page 2.0):
+Poppins, single family. The served set is 400 / 500 / 700 from `public/fonts/`
+plus a temporary 600 shim — see Sanctioned exceptions.
+The scale is Material-style with five tiers (page 2.0). The 500 face was missing
+from the build for a long time, which silently flattened the Headline and Label
+tiers into Body; that is now resolved — see
+[Resolved](#resolved--the-font-payload-is-amended-to-match-the-scale).
 
 | Tier | Token | Size / Line height | Weight | Use |
 | --- | --- | --- | --- | --- |
@@ -460,6 +562,40 @@ The scale is Material-style with five tiers (page 2.0):
   section numbering and category kickers.
 - Measure: cap paragraphs at ~72 characters. On the landing page that means a
   fixed-width text box, not a full-bleed one.
+
+### Navigation type scale
+
+The landing navigation bar is the one place where type size is a function of
+viewport width rather than of role. A nav link has a fixed job at every width,
+so it cannot move tiers as it shrinks — it stays a Label and only changes size:
+
+| Viewport | Token | Size / Weight |
+| --- | --- | --- |
+| 1440 | `nav-lg` | 16 / 500 |
+| 1024 | `nav-md` | 14 / 500 |
+| 844 | `nav-md` | 14 / 500 |
+| 768 | `nav-sm` | 12 / 500 |
+| 390 | `nav-lg` in the drawer | 16 / 500 |
+
+`nav-md` and `nav-sm` are the same values as `label-lg` and `label-md`; they are
+named separately only so the responsive step is legible in one place. **`nav-lg`
+(16/500) is the single new value** this scale introduces — 16px already exists in
+the scale at 400 (`body-lg`) and 700 (`title-md`), and the nav needs the Medium
+weight between them.
+
+Only 16, 14 and 12 are legal in navigation. **13 and 15 are not steps on any
+Hermes scale**; if a bar does not fit, change the padding, the gap or the number
+of links — never split the type scale to buy 20px.
+
+At 390 the links leave the bar entirely and move into the drawer, where there is
+vertical room, so they go back up to 16 rather than down. Size follows available
+space, not device class.
+
+Weight is **500 across every nav item, active and inactive alike.** Weight does
+not encode state anywhere in this system: an active nav item is marked with
+`blue-sky` `#61F0FF` plus `aria-current`, never with a heavier face. A 600 nav
+link is a violation twice over — it invents a state signal and it uses a weight
+that is not on the scale.
 
 ## Layout
 
@@ -535,7 +671,8 @@ The geometry (heights, radii, padding) is already correct; leave it alone.
   `6px` gap between icon and label, label at `label-lg`. Variants: Default
   (accent fill, dark label), Secondary (raised surface), Outline (hairline
   border, transparent fill), Ghost (muted label, no chrome), Destructive
-  (`sunset-orange` fill, dark label). One Default button per view.
+  (`sunset-orange` fill, dark label). One Default button per view. The landing
+  navbar CTA is the one sanctioned departure — see Sanctioned exceptions.
 - **Icon buttons.** Square, 36 or 40px, same radius and variants.
 - **Cards.** `surface` fill, 1px hairline, 8px radius, header/content/actions
   stacked with `24px` padding and `8px` internal gap.
@@ -557,13 +694,211 @@ The geometry (heights, radii, padding) is already correct; leave it alone.
   button last.
 - **Tooltips.** `surface-overlay` `#0A1740` fill with a `border-cool` `#B7CDF547`
   1px border, 6px radius, `6px 12px` padding, 13px text, wrapped at ~220px.
-- **Logotype.** Use the prepared assets in `pen-assets/` — `logo-full-navy-*`,
-  `logo-full-dark-*`, `logo-full-light-*` (full lockup), `logo-short-*` (short
-  lockup), `logo-mark-*` / `logo-hdot-*` (mark only). Pick the variant whose
-  background matches the surface; never recolor, restretch, rotate or rebuild
-  the logo from shapes. Minimum clear space on all sides equals the height of
-  the "H". Minimum full-lockup width 120px; below that use the short lockup or
-  the mark.
+- **Logotype.** The logo is **vector, always** — in every medium, without
+  exception. See the Logotype section below for where the canonical vector
+  lives and which variant to use.
+
+## Navigation
+
+The landing navigation bar is its own component (`components.navbar`), not a
+reskinned `topbar` — `topbar` is the product app shell and stays 64px at every
+width. All breakpoint-indexed values below are ordered 390 / 768 / 844 / 1024 /
+1440, matching the five artboards in Layout.
+
+- **Bar.** Height 64 below 768, **80 from 768 up**. Side padding
+  20 / 32 / 32 / 48 / 80. Fill `surface-translucent` `#00175180` at rest over the
+  hero, `surface` `#001751` once scrolled. One bottom border for both states:
+  1px `border-hairline-cool`.
+- **Logo.** Width 130 / 150 / 150 / 190 / 238, height derived from the 4.409:1
+  aspect (so 29.5 / 34 / 34 / 43 / 54 — **not** 130×30, which stretches it 1.7%).
+- **Links.** `nav-sm` / `nav-md` / `nav-md` / `nav-lg` per the Navigation type
+  scale; `foreground` `#EBF2FF`, active `blue-sky` `#61F0FF` plus `aria-current`.
+  Gap 16 / 16 / 24 / 32. Below 768 they move into the drawer.
+- **CTA.** `button-cta-marketing` — the sanctioned exception. Padding
+  `8px 16/16/20/24`, which lands the control at the 36px default button height.
+  One per bar.
+- **Menu icon.** 24px glyph (`spacing.24`), `foreground`.
+- **844 is a real breakpoint, not a copy of 768.** Mobile landscape has 76px more
+  width than tablet portrait; it spends them on the larger `nav-md` links and on
+  air between the logo and the link group. A 768 layout pasted into an 844 frame
+  is an unfinished screen, not a responsive one.
+
+### Language switcher
+
+The active-locale chip marks state with a **surface**, which makes it a UI
+component boundary: WCAG 1.4.11 requires **3:1** against what surrounds it, and
+that is not negotiable by taste.
+
+- **Active:** `deep-blue-200` `#4E6DB5` fill, `neutral-000` `#FFFFFF` label.
+  3.37:1 against the `#001751` bar, and the pair is already pre-approved AA in
+  the contrast table (5.03:1 on the label).
+- **Inactive:** no fill, `foreground-muted` `#94A4C2` label — 6.73:1, and
+  `foreground-muted` is the contract floor for metadata.
+- `sm` (4px) radius, `4px` vertical padding, `8px` horizontal at 768/844 and
+  `12px` from 1024, `8px` between the two chips.
+
+A `#FFFFFF1A` chip (white at 10%) composites to `#1A2E62` and gives **1.30:1**,
+failing outright. Note that the obvious alternative, `surface-raised` `#152E6D`,
+only reaches **1.32:1** and fails too — the fix had to come from further up the
+Deep Blue ramp, and `deep-blue-300` `#2F4D94` (2.10:1) is still not enough. A
+`#FFFFFFB3` label is an invented opacity rather than a token. Neither is a step
+on any ramp. State that is worth showing is worth showing at 3:1.
+
+### Mobile drawer
+
+Below 768 the links, the CTA and the locale switcher stack in a drawer that
+drops from the bar over a `scrim` `#01051DCC`.
+
+- `surface` `#001751`, opaque — it sits over content, so it cannot be
+  translucent. Square top corners (flush with the bar), `2xl` (16px) bottom
+  corners, 1px `border-hairline-cool`.
+- `20px` padding, matching the bar's side padding so the logo and the first link
+  share a left edge. `24px` between groups.
+- Rows are **44px** tall — the touch-target floor — with a `4px` gap. That is
+  taller than the 32px product list item on purpose: a thumb is not a cursor.
+- Three groups, separated by hairlines and by a **descending type scale**:
+  navigation at `nav-lg` (16), the action at `nav-md` (14), the locale switcher
+  at `nav-sm` (12). Priority is legible from size alone, before any label is
+  read.
+- Do not wrap the groups in cards. The hairline and the size step already do the
+  work, and a container still needs a structural reason to exist.
+
+## Logotype
+
+**The logo is vector in every medium. There is no raster fallback.**
+
+### Where the canonical logo lives
+
+| Medium | Canonical source |
+| --- | --- |
+| `pencil.pen` | `Logo Vector` frames of **native paths** under `I5xP6 → rPOee` (Page 6 – Logotype) → `sUwc9` (Logo Grid). |
+| Code (`app/`) | `public/images/hermes-logo.svg`, inlined or referenced as SVG. |
+
+In the pen, the full lockup is 37 paths at **380 × 86.2** (aspect **4.409:1**);
+the short lockup is 33 paths at 172 × 71.4. Pick the variant whose backdrop
+matches the surface:
+
+| Frame | Variant | For |
+| --- | --- | --- |
+| `c01WV` | Navy Full — amber accent | `surface` / `surface-translucent` navy |
+| `ab481` | Dark Full — amber accent | `background` `#01051D` |
+| `IxO6D` | Navy Full — orange accent | navy, when amber collides with a neighbouring accent |
+| `BWjHC` / `Kek1i` | Light Full | light mode, `soft-blue-lm` / white |
+| `D8p1RB` / `RtTuI` / `zUYPB` | Short lockup, navy / dark / light | below the 120px minimum |
+
+To place the logo on a new pen screen, **copy one of those frames.** Do not
+apply it as an image fill, do not re-import it, and do not draw it.
+
+### `pen-assets/` is not a logo source
+
+`pen-assets/` holds **14 raster `.png` exports** of the logo
+(`hermes-logo.png`, `logo-full-*`, `logo-short-*`, `logo-mark-*`, `logo-hdot-*`,
+`hermes-mark.png`). They are historical previews, not deliverables, and they are
+**not to be used**:
+
+- The project rule is that every logo and illustration is vector. A PNG in an
+  image fill is raster by definition and blurs on any HiDPI display or any scale
+  other than 1:1.
+- pen.dev image fills **do not render `.svg` at all**, so "just swap the fill for
+  the SVG" is not available. The only vector path in the pen is native paths.
+
+Any `fill: {type: "image", url: "pen-assets/logo-*"}` or
+`.../hermes-logo.png` / `hermes-mark.png` is a defect. Replace it by copying the
+matching `Logo Vector` frame.
+
+### Using it
+
+- **Never** recolor, restretch, rotate, crop or rebuild the logo. Sizes are
+  chosen by width; the height follows from the locked **4.409:1** aspect. A
+  size that does not divide out to 4.409 is a stretch, however small.
+- Minimum clear space on all sides equals the height of the "H".
+- Minimum full-lockup width **120px**; below that use the short lockup or the
+  mark.
+- The full lockup contains a counter-shape filled `deep-blue` `#001751`, drawn
+  for an opaque navy backdrop. Over a translucent bar or a photograph, check it
+  reads as part of the mark and not as a floating block — and if it does not,
+  change the *surface*, never the logo.
+
+## Sanctioned exceptions
+
+Deviations from the contract are legal only when they are written **here**. An
+exception that is not in this section is a bug and must be corrected on sight.
+Each entry names the scope it is confined to; outside that scope the base rule
+applies unchanged.
+
+### Marketing navbar CTA — `button-cta-marketing`
+
+**Scope:** the single conversion CTA in the landing navbar
+(`app/components/AppNavbar.vue`). Nowhere else — not in the contact modal, not
+in pricing, not in the app shell.
+
+**The exception, approved by the user:**
+
+- The button is an **outline**, and the orange is its 1px **stroke**, not its
+  fill: `sunset-orange` `#FF734D` border, transparent background, `foreground`
+  `#EBF2FF` label. On hover the fill becomes `#FF734D`. The Colors section
+  otherwise reserves orange for destructive actions, delays and exceptions.
+- Radius is `full` (9999px), although `components.button-*` fixes `rounded.md`
+  (6px) for every button variant and the Shapes section reserves `full` for
+  pills, badges, avatars and status dots.
+
+**Why it stands.** The landing runs cyan as its dominant accent (nav link hover,
+hero). A cyan CTA would dissolve into the accent it shares the bar with; orange
+is the only brand accent that reads as a distinct call at that size, and the
+pill silhouette separates the conversion action from the structural buttons
+inside product UI. This is a deliberate marketing decision, not drift.
+
+**What the exception does *not* license:**
+
+- The text on the fill stays `on-accent` `#01051D` (7.5:1). White on `#FF734D`
+  is 2.7:1 and remains forbidden — the contrast table is not part of this
+  exception.
+- The stroke stays 1px per Elevation. `1.5px` is off the spacing scale and is
+  not covered here.
+- Label stays `label-lg`. Padding stays `8px 16px`.
+- Orange does not become the landing's dominant accent. It appears once, on this
+  button, and the 60/30/10 proportion is unchanged.
+- No glow, no colored shadow, no gradient fill on the pill.
+
+**Do not "fix" this button back to `rounded.md` or to a cyan fill.** If it ever
+needs to change, change this section first.
+
+### Resolved — the font payload is amended to match the scale
+
+This was recorded as an open contradiction between the contract and the build.
+It is now closed, **in favour of the contract**, because the canonical frame is
+unambiguous and the cheaper option is also the correct one.
+
+**The evidence.** Page 2.0 of the `Design system` frame (`gx0hd`, "Page 5 -
+Typography") sets Headline at **500** (labelled "Medium"), Label at **500**
+("Medium | Bold"), Display and Title at **700** ("Bold"), and Body at **400**
+("Regular"). The specimen row above the scale shows three faces: Regular, Bold,
+Medium. **Weights 300, 600 and 800 appear nowhere in the frame.** The scale in
+this document already matches its source; what drifted was `public/fonts/`.
+
+**The decision.** The served set becomes **400 / 500 / 700** — the three weights
+the scale actually uses.
+
+- `poppins-500.woff2` is added and declared. Every `font-weight: 500` in this
+  contract — the whole Headline and Label tiers, nav items, buttons, form
+  labels — then renders as designed for the first time.
+- **300 and 800 are dropped.** They are declared, preloaded and served today,
+  and no rule in this document and no element in `app/` uses either.
+- Preloads follow the same set: 400 and 500, not 400 and 600.
+
+This is not a cost. Serving 400/500/700 is **~15 KB smaller across three files
+than the five served today**, so the correct type system is also the faster one.
+
+**600 stays declared, temporarily and only as a migration shim.** 25 call sites
+in `app/` still use `font-semibold`. Dropping the face before they are migrated
+would resolve them *upward* to 700 and make the landing heavier, not lighter.
+The sequence is: ship 500 → migrate each `font-semibold` to its real tier
+(`display-*` and `title-*` are 700, `headline-*` is 500) → drop 600 and reclaim
+the last ~8 KB.
+
+Until that migration lands, **600 is legal only where it already exists.** It is
+not a value to reach for: new work uses 400, 500 or 700, and a nav item, button
+or label set to 600 is a defect regardless of which faces happen to be loaded.
 
 ## Do's and Don'ts
 
@@ -578,8 +913,12 @@ The geometry (heights, radii, padding) is already correct; leave it alone.
 - Express hierarchy with tonal layers and hairlines before reaching for shadow.
 - Keep Poppins as the only family; change size and weight, not typeface.
 - Ship a landing section at all five artboard widths before calling it done.
-- Generate logos, illustrations and decorative artwork as SVG/image assets —
-  never hand-assemble them from paths.
+- Keep logos, illustrations and decorative artwork **vector**: native paths in
+  `pencil.pen`, SVG in code. Generate them with the pen `Generate(type: "svg")`
+  tool or import an existing SVG — never hand-assemble artwork path by path, and
+  never fall back to a raster image fill.
+- Reuse the logo by copying the canonical `Logo Vector` frame; place a bitmap of
+  it nowhere.
 
 **Don't**
 
@@ -593,6 +932,14 @@ The geometry (heights, radii, padding) is already correct; leave it alone.
 - Don't invent hexes between the six ramp steps, and don't apply opacity to a
   brand color to fake a tint — use the ramp.
 - Don't set body text below 12px, or use bold weight on body copy for emphasis.
+- Don't encode state with font weight — not an active nav link, not a selected
+  tab, not a current step. State is color plus an ARIA attribute.
+- Don't use 13px or 15px anywhere. They are not on any Hermes scale, and a bar
+  that only fits at 13px does not fit.
+- Don't use the warm `border-hairline` on a navy surface, or the cool one on the
+  bronze dashboard; the hairline follows the surface family.
+- Don't mark a selected control with a fill under 3:1 against its surroundings —
+  WCAG 1.4.11 covers component boundaries, not just text.
 - Don't wrap every element in its own card; a container needs a structural
   reason to exist.
 - Don't use rounded corners above 16px on structural UI, and never mix radii on

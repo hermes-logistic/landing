@@ -1,11 +1,18 @@
 {
   "nav": {
-    "who": "Quiénes Somos",
+    "who": "Plataforma",
     "benefits": "Beneficios",
-    "features": "Características",
-    "products": "Productos",
+    "features": "Funciones",
     "pricing": "Precios",
-    "contact": "Contáctanos"
+    "cta": "Hablar con Ventas",
+    "aria": {
+      "main": "Navegación principal",
+      "home": "Hermes - Inicio",
+      "toggleMenu": "Abrir o cerrar menú de navegación",
+      "languageSwitch": "Idioma",
+      "switchToEnglish": "Cambiar a inglés",
+      "switchToSpanish": "Cambiar a español"
+    }
   },
   "hero": {
     "title": "Transforma tu flota",
@@ -18,7 +25,7 @@
     "costProductionErrorDelays": "Costo de\nProducción por\nRetrasos de\nError"
   },
   "whoWeAre": {
-    "label": "Quiénes Somos",
+    "label": "Plataforma",
     "title": "Hermes Logistics",
     "description1": "Nuestra plataforma permite a las empresas optimizar sus rutas de entrega, reducir costos operativos y aumentar la satisfacción del cliente.",
     "description2": "Al aprovechar nuestros informes avanzados y análisis en tiempo real, las empresas pueden tomar decisiones estratégicas para mejorar la eficiencia y la rentabilidad."
@@ -41,7 +48,7 @@
       },
       {
         "title": "Mejora de la Satisfacción del Cliente",
-        "description": "Con el monitoreo en tiempo real y la entrega en áreas específicas gracias a la geocerca, los clientes finales reciben sus productos a tiempo, mejorando su satisfacción con el servicio y aumentando la fidelidad del cliente."
+        "description": "Con el monitoreo en tiempo real y la entrega en áreas específicas gracias a las geocercas, los clientes finales reciben sus productos a tiempo, mejorando su satisfacción con el servicio y aumentando la fidelidad del cliente."
       },
       {
         "title": "Reducción de Errores y Retrasos",
@@ -71,7 +78,7 @@
         "description": "Accede a todas las funcionalidades desde cualquier dispositivo móvil, lo que te permite mantener el control incluso mientras te desplazas."
       },
       {
-        "title": "Geovalla",
+        "title": "Geocercas",
         "description": "Define áreas geográficas específicas y recibe alertas instantáneas cuando tus vehículos entren o salgan de ellas, garantizando la seguridad y el cumplimiento."
       }
     ]
@@ -129,9 +136,9 @@
         ]
       },
       {
-        "name": "A medida",
+        "name": "Empresarial",
         "units": "U: +60",
-        "price": "Custom",
+        "price": "A cotizar",
         "description": "El Plan Empresarial es la elección definitiva para las empresas más grandes con flotas extensas. Proporciona una solución de gestión de flotas personalizada y de alto rendimiento.",
         "paymentSpecs": "Especificaciones de pago aquí.",
         "button": "Obtener Plan",
@@ -151,7 +158,7 @@
     "description": "¿Listo para transformar la gestión de tu flota? Contáctanos hoy y descubre cómo Hermes puede optimizar tus operaciones logísticas.",
     "cta": "Contáctanos",
     "modal": {
-      "title": "Contáctanos",
+      "title": "Hablar con Ventas",
       "name": "Nombre Completo",
       "namePlaceholder": "Juan Pérez",
       "email": "Correo Electrónico",

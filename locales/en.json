@@ -1,11 +1,18 @@
 {
   "nav": {
-    "who": "Who We Are",
+    "who": "Platform",
     "benefits": "Benefits",
     "features": "Features",
-    "products": "Products",
     "pricing": "Pricing",
-    "contact": "Contact Us"
+    "cta": "Talk to Sales",
+    "aria": {
+      "main": "Main navigation",
+      "home": "Hermes - Home",
+      "toggleMenu": "Toggle navigation menu",
+      "languageSwitch": "Language",
+      "switchToEnglish": "Switch to English",
+      "switchToSpanish": "Switch to Spanish"
+    }
   },
   "hero": {
     "title": "Transform your fleet",
@@ -18,7 +25,7 @@
     "costProductionErrorDelays": "Cost Production\nfrom Error\nDelays"
   },
   "whoWeAre": {
-    "label": "Who We Are",
+    "label": "Platform",
     "title": "Hermes Logistics",
     "description1": "Our platform enables companies to optimize their delivery routes, reduce operational costs, and increase customer satisfaction.",
     "description2": "By leveraging our advanced reporting and real-time analytics, businesses can make strategic decisions to improve efficiency and profitability."
@@ -151,7 +158,7 @@
     "description": "Ready to transform your fleet management? Contact us today and discover how Hermes can optimize your logistics operations.",
     "cta": "Contact Us",
     "modal": {
-      "title": "Contact Us",
+      "title": "Talk to Sales",
       "name": "Full Name",
       "namePlaceholder": "John Doe",
       "email": "Email Address",

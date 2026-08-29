@@ -63,17 +63,6 @@ const IDENTICAL_BY_DESIGN = new Set([
   'pricing.plans[3].units', // "U: +60"
 ])
 
-/**
- * NOT legitimate — a real untranslated string, quarantined so the suite stays
- * green while it is on brand-guardian's plate. `pricing.plans[3].price` is the
- * English word "Custom" in es.json, while the same plan's `name` *is* translated
- * ("Enterprise" -> "A medida"). Remove this entry once es.json is fixed; do not
- * add anything else here.
- */
-const KNOWN_UNTRANSLATED = new Set([
-  'pricing.plans[3].price',
-])
-
 describe('locale files', () => {
   it('exposes exactly the same key paths in both locales', () => {
     const missingInEs = pathsEn.filter(p => !(p in flatEs)).sort()
@@ -123,16 +112,16 @@ describe('locale files', () => {
     const untranslated = sharedPaths
       .filter(p => flatEn[p]!.kind === 'scalar')
       .filter(p => flatEn[p]!.value === flatEs[p]!.value)
-      .filter(p => !IDENTICAL_BY_DESIGN.has(p) && !KNOWN_UNTRANSLATED.has(p))
+      .filter(p => !IDENTICAL_BY_DESIGN.has(p))
       .map(p => ({ path: p, value: flatEn[p]!.value }))
 
     expect(untranslated).toEqual([])
   })
 
-  it('keeps the identical-by-design lists honest', () => {
+  it('keeps the identical-by-design list honest', () => {
     // An entry that is no longer identical is stale and must be removed, so the
     // whitelist can never quietly mask a future regression.
-    const stale = [...IDENTICAL_BY_DESIGN, ...KNOWN_UNTRANSLATED]
+    const stale = [...IDENTICAL_BY_DESIGN]
       .filter(p => !(p in flatEn) || flatEn[p]!.value !== flatEs[p]!.value)
 
     expect(stale).toEqual([])
