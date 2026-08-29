@@ -30,7 +30,7 @@
         <!-- CTA Button + language switch -->
         <div class="hidden md:flex items-center md:gap-4 lg:gap-6 xl:gap-8">
           <button
-            class="border border-[#FF734D] text-[#EBF2FF] rounded-full hover:bg-[#FF734D] hover:text-[#01051D] transition-colors duration-300 font-bold text-sm tracking-wide whitespace-nowrap md:px-4 md:py-2 lg:px-5 lg:py-2.5 xl:px-6"
+            class="border border-[#FF734D] text-[#EBF2FF] rounded-full hover:bg-[#FF734D] hover:text-[#01051D] transition-colors duration-300 font-bold text-sm tracking-wide shrink-0 whitespace-nowrap md:px-4 md:py-2 lg:px-5 lg:py-2.5 xl:px-6"
             aria-haspopup="dialog"
             :aria-expanded="isContactModalOpen"
             @click="openContactModal"
@@ -154,12 +154,12 @@ nav {
 
 .nav-solid {
   background-color: rgba(0, 23, 81, 1); /* #001751 solid */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid #B7CDF51F; /* border-hairline-cool */
 }
 
 .nav-transparent {
   background-color: rgba(0, 23, 81, 0.5); /* transparent at top */
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #B7CDF51F; /* border-hairline-cool */
 }
 </style>
