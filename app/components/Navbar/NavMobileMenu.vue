@@ -11,7 +11,7 @@
         :key="link.id"
         :href="link.href"
         :class="[
-          'block py-2 font-medium',
+          'block py-2 font-normal',
           link.href === activeHash ? 'text-[#61F0FF]' : 'text-white hover:text-[#61F0FF]',
         ]"
         :aria-current="link.href === activeHash ? 'page' : undefined"
@@ -21,7 +21,7 @@
       </a>
 
       <button
-        class="w-full mt-4 px-6 py-2.5 border border-[#FF734D] text-[#EBF2FF] rounded-full hover:bg-[#FF734D] hover:text-[#01051D] transition-all duration-300 font-bold text-sm tracking-wide"
+        class="w-full mt-4 px-6 py-2.5 border border-[#FF734D] text-[#EBF2FF] rounded-full hover:bg-[#FF734D] hover:text-[#01051D] transition-colors duration-300 font-bold text-sm tracking-wide whitespace-nowrap"
         aria-haspopup="dialog"
         :aria-expanded="isContactModalOpen"
         @click="emit('openContact')"
