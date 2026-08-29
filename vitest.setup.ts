@@ -1,7 +1,31 @@
-import { beforeAll } from 'vitest'
+import { beforeAll, vi } from 'vitest'
 import { ref } from 'vue'
 
 beforeAll(() => {
+  // jsdom ships no usable window.matchMedia — stub one that records its
+  // listeners so tests can drive breakpoint changes via dispatchEvent().
+  // @ts-expect-error - Stubbing matchMedia for tests
+  globalThis.matchMedia = vi.fn((query: string) => {
+    const listeners: Array<(event: unknown) => void> = []
+    const remove = (handler: (event: unknown) => void) => {
+      const index = listeners.indexOf(handler)
+      if (index > -1) listeners.splice(index, 1)
+    }
+    return {
+      matches: false,
+      media: query,
+      onchange: null,
+      addEventListener: vi.fn((_type: string, handler: (event: unknown) => void) => { listeners.push(handler) }),
+      removeEventListener: vi.fn((_type: string, handler: (event: unknown) => void) => { remove(handler) }),
+      addListener: vi.fn((handler: (event: unknown) => void) => { listeners.push(handler) }),
+      removeListener: vi.fn((handler: (event: unknown) => void) => { remove(handler) }),
+      dispatchEvent: vi.fn((event: unknown) => {
+        listeners.slice().forEach(handler => handler(event))
+        return true
+      }),
+    }
+  })
+
   // Stub common Nuxt components used in SFCs
   // @ts-expect-error - Stubbing custom elements for tests
   globalThis.customElements?.define?.('nuxt-link', class extends HTMLElement {})

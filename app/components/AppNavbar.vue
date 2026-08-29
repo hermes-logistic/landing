@@ -1,52 +1,51 @@
 <template>
-  <nav :class="['fixed top-0 left-0 right-0 z-50 border-b', isTop ? 'nav-transparent backdrop-blur-lg' : 'nav-solid']" role="navigation" aria-label="Main navigation">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
+  <nav
+    :class="['fixed top-0 left-0 right-0 z-50 border-b', isTop ? 'nav-transparent' : 'nav-solid']"
+    role="navigation"
+    :aria-label="t('nav.aria.main')"
+  >
+    <div class="w-full max-w-[1440px] mx-auto px-5 md:px-8 lg:px-12 xl:px-20">
+      <div class="flex items-center justify-between gap-4 h-16 md:h-20">
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
-          <a href="/" aria-label="Hermes - Home">
-            <img src="/images/hermes-logo.svg" alt="Hermes Logistics logo" width="120" height="40" class="logo-img" loading="lazy" decoding="async" fetchpriority="low">
+          <a href="/" :aria-label="t('nav.aria.home')">
+            <img
+              src="/images/hermes-logo.svg"
+              alt="Hermes Logistics logo"
+              width="238"
+              height="54"
+              class="h-[30px] md:h-[34px] lg:h-[43px] xl:h-[54px] w-auto block"
+              decoding="async"
+            >
           </a>
         </div>
 
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="#who-we-are" class="text-white hover:text-[#61F0FF] transition-colors duration-200 text-base font-semibold">
-            {{ t('nav.who') }}
-          </a>
-          <a href="#benefits" class="text-white hover:text-[#61F0FF] transition-colors duration-200 text-base font-normal">
-            {{ t('nav.benefits') }}
-          </a>
-          <a href="#features" class="text-white hover:text-[#61F0FF] transition-colors duration-200 text-base font-normal">
-            {{ t('nav.features') }}
-          </a>
-          <a href="#pricing" class="text-white hover:text-[#61F0FF] transition-colors duration-200 text-base font-normal">
-            {{ t('nav.pricing') }}
-          </a>
-        </div>
+        <NavLinks
+          :links="NAV_LINKS"
+          :active-hash="activeHash"
+          @navigate="onNavigate"
+        />
 
-        <!-- CTA Button -->
-        <div class="hidden md:flex items-center space-x-4">
-          <div>
-            <button
-              class="px-6 py-2.5 border-[1.5px] border-[#FF734D] text-[#EBF2FF] rounded-full hover:bg-[#FF734D] hover:text-white transition-all duration-300 font-bold text-sm tracking-wide"
-              @click="openContactModal"
-            >
-              {{ t('nav.contact') }}
-            </button>
-          </div>
-          <div class="flex items-center space-x-2">
-            <button :class="['text-sm px-3 py-1 rounded', locale === 'en' ? 'bg-white/10 text-white' : 'text-white/70']" @click="setLocale('en')">EN</button>
-            <button :class="['text-sm px-3 py-1 rounded', locale === 'es' ? 'bg-white/10 text-white' : 'text-white/70']" @click="setLocale('es')">ES</button>
-          </div>
+        <!-- CTA Button + language switch -->
+        <div class="hidden md:flex items-center md:gap-4 lg:gap-6 xl:gap-8">
+          <button
+            class="border border-[#FF734D] text-[#EBF2FF] rounded-full hover:bg-[#FF734D] hover:text-[#01051D] transition-all duration-300 font-bold text-sm tracking-wide md:px-4 md:py-2 lg:px-5 lg:py-2.5 xl:px-6"
+            aria-haspopup="dialog"
+            :aria-expanded="isContactModalOpen"
+            @click="openContactModal"
+          >
+            {{ t('nav.cta') }}
+          </button>
+          <NavLangSwitch :locale="locale" @select="setLocale" />
         </div>
 
         <!-- Mobile menu button -->
         <div class="md:hidden">
-          <button 
-            class="text-white p-2" 
-            :aria-expanded="mobileMenuOpen" 
-            aria-label="Toggle navigation menu"
+          <button
+            class="text-white p-2"
+            :aria-expanded="mobileMenuOpen"
+            :aria-label="t('nav.aria.toggleMenu')"
             aria-controls="mobile-menu"
             @click="mobileMenuOpen = !mobileMenuOpen"
           >
@@ -60,80 +59,107 @@
     </div>
 
     <!-- Mobile Navigation -->
-    <div v-if="mobileMenuOpen" id="mobile-menu" class="md:hidden bg-[#001751] border-t border-white/10">
-      <div class="px-4 py-4 space-y-3">
-        <a href="#who-we-are" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.who') }}</a>
-        <a href="#benefits" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.benefits') }}</a>
-        <a href="#features" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.features') }}</a>
-        <a href="#features" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.products') }}</a>
-        <a href="#pricing" class="block text-white hover:text-[#61F0FF] py-2">{{ t('nav.pricing') }}</a>
-        <button
-          class="w-full mt-4 px-6 py-2.5 border-[1.5px] border-[#FF734D] text-[#EBF2FF] rounded-full hover:bg-[#FF734D] hover:text-white transition-all duration-300 font-bold text-sm tracking-wide"
-          @click="openContactModal"
-        >
-          {{ t('nav.contact') }}
-        </button>
-        <div class="flex items-center justify-center space-x-3 mt-3">
-          <button :class="['px-3 py-1 rounded', locale === 'en' ? 'bg-white/10 text-white' : 'text-white/70']" @click="setLocale('en')">EN</button>
-          <button :class="['px-3 py-1 rounded', locale === 'es' ? 'bg-white/10 text-white' : 'text-white/70']" @click="setLocale('es')">ES</button>
-        </div>
-      </div>
-    </div>
+    <NavMobileMenu
+      :open="mobileMenuOpen"
+      :links="NAV_LINKS"
+      :active-hash="activeHash"
+      :locale="locale"
+      :is-contact-modal-open="isContactModalOpen"
+      @close="closeMobileMenu"
+      @navigate="onNavigate"
+      @select-locale="setLocale"
+      @open-contact="openContactModal"
+    />
   </nav>
-
-  <!-- Contact Modal -->
-  <ContactModal :is-open="isContactModalOpen" @close="isContactModalOpen = false" />
 </template>
 
-<script setup lang="ts" name="NavBar">
+<script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import ContactModal from './ContactModal.vue'
+import NavLinks from './Navbar/NavLinks.vue'
+import NavLangSwitch from './Navbar/NavLangSwitch.vue'
+import NavMobileMenu from './Navbar/NavMobileMenu.vue'
+import { NAV_LINKS } from './Navbar/links'
+import { useBodyScrollLock } from '~/composables/useBodyScrollLock'
+
+defineProps<{
+  isContactModalOpen: boolean
+}>()
+
+const emit = defineEmits<{
+  openContactModal: []
+  closeContactModal: []
+}>()
 
 const mobileMenuOpen = ref(false)
 const isTop = ref(true)
-const isContactModalOpen = ref(false)
+const activeHash = ref(typeof window === 'undefined' ? '' : window.location.hash)
 
 // i18n composable (auto-imported from app/composables)
 const { t, locale, setLocale } = useI18n()
+
+useBodyScrollLock(mobileMenuOpen)
+
+let desktopQuery: MediaQueryList | null = null
 
 function onScroll() {
   isTop.value = window.scrollY < 20
 }
 
+function onHashChange() {
+  activeHash.value = window.location.hash
+}
+
+// Reset the drawer when crossing into the desktop breakpoint, so it can't
+// reappear already open when the viewport narrows again.
+function onDesktopChange(event: MediaQueryListEvent) {
+  if (event.matches) mobileMenuOpen.value = false
+}
+
+function closeMobileMenu() {
+  mobileMenuOpen.value = false
+}
+
+function onNavigate(href: string) {
+  activeHash.value = href
+  mobileMenuOpen.value = false
+}
+
 function openContactModal() {
-  isContactModalOpen.value = true
+  emit('openContactModal')
   mobileMenuOpen.value = false
 }
 
 onMounted(() => {
   onScroll()
   window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('hashchange', onHashChange)
+  if (typeof window.matchMedia === 'function') {
+    desktopQuery = window.matchMedia('(min-width: 768px)')
+    desktopQuery.addEventListener('change', onDesktopChange)
+  }
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('hashchange', onHashChange)
+  desktopQuery?.removeEventListener('change', onDesktopChange)
+  desktopQuery = null
 })
 </script>
 
 <style scoped>
 nav {
-  transition: background-color 200ms ease, border-color 200ms ease;
-}
-
-.logo-img {
-  display: block;
-  width: auto;
-  height: 54px;
+  transition: background-color 200ms ease, border-color 200ms ease, backdrop-filter 200ms ease;
 }
 
 .nav-solid {
-  background-color: rgba(0, 23, 81, 1) !important; /* #001751 solid */
-  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+  background-color: rgba(0, 23, 81, 1); /* #001751 solid */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .nav-transparent {
-  background-color: rgba(0, 23, 81, 0.5) !important; /* transparent at top */
+  background-color: rgba(0, 23, 81, 0.5); /* transparent at top */
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 </style>

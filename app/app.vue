@@ -17,11 +17,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useHead, useSeoMeta } from '#imports'
 import ContactModal from './components/ContactModal.vue'
+import { useI18n } from './composables/useI18n'
 
 const isContactModalOpen = ref(false)
+
+const { locale } = useI18n()
 
 // SEO Meta Tags
 useSeoMeta({
@@ -45,7 +48,7 @@ useSeoMeta({
 
 useHead({
   htmlAttrs: {
-    lang: 'en'
+    lang: computed(() => locale.value)
   },
   link: [
     // Preload critical fonts with high priority (above the fold)
@@ -57,10 +60,10 @@ useHead({
     { rel: 'preload', href: '/images/backgrounds/chicago-hero-sm.webp', as: 'image', type: 'image/webp', media: '(max-width: 640px)' },
     // Load font stylesheet asynchronously with media query to avoid blocking render
     { rel: 'stylesheet', href: '/fonts/poppins.css', media: 'print', onload: "this.media='all'" },
-    // Fallback for no-JavaScript environments
-    { rel: 'stylesheet', href: '/fonts/poppins.css', media: '(prefers-color-scheme: no-preference)' },
     { rel: 'canonical', href: 'https://www.hermesv.io' }
   ],
+  // Fallback for no-JavaScript environments
+  noscript: [{ children: '<link rel="stylesheet" href="/fonts/poppins.css">' }],
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { charset: 'utf-8' }

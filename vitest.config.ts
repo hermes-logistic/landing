@@ -28,6 +28,7 @@ export default defineConfig({
         'app/components/Benefits/**',
         'app/components/Contact/**',
         'app/components/Features/**',
+        'app/components/Navbar/**',
         'app/components/OurPurpose/**',
         'app/components/Pricing/**',
         'app/components/WhoWeAre/**',

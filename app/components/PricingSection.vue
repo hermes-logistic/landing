@@ -1,5 +1,5 @@
 <template>
-  <section id="pricing" class="relative py-20 lg:py-32" aria-labelledby="pricing-heading">
+  <section id="pricing" class="relative py-20 lg:py-32 scroll-mt-16 md:scroll-mt-20" aria-labelledby="pricing-heading">
     <!-- Background with Ellipses -->
     <PricingBackground />
 

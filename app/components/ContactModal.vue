@@ -48,7 +48,7 @@
                 v-model="form.name"
                 type="text"
                 required
-                class="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[#61F0FF] focus:bg-white/10 transition-all"
+                class="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:border-[#61F0FF] focus:bg-white/10 transition-all"
                 :placeholder="t('contact.modal.namePlaceholder')"
               >
             </div>
@@ -63,7 +63,7 @@
                 v-model="form.email"
                 type="email"
                 required
-                class="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[#61F0FF] focus:bg-white/10 transition-all"
+                class="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:border-[#61F0FF] focus:bg-white/10 transition-all"
                 :placeholder="t('contact.modal.emailPlaceholder')"
               >
             </div>
@@ -77,7 +77,7 @@
                 id="company"
                 v-model="form.company"
                 type="text"
-                class="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[#61F0FF] focus:bg-white/10 transition-all"
+                class="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:border-[#61F0FF] focus:bg-white/10 transition-all"
                 :placeholder="t('contact.modal.companyPlaceholder')"
               >
             </div>
@@ -92,7 +92,7 @@
                 v-model="form.message"
                 required
                 rows="4"
-                class="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[#61F0FF] focus:bg-white/10 transition-all resize-none"
+                class="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:border-[#61F0FF] focus:bg-white/10 transition-all resize-none"
                 :placeholder="t('contact.modal.messagePlaceholder')"
               />
             </div>
@@ -145,8 +145,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, toRef } from 'vue'
 import { useI18n } from '~/composables/useI18n'
+import { useBodyScrollLock } from '~/composables/useBodyScrollLock'
 
 interface ContactForm {
   name: string
@@ -157,9 +158,11 @@ interface ContactForm {
 
 const { t } = useI18n()
 
-defineProps<{
+const props = defineProps<{
   isOpen: boolean
 }>()
+
+useBodyScrollLock(toRef(props, 'isOpen'))
 
 const emit = defineEmits<{
   close: []
