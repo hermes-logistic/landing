@@ -15,12 +15,27 @@
     "pencil": {
       "type": "stdio",
       "command": "/home/node/.pencil/mcp/visual_studio_code/out/mcp-server-linux-x64",
-      "args": ["--app", "visual_studio_code"]
+      "args": [
+        "--app",
+        "visual_studio_code"
+      ]
     },
     "playwright": {
       "type": "stdio",
       "command": "npx",
-      "args": ["playwright-mcp@latest"]
+      "args": [
+        "playwright-mcp@latest"
+      ]
+    },
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest",
+        "--api-key",
+        "${CONTEXT7_API_KEY}"
+      ]
     }
   }
 }
