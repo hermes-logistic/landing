@@ -9,7 +9,7 @@
       <div class="mb-4">
         <NuxtImg
           src="/images/contact/contact-illustration.svg"
-          alt="Contact illustration"
+          :alt="t('contact.aria.illustration')"
           class="w-[200px] h-auto"
           loading="lazy"
           decoding="async"
@@ -31,6 +31,8 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
+
 const emit = defineEmits<{
   'open-modal': []
 }>()

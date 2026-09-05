@@ -14,6 +14,7 @@
     <Transition name="slide-up">
       <div
         v-if="isOpen"
+        ref="dialogEl"
         class="fixed inset-x-0 bottom-0 z-50 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-md"
         role="dialog"
         aria-labelledby="contact-modal-title"
@@ -26,7 +27,7 @@
               {{ t('contact.modal.title') }}
             </h2>
             <button
-              aria-label="Close modal"
+              :aria-label="t('contact.modal.aria.close')"
               class="text-white/70 hover:text-white transition-colors p-1"
               @click="closeModal"
             >
@@ -97,15 +98,24 @@
               />
             </div>
 
-            <!-- Submit Button -->
+            <!-- Submit Button — DESIGN.md components.button-primary: blue-sky
+                 #61F0FF fill, on-accent #01051D label (14.81:1). It is NOT the
+                 marketing CTA: that exception is scoped to the landing navbar
+                 and names the contact modal as out of scope, and white on
+                 #FF734D measured 2.69:1 on a 14px label. Hover steps to a real
+                 ramp value, blue-sky-100 #ACF7FF (AAA with #01051D) — #FF6B3D
+                 and #50D8E6 are invented steps between ramp entries.
+                 transition-colors, not transition-all: transition-all animates
+                 outline-color too, which makes the focus ring fade in from the
+                 UA default instead of appearing as #61F0FF. -->
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="w-full mt-6 px-6 py-2.5 bg-[#FF734D] text-white rounded-full hover:bg-[#FF6B3D] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 font-bold text-sm tracking-wide"
+              class="w-full mt-6 px-6 py-2.5 bg-[#61F0FF] text-[#01051D] rounded-full hover:bg-[#ACF7FF] disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300 font-bold text-sm tracking-wide"
             >
               <span v-if="!isSubmitting">{{ t('contact.modal.send') }}</span>
               <span v-else class="flex items-center justify-center">
-                <svg class="animate-spin -ml-1 mr-3 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg class="animate-spin -ml-1 mr-3 h-4 w-4 text-[#01051D]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                 </svg>
@@ -146,8 +156,8 @@
 
 <script setup lang="ts">
 import { ref, toRef } from 'vue'
-import { useI18n } from '~/composables/useI18n'
 import { useBodyScrollLock } from '~/composables/useBodyScrollLock'
+import { useFocusTrap } from '~/composables/useFocusTrap'
 
 interface ContactForm {
   name: string
@@ -156,17 +166,24 @@ interface ContactForm {
   message: string
 }
 
+// i18n composable (auto-imported from app/composables).
 const { t } = useI18n()
 
 const props = defineProps<{
   isOpen: boolean
 }>()
 
-useBodyScrollLock(toRef(props, 'isOpen'))
-
 const emit = defineEmits<{
   close: []
 }>()
+
+const isOpenRef = toRef(props, 'isOpen')
+const dialogEl = ref<HTMLElement | null>(null)
+
+useBodyScrollLock(isOpenRef)
+// Same trap the navbar drawer uses: focus enters the dialog on open, Tab
+// cycles inside it, Escape closes, and focus returns to the opener on close.
+useFocusTrap(dialogEl, isOpenRef, closeModal)
 
 const isSubmitting = ref(false)
 const successMessage = ref('')

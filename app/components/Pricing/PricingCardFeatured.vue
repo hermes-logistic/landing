@@ -13,7 +13,7 @@
       class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-gradient-to-r from-[#FF734D] to-[#FF977A] shadow-lg"
     >
       <span class="font-poppins font-bold text-sm text-white uppercase tracking-wide">
-        Most Popular
+        {{ t('pricing.mostPopular') }}
       </span>
     </div>
     
@@ -121,6 +121,8 @@ interface Plan {
 const props = defineProps<{
   plan: Plan
 }>()
+
+const { t } = useI18n()
 
 const isAmount = computed(() => isAmountPrice(props.plan.price))
 </script>

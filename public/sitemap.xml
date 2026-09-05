@@ -1,58 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <!-- Main page -->
+
+  <!--
+    One entry per indexable URL. Fragment URLs (/#pricing and friends) are not
+    separate documents: search engines consolidate them into the page they
+    belong to, so listing them only added duplicate noise.
+
+    Each entry carries the complete hreflang cluster, self-reference included.
+    A cluster that omits the self link, or points at a URL that 404s, is
+    discarded in full — which is what the previous /es/ alternate did, taking
+    the English signal down with it.
+  -->
+
+  <!-- English (default) -->
   <url>
     <loc>https://www.hermesv.io/</loc>
-    <lastmod>2025-12-02</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.hermesv.io/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.hermesv.io/es/" />
+    <xhtml:link rel="alternate" hreflang="es-419" href="https://www.hermesv.io/es" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.hermesv.io/" />
   </url>
 
-  <!-- Sections (anchors) -->
+  <!-- Spanish (Latin America) -->
   <url>
-    <loc>https://www.hermesv.io/#who-we-are</loc>
-    <lastmod>2025-12-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.hermesv.io/#our-purpose</loc>
-    <lastmod>2025-12-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.hermesv.io/#benefits</loc>
-    <lastmod>2025-12-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.hermesv.io/#features</loc>
-    <lastmod>2025-12-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.hermesv.io/#pricing</loc>
-    <lastmod>2025-12-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.hermesv.io/#contact</loc>
-    <lastmod>2025-12-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.hermesv.io/es</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.hermesv.io/" />
+    <xhtml:link rel="alternate" hreflang="es-419" href="https://www.hermesv.io/es" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.hermesv.io/" />
   </url>
 
 </urlset>

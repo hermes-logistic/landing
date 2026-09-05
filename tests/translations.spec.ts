@@ -141,6 +141,7 @@ describe('navbar i18n contract', () => {
     'nav.aria.languageSwitch',
     'nav.aria.switchToEnglish',
     'nav.aria.switchToSpanish',
+    'nav.aria.logo',
   ]
 
   // Renamed to nav.cta / removed outright — the navbar must never reference them again.
@@ -174,4 +175,41 @@ describe('navbar i18n contract', () => {
 
     expect(unresolved).toEqual([])
   })
+})
+
+describe('accessible-name i18n contract', () => {
+  // Every aria-label / alt text rendered by a component must resolve in both
+  // locales: a Spanish screen-reader user must never be read English. These are
+  // the keys the templates reference by name, so a rename or a drop fails here
+  // instead of silently falling back to English at runtime.
+  const REQUIRED_ARIA_KEYS = [
+    'stats.aria.section',
+    'stats.aria.fuel',
+    'stats.aria.hours',
+    'stats.aria.cost',
+    'hero.aria.schedule',
+    'contact.aria.illustration',
+    'contact.aria.cta',
+    'contact.modal.aria.close',
+    'ourPurpose.aria.illustration',
+  ]
+
+  // Visible copy that used to be hardcoded English in the templates.
+  const REQUIRED_LABEL_KEYS = [
+    'footer.copyright',
+    'footer.privacyPolicy',
+    'footer.terms',
+    'pricing.mostPopular',
+  ]
+
+  it.each([...REQUIRED_ARIA_KEYS, ...REQUIRED_LABEL_KEYS])(
+    'defines %s as a non-empty string in both locales',
+    (path) => {
+      for (const [locale, source] of [['en', en], ['es', es]] as const) {
+        const value = resolve(source as Json, path)
+        expect(typeof value, `${path} missing in ${locale}.json`).toBe('string')
+        expect((value as string).trim(), `${path} empty in ${locale}.json`).not.toBe('')
+      }
+    },
+  )
 })

@@ -11,18 +11,37 @@
       "toggleMenu": "Toggle navigation menu",
       "languageSwitch": "Language",
       "switchToEnglish": "Switch to English",
-      "switchToSpanish": "Switch to Spanish"
+      "switchToSpanish": "Switch to Spanish",
+      "logo": "Hermes Logistics logo"
     }
+  },
+  "seo": {
+    "title": "Hermes Logistics - Fleet Management & Route Optimization Software",
+    "description": "Transform your fleet with Hermes Logistics. Optimize delivery routes, reduce costs and increase efficiency with fleet management software built for growing operations.",
+    "keywords": "fleet management software, route optimization software, delivery route planner, last mile delivery software, fleet tracking, logistics, transportation management, supply chain",
+    "ogTitle": "Hermes Logistics - Fleet Management & Route Optimization Software",
+    "ogDescription": "Leverage technology to optimize your routes, reduce costs, and increase the efficiency of your deliveries.",
+    "twitterTitle": "Hermes Logistics - Fleet Management & Route Optimization Software",
+    "twitterDescription": "Transform your fleet with intelligent route optimization and real-time analytics."
   },
   "hero": {
     "title": "Transform your fleet",
     "description": "Leverage technology to optimize your routes, reduce costs, and increase the efficiency of your deliveries.",
-    "schedule": "Schedule a Demo"
+    "schedule": "Schedule a Demo",
+    "aria": {
+      "schedule": "Schedule a demo with Hermes"
+    }
   },
   "stats": {
     "fuelSavings": "Fuel Savings",
     "savingsWorkHours": "Savings in Work\nHours",
-    "costProductionErrorDelays": "Cost Production\nfrom Error\nDelays"
+    "costProductionErrorDelays": "Cost Production\nfrom Error\nDelays",
+    "aria": {
+      "section": "Statistics",
+      "fuel": "Fuel savings indicator",
+      "hours": "Work hours savings indicator",
+      "cost": "Cost reduction indicator"
+    }
   },
   "whoWeAre": {
     "label": "Platform",
@@ -32,7 +51,10 @@
   },
   "ourPurpose": {
     "title": "Our Purpose",
-    "description": "Revolutionize fleet management through Intelligent Route Optimization, with the purpose of significantly reducing travel times and operational costs. Through our advanced technology, we seek to maximize efficiency and promote sustainable fuel savings. We strive to lead the transition towards a smarter and more sustainable future in delivery logistics."
+    "description": "Revolutionize fleet management through Intelligent Route Optimization, with the purpose of significantly reducing travel times and operational costs. Through our advanced technology, we seek to maximize efficiency and promote sustainable fuel savings. We strive to lead the transition towards a smarter and more sustainable future in delivery logistics.",
+    "aria": {
+      "illustration": "Our Purpose illustration"
+    }
   },
   "benefits": {
     "label": "Benefits",
@@ -64,6 +86,9 @@
     "label": "Features",
     "title": "Amazing Features",
     "description": "Discover the innovative features that will help you take your logistics to the next level.",
+    "aria": {
+      "showFeature": "Show %{feature}"
+    },
     "slides": [
       {
         "title": "Route Optimization",
@@ -86,6 +111,7 @@
   "pricing": {
     "label": "PRICING",
     "title": "Choose Your Perfect Plan",
+    "mostPopular": "Most Popular",
     "plans": [
       {
         "name": "Basic",
@@ -156,7 +182,11 @@
   "contact": {
     "title": "Get in Touch with Hermes",
     "description": "Ready to transform your fleet management? Contact us today and discover how Hermes can optimize your logistics operations.",
-    "cta": "Contact Us",
+    "cta": "Talk to Sales",
+    "aria": {
+      "illustration": "Contact illustration",
+      "cta": "Contact us to optimize your fleet"
+    },
     "modal": {
       "title": "Talk to Sales",
       "name": "Full Name",
@@ -171,7 +201,20 @@
       "sending": "Sending...",
       "successMessage": "Thank you! Your message has been sent successfully. We'll get back to you soon.",
       "errorMessage": "Something went wrong. Please try again.",
-      "privacy": "We respect your privacy. Your information is safe with us."
+      "privacy": "We respect your privacy. Your information is safe with us.",
+      "aria": {
+        "close": "Close modal"
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© Hermes Company. All Rights Reserved",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "aria": {
+      "facebook": "Hermes on Facebook",
+      "twitter": "Hermes on Twitter",
+      "telegram": "Hermes on Telegram"
     }
   }
 }

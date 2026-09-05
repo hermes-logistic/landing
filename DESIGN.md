@@ -362,23 +362,33 @@ components:
     linkTypography:
       [null, "{typography.nav-sm}", "{typography.nav-md}", "{typography.nav-md}", "{typography.nav-lg}"]
     linkColor: "{colors.foreground}"
+    linkHoverColor: "{colors.blue-sky}"
     linkActiveColor: "{colors.blue-sky}"
+    focusRingColor: "{colors.blue-sky}"
+    focusRingWidth: 2px
+    focusRingOffset: "{spacing.2}"
     linkGap: [null, "{spacing.16}", "{spacing.16}", "{spacing.24}", "{spacing.32}"]
     groupGap: ["{spacing.16}", "{spacing.16}", "{spacing.16}", "{spacing.24}", "{spacing.32}"]
     ctaPaddingX:
       [null, "{spacing.16}", "{spacing.16}", "{spacing.20}", "{spacing.24}"]
     menuIconSize: 24px
   navbar-lang-chip:
+    element: link
     rounded: "{rounded.sm}"
     typography:
       ["{typography.nav-sm}", "{typography.nav-sm}", "{typography.nav-sm}", "{typography.nav-md}", "{typography.nav-md}"]
     paddingY: "{spacing.4}"
-    paddingX: [null, "{spacing.8}", "{spacing.8}", "{spacing.12}", "{spacing.12}"]
+    paddingX:
+      ["{spacing.12}", "{spacing.8}", "{spacing.8}", "{spacing.12}", "{spacing.12}"]
     gap: "{spacing.8}"
-    activeBackgroundColor: "{colors.deep-blue-200}"
-    activeTextColor: "{colors.neutral-000}"
+    activeBackgroundColor: "{colors.deep-blue-100}"
+    activeTextColor: "{colors.on-accent}"
     inactiveBackgroundColor: transparent
     inactiveTextColor: "{colors.foreground-muted}"
+    inactiveHoverTextColor: "{colors.foreground}"
+    focusRingColor: "{colors.blue-sky}"
+    focusRingWidth: 2px
+    focusRingOffset: "{spacing.2}"
   navbar-drawer:
     backgroundColor: "{colors.surface}"
     scrimColor: "{colors.scrim}"
@@ -712,30 +722,88 @@ width. All breakpoint-indexed values below are ordered 390 / 768 / 844 / 1024 /
 - **Logo.** Width 130 / 150 / 150 / 190 / 238, height derived from the 4.409:1
   aspect (so 29.5 / 34 / 34 / 43 / 54 — **not** 130×30, which stretches it 1.7%).
 - **Links.** `nav-sm` / `nav-md` / `nav-md` / `nav-lg` per the Navigation type
-  scale; `foreground` `#EBF2FF`, active `blue-sky` `#61F0FF` plus `aria-current`.
-  Gap 16 / 16 / 24 / 32. Below 768 they move into the drawer.
+  scale; `foreground` `#EBF2FF`, hover and active `blue-sky` `#61F0FF`, active
+  additionally carrying `aria-current`. Focus is a 2px `blue-sky` ring at a
+  `2px` offset. Gap 16 / 16 / 24 / 32. Below 768 they move into the drawer.
 - **CTA.** `button-cta-marketing` — the sanctioned exception. Padding
   `8px 16/16/20/24`, which lands the control at the 36px default button height.
   One per bar.
 - **Menu icon.** 24px glyph (`spacing.24`), `foreground`.
+- **Link semantics are not recordable on the canvas today.** Which nav items are
+  real links — and where they point — is part of the design, not an
+  implementation detail: it is the whole difference between the locale switcher
+  and a pair of buttons. The pen cannot currently hold it. `TextStyle.href` is
+  in the v2.17 schema but the running pen.dev build discards it on both `Insert`
+  and `Update`, and `metadata` is write-once at `Insert`, so it cannot be added
+  to nodes that already exist. Recreating a node to gain the field changes its
+  id and breaks every reference to it, which costs more than the annotation is
+  worth. **Until the runtime persists `href`, this document is the record**: the
+  four nav items point at `#who-we-are` / `#benefits` / `#features` /
+  `#pricing`, the locale chips at `/` and `/es`, and the navbar CTA at nothing —
+  it opens a modal. Do not infer from a pen node's silence that it is a button.
 - **844 is a real breakpoint, not a copy of 768.** Mobile landscape has 76px more
   width than tablet portrait; it spends them on the larger `nav-md` links and on
   air between the logo and the link group. A 768 layout pasted into an 844 frame
   is an unfinished screen, not a responsive one.
 
+### Measuring contrast on the bar
+
+The bar has **two** fills — `surface-translucent` `#00175180` over the hero at
+rest, and `surface` `#001751` once scrolled — so "contrast against the bar" is
+ambiguous unless the state is named. **It is always measured against the at-rest
+translucent state, because that is the worse case.** Compositing 50% navy over
+the hero *raises* the surround's luminance to roughly `#152258`, which costs
+about 0.4 of a contrast point against it; a value tuned against the solid
+`#001751` can clear 3:1 there and still fail in the state the user sees first.
+
+This applies to every control that lands on the bar — chips, badges, pills,
+toggles, any element whose own fill has to be distinguishable — not only to the
+locale switcher. Measure on real composited pixels in the unscrolled state; do
+not compute against `#001751` and assume the scrolled figure covers both.
+
 ### Language switcher
+
+**The switcher is a pair of links, not a pair of buttons.** Each locale is its
+own indexable URL — `/` serves English, `/es` serves Spanish — so the control
+has to be a real `<a href>`: crawlable, openable in a new tab, and functional
+without JavaScript. A button that swaps the locale in place is not an
+alternative implementation of this component; it is a different, worse one, and
+it is what made the Spanish landing invisible to search engines.
+
+Each chip carries `hreflang` and `lang` for the locale it points at, and the
+current one is marked with `aria-current="page"`. Nothing about the visual
+treatment changes — the chip geometry, fill and label colors below are
+unchanged — but two consequences follow from being a link:
+
+- **State is not a pressed state.** `aria-pressed` and `aria-selected` do not
+  apply. The current locale is expressed with the active fill plus
+  `aria-current="page"`, exactly as an active nav link is expressed with
+  `blue-sky` plus `aria-current`.
+- **Focus must be visible.** A link is in the tab order at every width,
+  including inside the drawer. Focus is a 2px `blue-sky` `#61F0FF` ring at a
+  `2px` offset — the same ring the nav links use — never a glow, never a
+  background change, and never removed.
 
 The active-locale chip marks state with a **surface**, which makes it a UI
 component boundary: WCAG 1.4.11 requires **3:1** against what surrounds it, and
 that is not negotiable by taste.
 
-- **Active:** `deep-blue-200` `#4E6DB5` fill, `neutral-000` `#FFFFFF` label.
-  3.37:1 against the `#001751` bar, and the pair is already pre-approved AA in
-  the contrast table (5.03:1 on the label).
+- **Active:** `deep-blue-100` `#6C8AD0` fill, `on-accent` `#01051D` label.
+  **4.41:1** against the at-rest translucent bar and 4.98:1 once scrolled, so it
+  clears 1.4.11 in both states; the pair is already pre-approved AA in the
+  contrast table (5.94:1 on the label).
 - **Inactive:** no fill, `foreground-muted` `#94A4C2` label — 6.73:1, and
   `foreground-muted` is the contract floor for metadata.
+- **Inactive hover:** the label rises to `foreground` `#EBF2FF`. The fill stays
+  transparent — hover must not borrow the active chip's surface, or the two
+  states become indistinguishable mid-gesture.
 - `sm` (4px) radius, `4px` vertical padding, `8px` horizontal at 768/844 and
-  `12px` from 1024, `8px` between the two chips.
+  `12px` at 390 and from 1024, `8px` between the two chips. The switcher is the
+  one navbar element that survives into the drawer unchanged, so 390 has a
+  value here where `navbar.linkTypography` and `navbar.ctaPaddingX` are null.
+- Type is `nav-sm` (12) at 390/768/844 and `nav-md` (14) from 1024, at **weight
+  500** like every other nav item. A chip left at 400 is Body weight on a Label
+  control and reads as prose next to the links beside it.
 
 A `#FFFFFF1A` chip (white at 10%) composites to `#1A2E62` and gives **1.30:1**,
 failing outright. Note that the obvious alternative, `surface-raised` `#152E6D`,
@@ -743,6 +811,15 @@ only reaches **1.32:1** and fails too — the fix had to come from further up th
 Deep Blue ramp, and `deep-blue-300` `#2F4D94` (2.10:1) is still not enough. A
 `#FFFFFFB3` label is an invented opacity rather than a token. Neither is a step
 on any ramp. State that is worth showing is worth showing at 3:1.
+
+`deep-blue-200` `#4E6DB5` was the value here until it was measured on pixels
+rather than computed: **3.37:1 against the scrolled bar but 2.97:1 against the
+at-rest one**, i.e. passing in the state nobody lands on and failing in the
+state everybody does. It is the case that produced the rule in
+[Measuring contrast on the bar](#measuring-contrast-on-the-bar), and the reason
+the active chip now sits one step further up at `deep-blue-100`. Going up the
+ramp flips the label: `#6C8AD0` takes dark `on-accent` text, not white — white
+on it is only 3.40:1 and the contrast table already pairs it with `#01051D`.
 
 ### Mobile drawer
 
@@ -754,6 +831,13 @@ drops from the bar over a `scrim` `#01051DCC`.
   corners, 1px `border-hairline-cool`.
 - `20px` padding, matching the bar's side padding so the logo and the first link
   share a left edge. `24px` between groups.
+- **`groupGap` is the panel's flex gap, and the separating hairlines are its
+  siblings — not its borders.** The panel stacks five children (nav, rule,
+  action, rule, switcher) with `24px` between *each adjacent pair*, so the
+  distance from the last nav row to the CTA is `24 + 1 + 24 = 49px`, with the
+  rule centred in it. It is **not** 24px of total content-to-content space; a
+  drawer measuring 24px there has spent the token once instead of twice and
+  comes out 48px shorter than the canonical drawing (`V6Joog → gWTnC`).
 - Rows are **44px** tall — the touch-target floor — with a `4px` gap. That is
   taller than the 32px product list item on purpose: a thumb is not a cursor.
 - Three groups, separated by hairlines and by a **descending type scale**:

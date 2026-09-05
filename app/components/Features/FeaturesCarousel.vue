@@ -22,16 +22,22 @@
     <div class="flex justify-center items-center mt-12">
       <!-- Dots Indicator -->
       <div class="flex gap-[13px]">
+        <!-- transition-[width,background-color], not transition-all: the dot
+             animates its width between the active and inactive states, so a
+             bare transition-colors would kill that, but transition-all also
+             animates outline-color — which made the focus ring animate in from
+             the UA default `3px solid rgb(0,0,0)` and only reach the 2px
+             #61F0FF ring 300ms after Tab. outline-color must stay out. -->
         <button
-          v-for="(_, index) in slides"
+          v-for="(slide, index) in slides"
           :key="index"
-          class="h-[10px] rounded-full transition-all duration-300"
+          class="h-[10px] rounded-full transition-[width,background-color] duration-300"
           :class="[
             index === currentSlide 
               ? 'bg-[#FF734D] w-[84px]' 
               : 'bg-[#94A4C2] w-[20px] hover:bg-[#94A4C2]/70'
           ]"
-          :aria-label="`Go to slide ${index + 1}`"
+          :aria-label="t('features.aria.showFeature', { feature: slide.title })"
           @click="goToSlide(index)"
         />
       </div>
@@ -52,6 +58,8 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+
+const { t } = useI18n()
 
 // Image paths for each slide based on Figma design
 const imagePaths = [

@@ -13,7 +13,7 @@
     <!-- CTA Button -->
     <button
       class="bg-[#61F0FF] text-[#01051D] px-8 sm:px-12 md:px-16 py-3 md:py-4 rounded-full font-bold text-sm md:text-base leading-[1.5em] tracking-[0.01em] hover:bg-[#50D8E6] transition-colors"
-      aria-label="Contact us to optimize your fleet"
+      :aria-label="t('contact.aria.cta')"
       @click="emit('open-modal')"
     >
       {{ t('contact.cta') }}

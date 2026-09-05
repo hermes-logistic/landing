@@ -29,11 +29,14 @@ beforeAll(() => {
   // Stub common Nuxt components used in SFCs
   // @ts-expect-error - Stubbing custom elements for tests
   globalThis.customElements?.define?.('nuxt-link', class extends HTMLElement {})
-  // Stub Nuxt composables used in tests
-  // useState(key, init) -> simple ref
+  // Stub Nuxt composables used in tests.
+  // useState(key, init) shares one ref per key, like the real one — returning a
+  // fresh ref per call would make cross-call state (the locale) untestable.
+  const states = new Map<string, ReturnType<typeof ref>>()
   // @ts-expect-error - Stubbing useState for tests
   globalThis.useState = (key: string, init: () => unknown) => {
-    return ref(init())
+    if (!states.has(key)) states.set(key, ref(init()))
+    return states.get(key)!
   }
   // @ts-expect-error - Stubbing useRequestHeaders for tests
   globalThis.useRequestHeaders = () => ({ 'accept-language': 'en' })
@@ -52,7 +55,8 @@ beforeAll(() => {
 export const globalStubs = {
   NuxtLink: {
     name: 'NuxtLink',
-    template: '<a><slot /></a>',
+    // Renders the href so tests can assert on the crawlable URL, not just the slot.
+    template: '<a :href="to"><slot /></a>',
     props: ['to'],
   },
   NuxtImage: {

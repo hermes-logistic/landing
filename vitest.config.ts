@@ -50,6 +50,9 @@ export default defineConfig({
     alias: {
       '~': path.resolve(__dirname, 'app'),
       '@': path.resolve(__dirname, 'app'),
+      // Nuxt's virtual module has no implementation outside Nuxt; the stub
+      // records useHead/useSeoMeta payloads so the SEO head can be asserted.
+      '#imports': path.resolve(__dirname, 'tests/stubs/nuxt-imports.ts'),
     },
   },
 })

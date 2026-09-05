@@ -11,18 +11,37 @@
       "toggleMenu": "Abrir o cerrar menú de navegación",
       "languageSwitch": "Idioma",
       "switchToEnglish": "Cambiar a inglés",
-      "switchToSpanish": "Cambiar a español"
+      "switchToSpanish": "Cambiar a español",
+      "logo": "Logotipo de Hermes Logistics"
     }
+  },
+  "seo": {
+    "title": "Hermes Logistics - Software de Gestión de Flotas y Optimización de Rutas",
+    "description": "Transforma tu flota con Hermes Logistics. Optimiza rutas de entrega, reduce costos y aumenta la eficiencia con un software de gestión de flotas hecho para operaciones en crecimiento.",
+    "keywords": "software de gestión de flotas, optimización de rutas, planificación de rutas de entrega, software de última milla, rastreo de flotas, logística, administración de transporte, cadena de suministro",
+    "ogTitle": "Hermes Logistics - Software de Gestión de Flotas y Optimización de Rutas",
+    "ogDescription": "Aprovecha la tecnología para optimizar tus rutas, reducir costos y aumentar la eficiencia de tus entregas.",
+    "twitterTitle": "Hermes Logistics - Software de Gestión de Flotas y Optimización de Rutas",
+    "twitterDescription": "Transforma tu flota con optimización inteligente de rutas y analítica en tiempo real."
   },
   "hero": {
     "title": "Transforma tu flota",
     "description": "Aprovecha la tecnología para optimizar tus rutas, reducir costos y aumentar la eficiencia de tus entregas",
-    "schedule": "Agendar una Demo"
+    "schedule": "Agendar una Demo",
+    "aria": {
+      "schedule": "Agendar una demo con Hermes"
+    }
   },
   "stats": {
     "fuelSavings": "Combustible",
     "savingsWorkHours": "Ahorro en Horas\nde Trabajo",
-    "costProductionErrorDelays": "Costo de\nProducción por\nRetrasos de\nError"
+    "costProductionErrorDelays": "Costo de\nProducción por\nRetrasos de\nError",
+    "aria": {
+      "section": "Estadísticas",
+      "fuel": "Indicador de ahorro de combustible",
+      "hours": "Indicador de ahorro de horas de trabajo",
+      "cost": "Indicador de reducción de costos"
+    }
   },
   "whoWeAre": {
     "label": "Plataforma",
@@ -32,7 +51,10 @@
   },
   "ourPurpose": {
     "title": "Nuestro Propósito",
-    "description": "Revolucionar la gestión de flotas mediante la Optimización Inteligente de Rutas, con el propósito de reducir significativamente tiempos de viaje y costos operativos. A través de nuestra tecnología avanzada, buscamos maximizar la eficiencia y promover un ahorro sostenible de combustible. Nos esforzamos por liderar la transición hacia un futuro más inteligente y sostenible en la logística de entregas."
+    "description": "Revolucionar la gestión de flotas mediante la Optimización Inteligente de Rutas, con el propósito de reducir significativamente tiempos de viaje y costos operativos. A través de nuestra tecnología avanzada, buscamos maximizar la eficiencia y promover un ahorro sostenible de combustible. Nos esforzamos por liderar la transición hacia un futuro más inteligente y sostenible en la logística de entregas.",
+    "aria": {
+      "illustration": "Ilustración de Nuestro Propósito"
+    }
   },
   "benefits": {
     "label": "Beneficios",
@@ -61,9 +83,12 @@
     ]
   },
   "features": {
-    "label": "Características",
+    "label": "Funciones",
     "title": "Características asombrosas",
     "description": "Descubre las innovadoras características que te ayudarán a llevar tu logística al siguiente nivel.",
+    "aria": {
+      "showFeature": "Ver %{feature}"
+    },
     "slides": [
       {
         "title": "Optimización de Rutas",
@@ -86,6 +111,7 @@
   "pricing": {
     "label": "PRECIOS",
     "title": "Elige Tu Plan Perfecto",
+    "mostPopular": "Más Popular",
     "plans": [
       {
         "name": "Básico",
@@ -156,7 +182,11 @@
   "contact": {
     "title": "Contáctanos en Hermes",
     "description": "¿Listo para transformar la gestión de tu flota? Contáctanos hoy y descubre cómo Hermes puede optimizar tus operaciones logísticas.",
-    "cta": "Contáctanos",
+    "cta": "Hablar con Ventas",
+    "aria": {
+      "illustration": "Ilustración de contacto",
+      "cta": "Contáctanos para optimizar tu flota"
+    },
     "modal": {
       "title": "Hablar con Ventas",
       "name": "Nombre Completo",
@@ -171,7 +201,20 @@
       "sending": "Enviando...",
       "successMessage": "¡Gracias! Tu mensaje ha sido enviado exitosamente. Te contactaremos pronto.",
       "errorMessage": "Algo salió mal. Por favor intenta de nuevo.",
-      "privacy": "Respetamos tu privacidad. Tu información está segura con nosotros."
+      "privacy": "Respetamos tu privacidad. Tu información está segura con nosotros.",
+      "aria": {
+        "close": "Cerrar ventana"
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© Hermes Company. Todos los derechos reservados",
+    "privacyPolicy": "Política de Privacidad",
+    "terms": "Términos y Condiciones",
+    "aria": {
+      "facebook": "Hermes en Facebook",
+      "twitter": "Hermes en Twitter",
+      "telegram": "Hermes en Telegram"
     }
   }
 }

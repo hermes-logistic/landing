@@ -42,7 +42,7 @@
       </div>
 
       <!-- Schedule Button -->
-      <div class="mt-[60px] relative z-40">
+      <div class="mt-[60px] relative z-40 w-full">
         <ScheduleButton />
       </div>
 
