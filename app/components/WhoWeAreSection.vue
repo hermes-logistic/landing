@@ -1,5 +1,5 @@
 <template>
-  <section id="who-we-are" class="relative py-20 bg-[#01051D] overflow-hidden">
+  <section id="who-we-are" class="relative py-20 bg-[#01051D] overflow-hidden scroll-mt-16 md:scroll-mt-20">
     <!-- Background Image -->
     <WhoWeAreBackground />
 

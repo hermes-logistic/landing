@@ -1,31 +1,61 @@
 {
   "nav": {
-    "who": "Who We Are",
+    "who": "Platform",
     "benefits": "Benefits",
     "features": "Features",
-    "products": "Products",
     "pricing": "Pricing",
-    "contact": "Contact Us"
+    "signup": "Sign Up",
+    "cta": "Talk to Sales",
+    "aria": {
+      "main": "Main navigation",
+      "home": "Hermes - Home",
+      "toggleMenu": "Toggle navigation menu",
+      "languageSwitch": "Language",
+      "switchToEnglish": "Switch to English",
+      "switchToSpanish": "Switch to Spanish",
+      "logo": "Hermes Logistics logo"
+    }
+  },
+  "seo": {
+    "title": "Hermes Logistics - Fleet Management & Route Optimization Software",
+    "description": "Transform your fleet with Hermes Logistics. Optimize delivery routes, reduce costs and increase efficiency with fleet management software built for growing operations.",
+    "keywords": "fleet management software, route optimization software, delivery route planner, last mile delivery software, fleet tracking, logistics, transportation management, supply chain",
+    "ogTitle": "Hermes Logistics - Fleet Management & Route Optimization Software",
+    "ogDescription": "Leverage technology to optimize your routes, reduce costs, and increase the efficiency of your deliveries.",
+    "twitterTitle": "Hermes Logistics - Fleet Management & Route Optimization Software",
+    "twitterDescription": "Transform your fleet with intelligent route optimization and real-time analytics."
   },
   "hero": {
     "title": "Transform your fleet",
     "description": "Leverage technology to optimize your routes, reduce costs, and increase the efficiency of your deliveries.",
-    "schedule": "Schedule a Demo"
+    "schedule": "Schedule a Demo",
+    "aria": {
+      "schedule": "Schedule a demo with Hermes"
+    }
   },
   "stats": {
     "fuelSavings": "Fuel Savings",
     "savingsWorkHours": "Savings in Work\nHours",
-    "costProductionErrorDelays": "Cost Production\nfrom Error\nDelays"
+    "costProductionErrorDelays": "Cost Production\nfrom Error\nDelays",
+    "aria": {
+      "section": "Statistics",
+      "fuel": "Fuel savings indicator",
+      "hours": "Work hours savings indicator",
+      "cost": "Cost reduction indicator"
+    }
   },
   "whoWeAre": {
-    "label": "Who We Are",
+    "label": "Platform",
     "title": "Hermes Logistics",
     "description1": "Our platform enables companies to optimize their delivery routes, reduce operational costs, and increase customer satisfaction.",
     "description2": "By leveraging our advanced reporting and real-time analytics, businesses can make strategic decisions to improve efficiency and profitability."
   },
   "ourPurpose": {
     "title": "Our Purpose",
-    "description": "Revolutionize fleet management through Intelligent Route Optimization, with the purpose of significantly reducing travel times and operational costs. Through our advanced technology, we seek to maximize efficiency and promote sustainable fuel savings. We strive to lead the transition towards a smarter and more sustainable future in delivery logistics."
+    "description": "Revolutionize fleet management through Intelligent Route Optimization, with the purpose of significantly reducing travel times and operational costs. Through our advanced technology, we seek to maximize efficiency and promote sustainable fuel savings. We strive to lead the transition towards a smarter and more sustainable future in delivery logistics.",
+    "aria": {
+      "illustration": "Our Purpose illustration"
+    }
   },
   "benefits": {
     "label": "Benefits",
@@ -57,6 +87,9 @@
     "label": "Features",
     "title": "Amazing Features",
     "description": "Discover the innovative features that will help you take your logistics to the next level.",
+    "aria": {
+      "showFeature": "Show %{feature}"
+    },
     "slides": [
       {
         "title": "Route Optimization",
@@ -79,6 +112,7 @@
   "pricing": {
     "label": "PRICING",
     "title": "Choose Your Perfect Plan",
+    "mostPopular": "Most Popular",
     "plans": [
       {
         "name": "Basic",
@@ -94,14 +128,6 @@
           "Geofencing",
           "Basic reports",
           "Email support"
-        ],
-        "featureDescriptions": [
-          "Route optimization allows you to find the most efficient paths for your deliveries, saving time and fuel.",
-          "Real-time monitoring gives you complete visibility over your fleet's location and status at any moment.",
-          "The mobile application enables drivers to receive updates and manage their tasks directly from their devices.",
-          "Geofencing lets you define virtual boundaries and receive alerts when vehicles enter or exit specific areas.",
-          "Basic reports provide essential insights into your fleet's performance and operational costs.",
-          "Email support ensures you have assistance whenever you need it, with response times within 24 hours."
         ]
       },
       {
@@ -118,14 +144,6 @@
           "Custom reports",
           "API integration",
           "Multi-user access"
-        ],
-        "featureDescriptions": [
-          "Includes all features from the Basic plan, providing a solid foundation for your fleet management.",
-          "Advanced analytics offer deep dives into data trends, helping you make data-driven decisions.",
-          "Priority support grants you faster response times and dedicated assistance for critical issues.",
-          "Custom reports allow you to tailor data outputs to your specific business KPIs and requirements.",
-          "API integration enables seamless connectivity with your existing ERP or CRM systems.",
-          "Multi-user access lets your entire team collaborate with different roles and permissions."
         ]
       },
       {
@@ -142,14 +160,6 @@
           "White-label options",
           "Advanced automation",
           "SLA guarantees"
-        ],
-        "featureDescriptions": [
-          "Includes all features from the Standard plan, ensuring you have every tool at your disposal.",
-          "Predictive analytics use AI to forecast maintenance needs and potential route disruptions.",
-          "Dedicated support provides you with a personal account manager for personalized service.",
-          "White-label options allow you to brand the platform as your own for client-facing interactions.",
-          "Advanced automation streamlines complex workflows, reducing manual intervention.",
-          "SLA guarantees ensure maximum uptime and reliability for your mission-critical operations."
         ]
       },
       {
@@ -166,14 +176,6 @@
           "On-premise deployment",
           "Training sessions",
           "Account manager"
-        ],
-        "featureDescriptions": [
-          "Includes all features from the Premium plan, offering the ultimate fleet management suite.",
-          "Custom development ensures the platform is tailored exactly to your unique operational workflows.",
-          "24/7 phone support gives you round-the-clock access to expert assistance whenever you need it.",
-          "On-premise deployment options provide maximum security and control over your data infrastructure.",
-          "Training sessions ensure your team is fully proficient in utilizing all platform capabilities.",
-          "A dedicated account manager works closely with you to optimize your long-term fleet strategy."
         ]
       }
     ]
@@ -181,9 +183,13 @@
   "contact": {
     "title": "Get in Touch with Hermes",
     "description": "Ready to transform your fleet management? Contact us today and discover how Hermes can optimize your logistics operations.",
-    "cta": "Contact Us",
+    "cta": "Talk to Sales",
+    "aria": {
+      "illustration": "Contact illustration",
+      "cta": "Contact us to optimize your fleet"
+    },
     "modal": {
-      "title": "Contact Us",
+      "title": "Talk to Sales",
       "name": "Full Name",
       "namePlaceholder": "John Doe",
       "email": "Email Address",
@@ -196,7 +202,20 @@
       "sending": "Sending...",
       "successMessage": "Thank you! Your message has been sent successfully. We'll get back to you soon.",
       "errorMessage": "Something went wrong. Please try again.",
-      "privacy": "We respect your privacy. Your information is safe with us."
+      "privacy": "We respect your privacy. Your information is safe with us.",
+      "aria": {
+        "close": "Close modal"
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© Hermes Company. All Rights Reserved",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "aria": {
+      "facebook": "Hermes on Facebook",
+      "twitter": "Hermes on Twitter",
+      "telegram": "Hermes on Telegram"
     }
   },
   "auth": {

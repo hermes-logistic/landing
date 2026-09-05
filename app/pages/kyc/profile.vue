@@ -63,13 +63,13 @@ const { t } = useI18n()
 const router = useRouter()
 
 // SEO Meta
-useHead({
+useHead(() => ({
   title: t('kyc.profile.meta.title'),
   meta: [
     { name: 'description', content: t('kyc.profile.meta.description') },
     { name: 'robots', content: 'noindex, nofollow' }
   ]
-})
+}))
 
 // KYC State Management
 const KYC_STORAGE_KEY = 'hermes_kyc_state'

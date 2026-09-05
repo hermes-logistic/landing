@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import FeaturesSection from '../../app/components/FeaturesSection.vue'
-import { globalStubs } from '../../vitest.setup'
 
 vi.stubGlobal('useI18n', () => ({
   t: (key: string) => {
@@ -17,11 +16,7 @@ vi.stubGlobal('useI18n', () => ({
 
 describe('FeaturesSection', () => {
   it('mounts and has section id', () => {
-    const wrapper = mount(FeaturesSection, {
-      global: {
-        stubs: globalStubs,
-      },
-    })
+    const wrapper = mount(FeaturesSection)
     expect(wrapper.attributes('id')).toBe('features')
   })
 })

@@ -57,3 +57,11 @@ next-env.d.ts
 
 Dockerfile
 *docker-compose*
+
+# Design source (added with the landing rebuild). Not build inputs: the pen is
+# an encrypted pen.dev file and pen-assets/ holds its exported originals, ~20MB
+# that would ride into the build context for nothing. DESIGN.md and docs/ are
+# already covered by the *.md rule above.
+/pen-assets
+pencil.pen
+.mcp.json

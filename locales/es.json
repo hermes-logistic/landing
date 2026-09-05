@@ -1,31 +1,61 @@
 {
   "nav": {
-    "who": "Quiénes Somos",
+    "who": "Plataforma",
     "benefits": "Beneficios",
-    "features": "Características",
-    "products": "Productos",
+    "features": "Funciones",
     "pricing": "Precios",
-    "contact": "Contáctanos"
+    "signup": "Sign Up",
+    "cta": "Hablar con Ventas",
+    "aria": {
+      "main": "Navegación principal",
+      "home": "Hermes - Inicio",
+      "toggleMenu": "Abrir o cerrar menú de navegación",
+      "languageSwitch": "Idioma",
+      "switchToEnglish": "Cambiar a inglés",
+      "switchToSpanish": "Cambiar a español",
+      "logo": "Logotipo de Hermes Logistics"
+    }
+  },
+  "seo": {
+    "title": "Hermes Logistics - Software de Gestión de Flotas y Optimización de Rutas",
+    "description": "Transforma tu flota con Hermes Logistics. Optimiza rutas de entrega, reduce costos y aumenta la eficiencia con un software de gestión de flotas hecho para operaciones en crecimiento.",
+    "keywords": "software de gestión de flotas, optimización de rutas, planificación de rutas de entrega, software de última milla, rastreo de flotas, logística, administración de transporte, cadena de suministro",
+    "ogTitle": "Hermes Logistics - Software de Gestión de Flotas y Optimización de Rutas",
+    "ogDescription": "Aprovecha la tecnología para optimizar tus rutas, reducir costos y aumentar la eficiencia de tus entregas.",
+    "twitterTitle": "Hermes Logistics - Software de Gestión de Flotas y Optimización de Rutas",
+    "twitterDescription": "Transforma tu flota con optimización inteligente de rutas y analítica en tiempo real."
   },
   "hero": {
     "title": "Transforma tu flota",
     "description": "Aprovecha la tecnología para optimizar tus rutas, reducir costos y aumentar la eficiencia de tus entregas",
-    "schedule": "Agendar una Demo"
+    "schedule": "Agendar una Demo",
+    "aria": {
+      "schedule": "Agendar una demo con Hermes"
+    }
   },
   "stats": {
     "fuelSavings": "Combustible",
     "savingsWorkHours": "Ahorro en Horas\nde Trabajo",
-    "costProductionErrorDelays": "Costo de\nProducción por\nRetrasos de\nError"
+    "costProductionErrorDelays": "Costo de\nProducción por\nRetrasos de\nError",
+    "aria": {
+      "section": "Estadísticas",
+      "fuel": "Indicador de ahorro de combustible",
+      "hours": "Indicador de ahorro de horas de trabajo",
+      "cost": "Indicador de reducción de costos"
+    }
   },
   "whoWeAre": {
-    "label": "Quiénes Somos",
+    "label": "Plataforma",
     "title": "Hermes Logistics",
     "description1": "Nuestra plataforma permite a las empresas optimizar sus rutas de entrega, reducir costos operativos y aumentar la satisfacción del cliente.",
     "description2": "Al aprovechar nuestros informes avanzados y análisis en tiempo real, las empresas pueden tomar decisiones estratégicas para mejorar la eficiencia y la rentabilidad."
   },
   "ourPurpose": {
     "title": "Nuestro Propósito",
-    "description": "Revolucionar la gestión de flotas mediante la Optimización Inteligente de Rutas, con el propósito de reducir significativamente tiempos de viaje y costos operativos. A través de nuestra tecnología avanzada, buscamos maximizar la eficiencia y promover un ahorro sostenible de combustible. Nos esforzamos por liderar la transición hacia un futuro más inteligente y sostenible en la logística de entregas."
+    "description": "Revolucionar la gestión de flotas mediante la Optimización Inteligente de Rutas, con el propósito de reducir significativamente tiempos de viaje y costos operativos. A través de nuestra tecnología avanzada, buscamos maximizar la eficiencia y promover un ahorro sostenible de combustible. Nos esforzamos por liderar la transición hacia un futuro más inteligente y sostenible en la logística de entregas.",
+    "aria": {
+      "illustration": "Ilustración de Nuestro Propósito"
+    }
   },
   "benefits": {
     "label": "Beneficios",
@@ -41,7 +71,7 @@
       },
       {
         "title": "Mejora de la Satisfacción del Cliente",
-        "description": "Con el monitoreo en tiempo real y la entrega en áreas específicas gracias a la geocerca, los clientes finales reciben sus productos a tiempo, mejorando su satisfacción con el servicio y aumentando la fidelidad del cliente."
+        "description": "Con el monitoreo en tiempo real y la entrega en áreas específicas gracias a las geocercas, los clientes finales reciben sus productos a tiempo, mejorando su satisfacción con el servicio y aumentando la fidelidad del cliente."
       },
       {
         "title": "Reducción de Errores y Retrasos",
@@ -54,9 +84,12 @@
     ]
   },
   "features": {
-    "label": "Características",
+    "label": "Funciones",
     "title": "Características asombrosas",
     "description": "Descubre las innovadoras características que te ayudarán a llevar tu logística al siguiente nivel.",
+    "aria": {
+      "showFeature": "Ver %{feature}"
+    },
     "slides": [
       {
         "title": "Optimización de Rutas",
@@ -71,7 +104,7 @@
         "description": "Accede a todas las funcionalidades desde cualquier dispositivo móvil, lo que te permite mantener el control incluso mientras te desplazas."
       },
       {
-        "title": "Geovalla",
+        "title": "Geocercas",
         "description": "Define áreas geográficas específicas y recibe alertas instantáneas cuando tus vehículos entren o salgan de ellas, garantizando la seguridad y el cumplimiento."
       }
     ]
@@ -79,6 +112,7 @@
   "pricing": {
     "label": "PRECIOS",
     "title": "Elige Tu Plan Perfecto",
+    "mostPopular": "Más Popular",
     "plans": [
       {
         "name": "Básico",
@@ -94,14 +128,6 @@
           "Geocercas",
           "Reportes básicos",
           "Soporte por email"
-        ],
-        "featureDescriptions": [
-          "La optimización de rutas te permite encontrar los caminos más eficientes para tus entregas, ahorrando tiempo y combustible.",
-          "El monitoreo en tiempo real te da visibilidad completa sobre la ubicación y estado de tu flota en cualquier momento.",
-          "La aplicación móvil permite a los conductores recibir actualizaciones y gestionar sus tareas directamente desde sus dispositivos.",
-          "Las geocercas te permiten definir límites virtuales y recibir alertas cuando los vehículos entran o salen de áreas específicas.",
-          "Los reportes básicos proporcionan información esencial sobre el rendimiento de tu flota y los costos operativos.",
-          "El soporte por email asegura que tengas asistencia cuando la necesites, con tiempos de respuesta dentro de 24 horas."
         ]
       },
       {
@@ -118,14 +144,6 @@
           "Reportes personalizados",
           "Integración API",
           "Acceso multi-usuario"
-        ],
-        "featureDescriptions": [
-          "Incluye todas las características del plan Básico, proporcionando una base sólida para la gestión de tu flota.",
-          "El análisis avanzado ofrece profundización en tendencias de datos, ayudándote a tomar decisiones basadas en datos.",
-          "El soporte prioritario te garantiza tiempos de respuesta más rápidos y asistencia dedicada para problemas críticos.",
-          "Los reportes personalizados te permiten adaptar las salidas de datos a tus KPIs y requisitos comerciales específicos.",
-          "La integración API permite una conectividad perfecta con tus sistemas ERP o CRM existentes.",
-          "El acceso multi-usuario permite que todo tu equipo colabore con diferentes roles y permisos."
         ]
       },
       {
@@ -142,20 +160,12 @@
           "Opciones de marca blanca",
           "Automatización avanzada",
           "Garantías SLA"
-        ],
-        "featureDescriptions": [
-          "Incluye todas las características del plan Estándar, asegurando que tengas todas las herramientas a tu disposición.",
-          "El análisis predictivo utiliza IA para pronosticar necesidades de mantenimiento y posibles interrupciones en las rutas.",
-          "El soporte dedicado te proporciona un gerente de cuenta personal para un servicio personalizado.",
-          "Las opciones de marca blanca te permiten marcar la plataforma como propia para interacciones con clientes.",
-          "La automatización avanzada agiliza flujos de trabajo complejos, reduciendo la intervención manual.",
-          "Las garantías SLA aseguran el máximo tiempo de actividad y confiabilidad para tus operaciones de misión crítica."
         ]
       },
       {
-        "name": "A medida",
+        "name": "Empresarial",
         "units": "U: +60",
-        "price": "Custom",
+        "price": "A cotizar",
         "description": "El Plan Empresarial es la elección definitiva para las empresas más grandes con flotas extensas. Proporciona una solución de gestión de flotas personalizada y de alto rendimiento.",
         "paymentSpecs": "Especificaciones de pago aquí.",
         "button": "Obtener Plan",
@@ -166,14 +176,6 @@
           "Implementación local",
           "Sesiones de capacitación",
           "Gerente de cuenta"
-        ],
-        "featureDescriptions": [
-          "Incluye todas las características del plan Premium, ofreciendo la suite definitiva de gestión de flotas.",
-          "El desarrollo personalizado asegura que la plataforma se adapte exactamente a tus flujos de trabajo operativos únicos.",
-          "El soporte 24/7 por teléfono te da acceso las 24 horas a asistencia experta cuando la necesites.",
-          "Las opciones de implementación local proporcionan máxima seguridad y control sobre tu infraestructura de datos.",
-          "Las sesiones de capacitación aseguran que tu equipo sea completamente competente en el uso de todas las capacidades de la plataforma.",
-          "Un gerente de cuenta dedicado trabaja estrechamente contigo para optimizar tu estrategia de flota a largo plazo."
         ]
       }
     ]
@@ -181,9 +183,13 @@
   "contact": {
     "title": "Contáctanos en Hermes",
     "description": "¿Listo para transformar la gestión de tu flota? Contáctanos hoy y descubre cómo Hermes puede optimizar tus operaciones logísticas.",
-    "cta": "Contáctanos",
+    "cta": "Hablar con Ventas",
+    "aria": {
+      "illustration": "Ilustración de contacto",
+      "cta": "Contáctanos para optimizar tu flota"
+    },
     "modal": {
-      "title": "Contáctanos",
+      "title": "Hablar con Ventas",
       "name": "Nombre Completo",
       "namePlaceholder": "Juan Pérez",
       "email": "Correo Electrónico",
@@ -196,7 +202,20 @@
       "sending": "Enviando...",
       "successMessage": "¡Gracias! Tu mensaje ha sido enviado exitosamente. Te contactaremos pronto.",
       "errorMessage": "Algo salió mal. Por favor intenta de nuevo.",
-      "privacy": "Respetamos tu privacidad. Tu información está segura con nosotros."
+      "privacy": "Respetamos tu privacidad. Tu información está segura con nosotros.",
+      "aria": {
+        "close": "Cerrar ventana"
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© Hermes Company. Todos los derechos reservados",
+    "privacyPolicy": "Política de Privacidad",
+    "terms": "Términos y Condiciones",
+    "aria": {
+      "facebook": "Hermes en Facebook",
+      "twitter": "Hermes en Twitter",
+      "telegram": "Hermes en Telegram"
     }
   },
   "auth": {
@@ -213,7 +232,7 @@
       "heading": "Registrarse",
       "description": "Crea tu cuenta en Hermes para empezar a optimizar rutas, reducir costos de entrega y gestionar tu flota con información en tiempo real. Configúralo rápido y de forma segura.",
       "name": "Nombre",
-      "email": "Email",
+      "email": "Correo electrónico",
       "password": "Contraseña",
       "placeholderName": "Juan Pérez",
       "placeholderEmail": "tu@ejemplo.com",
@@ -236,7 +255,7 @@
       "subtitle": "Accede a tu panel de gestión de flotas.",
       "heading": "Iniciar sesión",
       "description": "Inicia sesión en tu cuenta de Hermes para acceder a tu panel, gestionar rutas y monitorear tu flota en tiempo real.",
-      "email": "Email",
+      "email": "Correo electrónico",
       "password": "Contraseña",
       "placeholderEmail": "tu@ejemplo.com",
       "placeholderPassword": "Ingresa tu contraseña",

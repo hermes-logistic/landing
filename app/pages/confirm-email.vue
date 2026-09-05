@@ -11,13 +11,18 @@ definePageMeta({ layout: 'auth' })
 
 const { t, locale } = useI18n()
 
-useHead({
+useHead(() => ({
   title: `${t('auth.confirmEmail.title')} - ${t('whoWeAre.title')}`,
   meta: [
     { name: 'description', content: t('auth.confirmEmail.description') },
     { name: 'keywords', content: 'email confirmation, signup, hermes logistics' },
     { name: 'author', content: 'Hermes Logistics' },
-    { name: 'robots', content: 'index, follow' },
+    // noindex: es un formulario, no contenido. Además su versión servida es
+    // siempre la del locale por defecto (el español sólo cubre la landing), así
+    // que indexarla publicaría una única variante inglesa de una pantalla de
+    // aplicación. El canonical de abajo es autorreferente, que es el caso en
+    // que conviven sin ambigüedad con noindex.
+    { name: 'robots', content: 'noindex, nofollow' },
 
     // Open Graph
     { property: 'og:title', content: `${t('auth.confirmEmail.title')} - ${t('whoWeAre.title')}` },
@@ -37,5 +42,5 @@ useHead({
   link: [
     { rel: 'canonical', href: 'https://www.hermesv.io/confirm-email' }
   ]
-})
+}))
 </script>

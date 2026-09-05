@@ -47,9 +47,6 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Hermes Logistics - Fleet Management & Route Optimization',
-      htmlAttrs: {
-        lang: 'en'
-      },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -60,10 +57,19 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }
       ],
-      // Inline critical CSS to improve FCP/LCP
+      // Inline critical CSS to improve FCP/LCP.
+      // The four @font-face rules are inlined on purpose: the font preloads in
+      // app/app.vue are useless while the @font-face declaration arrives in a
+      // deferred stylesheet, so the text repaints on swap and costs CLS.
+      // Only the weights actually used in app/ are here — 300 and 800 are never
+      // used, so they stay out of the critical path and their .woff2 files were removed.
       style: [
         {
-          children: `
+          innerHTML: `
+            @font-face{font-family:'Poppins';src:url('/fonts/poppins-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+            @font-face{font-family:'Poppins';src:url('/fonts/poppins-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+            @font-face{font-family:'Poppins';src:url('/fonts/poppins-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+            @font-face{font-family:'Poppins';src:url('/fonts/poppins-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
             :root { --font-sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
             html, body { font-family: var(--font-sans); background-color: #01051D; margin: 0; padding: 0; overflow-x: hidden; }
             .min-h-screen { min-height: 100vh; }
@@ -76,7 +82,10 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ['/sitemap.xml']
+      // Both locale routes are prerendered so crawlers get static HTML for each.
+      // '/sitemap.xml' used to be listed here, but it is a static file in
+      // public/ and never was a Nitro route.
+      routes: ['/', '/es']
     },
     compressPublicAssets: true,
     minify: true,

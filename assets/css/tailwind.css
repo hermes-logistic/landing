@@ -18,3 +18,16 @@ html, body {
 .min-h-screen {
   min-height: 100vh;
 }
+
+/* Global keyboard focus ring */
+/* outline-offset es funcional: #61F0FF sobre el relleno #FF734D del CTA da 1.97:1.
+   El offset separa el anillo del naranja y lo apoya sobre el fondo. No lo quites. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 2px solid #61F0FF;
+  outline-offset: 2px;
+}

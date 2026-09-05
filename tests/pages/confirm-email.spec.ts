@@ -17,8 +17,12 @@ describe('ConfirmEmail Page', () => {
     // @ts-expect-error - Overriding global stubs for test
     globalThis.definePageMeta = () => {}
     // @ts-expect-error - Capture useHead calls for test
-    globalThis.useHead = (meta?: Record<string, unknown>) => {
-      capturedMeta = meta as HeadMeta
+    globalThis.useHead = (meta?: Record<string, unknown> | (() => Record<string, unknown>)) => {
+      // The page passes a getter so the head re-evaluates when the locale
+      // changes after hydration (the locale is no longer negotiated from
+      // Accept-Language — see app/app.vue). Unwrap it here so the assertions
+      // below keep inspecting the payload rather than the function.
+      capturedMeta = (typeof meta === 'function' ? meta() : meta) as HeadMeta
     }
   })
 
@@ -112,6 +116,25 @@ describe('ConfirmEmail Page', () => {
       const canonical = (meta.link as Array<Record<string, unknown>>)?.find((l) => l.rel === 'canonical')
       expect(canonical).toBeDefined()
       expect((canonical?.href as string) || '').toContain('/confirm-email')
+    })
+
+    it('is noindex: a form is not indexable content', () => {
+      mount(ConfirmEmailPage, {
+        global: {
+          stubs: {
+            ConfirmEmailCard: true
+          }
+        }
+      })
+
+      const meta = capturedMeta as HeadMeta
+      const metaArray = (meta.meta as Array<Record<string, unknown>>) || []
+      const robots = metaArray.find((m) => m.name === 'robots')
+      // Deliberate: /confirm-email is a form, and the only variant ever served
+      // is the default locale's (Spanish covers the landing only). The
+      // self-referential canonical above is the case where the two coexist
+      // unambiguously.
+      expect(robots?.content).toBe('noindex, nofollow')
     })
   })
 })

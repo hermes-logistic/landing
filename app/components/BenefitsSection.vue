@@ -1,5 +1,5 @@
 <template>
-  <section id="benefits" class="relative py-20 lg:py-32 overflow-hidden" aria-labelledby="benefits-heading">
+  <section id="benefits" class="relative py-20 lg:py-32 overflow-hidden scroll-mt-16 md:scroll-mt-20" aria-labelledby="benefits-heading">
   <!-- Background with visual effects -->
     <BenefitsBackground />
     

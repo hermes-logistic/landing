@@ -1,5 +1,5 @@
 <template>
-  <section id="features" class="relative py-20 bg-gradient-to-b from-[#01051D] to-[#031E72]" aria-labelledby="features-heading">
+  <section id="features" class="relative py-20 bg-gradient-to-b from-[#01051D] to-[#031E72] scroll-mt-16 md:scroll-mt-20" aria-labelledby="features-heading">
     <!-- Background -->
     <FeaturesBackground />
     

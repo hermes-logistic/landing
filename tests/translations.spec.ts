@@ -1,143 +1,223 @@
 import { describe, it, expect } from 'vitest'
+import en from '../locales/en.json'
+import es from '../locales/es.json'
+import { NAV_LINKS } from '../app/components/Navbar/links'
 
-// Simular las traducciones (en un test real, podrías mockearlo mejor)
-const enTranslations = {
-  contact: {
-    title: 'Get in Touch with Hermes',
-    description: 'Ready to transform your fleet management? Contact us today and discover how Hermes can optimize your logistics operations.',
-    cta: 'Contact Us',
-    modal: {
-      title: 'Contact Us',
-      name: 'Full Name',
-      namePlaceholder: 'John Doe',
-      email: 'Email Address',
-      emailPlaceholder: 'john@example.com',
-      company: 'Company Name',
-      companyPlaceholder: 'Your Company',
-      message: 'Message',
-      messagePlaceholder: 'Tell us about your fleet management needs...',
-      send: 'Send Message',
-      sending: 'Sending...',
-      successMessage: 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.',
-      errorMessage: 'Something went wrong. Please try again.',
-      privacy: 'We respect your privacy. Your information is safe with us.'
-    }
-  },
-  nav: {
-    contact: 'Contact Us'
-  }
+type Json = string | number | boolean | null | Json[] | { [key: string]: Json }
+
+interface Leaf {
+  kind: 'scalar' | 'array'
+  value?: Json
+  length?: number
 }
 
-const esTranslations = {
-  contact: {
-    title: 'Contáctanos en Hermes',
-    description: '¿Listo para transformar la gestión de tu flota? Contáctanos hoy y descubre cómo Hermes puede optimizar tus operaciones logísticas.',
-    cta: 'Contáctanos',
-    modal: {
-      title: 'Contáctanos',
-      name: 'Nombre Completo',
-      namePlaceholder: 'Juan Pérez',
-      email: 'Correo Electrónico',
-      emailPlaceholder: 'juan@example.com',
-      company: 'Nombre de la Empresa',
-      companyPlaceholder: 'Tu Empresa',
-      message: 'Mensaje',
-      messagePlaceholder: 'Cuéntanos sobre tus necesidades de gestión de flota...',
-      send: 'Enviar Mensaje',
-      sending: 'Enviando...',
-      successMessage: '¡Gracias! Tu mensaje ha sido enviado exitosamente. Te contactaremos pronto.',
-      errorMessage: 'Algo salió mal. Por favor intenta de nuevo.',
-      privacy: 'Respetamos tu privacidad. Tu información está segura con nosotros.'
-    }
-  },
-  nav: {
-    contact: 'Contáctanos'
+/**
+ * Flattens a locale object to dot-separated paths, indexing arrays as `path[i]`.
+ * Arrays are also recorded in their own right so their length can be compared.
+ */
+function flatten(value: Json, prefix = '', out: Record<string, Leaf> = {}): Record<string, Leaf> {
+  if (Array.isArray(value)) {
+    out[prefix] = { kind: 'array', length: value.length }
+    value.forEach((item, i) => flatten(item, `${prefix}[${i}]`, out))
   }
+  else if (value !== null && typeof value === 'object') {
+    for (const [key, child] of Object.entries(value)) {
+      flatten(child, prefix ? `${prefix}.${key}` : key, out)
+    }
+  }
+  else {
+    out[prefix] = { kind: 'scalar', value }
+  }
+  return out
 }
 
-describe('Translations', () => {
-  describe('Contact translations', () => {
-    it('should have all required contact translations in English', () => {
-      expect(enTranslations.contact).toBeDefined()
-      expect(enTranslations.contact.title).toBeDefined()
-      expect(enTranslations.contact.description).toBeDefined()
-      expect(enTranslations.contact.cta).toBeDefined()
-      expect(typeof enTranslations.contact.title).toBe('string')
-      expect(typeof enTranslations.contact.description).toBe('string')
-      expect(typeof enTranslations.contact.cta).toBe('string')
-    })
+function resolve(source: Json, path: string): Json | undefined {
+  return path.split('.').reduce<Json | undefined>((acc, key) => {
+    if (acc !== null && typeof acc === 'object' && !Array.isArray(acc)) return acc[key]
+    return undefined
+  }, source)
+}
 
-    it('should have all required contact translations in Spanish', () => {
-      expect(esTranslations.contact).toBeDefined()
-      expect(esTranslations.contact.title).toBeDefined()
-      expect(esTranslations.contact.description).toBeDefined()
-      expect(esTranslations.contact.cta).toBeDefined()
-      expect(typeof esTranslations.contact.title).toBe('string')
-      expect(typeof esTranslations.contact.description).toBe('string')
-      expect(typeof esTranslations.contact.cta).toBe('string')
-    })
+const flatEn = flatten(en as Json)
+const flatEs = flatten(es as Json)
+const pathsEn = Object.keys(flatEn)
+const pathsEs = Object.keys(flatEs)
+const sharedPaths = pathsEn.filter(p => p in flatEs)
 
-    it('should not have duplicate contact keys', () => {
-      const enContactKeys = Object.keys(enTranslations.contact)
-      const uniqueKeys = new Set(enContactKeys)
-      expect(enContactKeys.length).toBe(uniqueKeys.size)
-    })
+const scalarEntries = (flat: Record<string, Leaf>) =>
+  Object.entries(flat).filter(([, leaf]) => leaf.kind === 'scalar')
 
-    it('should not have duplicate contact keys in Spanish', () => {
-      const esContactKeys = Object.keys(esTranslations.contact)
-      const uniqueKeys = new Set(esContactKeys)
-      expect(esContactKeys.length).toBe(uniqueKeys.size)
-    })
+/**
+ * Strings that are legitimately identical in both locales: brand names, plan
+ * names kept as-is, currency figures and unit-range notation.
+ */
+const IDENTICAL_BY_DESIGN = new Set([
+  'whoWeAre.title', // "Hermes Logistics" — brand name
+  'pricing.plans[2].name', // "Premium" — plan name kept in both locales
+  'pricing.plans[0].price', // "$40.00" — currency figure
+  'pricing.plans[1].price', // "$35.00"
+  'pricing.plans[2].price', // "$30.00"
+  'pricing.plans[0].units', // "U: 1-5" — unit-range notation
+  'pricing.plans[1].units', // "U: 6-24"
+  'pricing.plans[2].units', // "U: 25-60"
+  'pricing.plans[3].units', // "U: +60"
+  'kyc.profile.placeholders.phone', // "0000 0000" — máscara numérica, sin palabras
+  // "Sign Up" en ambos locales, por decisión de producto. Es un préstamo
+  // asentado en el español técnico —como "login"— y además la única forma que
+  // cabe: "Registrarse" mide 68.3px a 12px contra los 45.9 de "Sign Up", y el
+  // bar español a 768 ya está a -2 de su caja antes de añadirle nada. No es una
+  // traducción pendiente: si algún día se traduce, hay que volver a medir el
+  // navbar en los cinco breakpoints. Ver DESIGN.md "Sign-up entry point".
+  'nav.signup',
+])
+
+describe('locale files', () => {
+  it('exposes exactly the same key paths in both locales', () => {
+    const missingInEs = pathsEn.filter(p => !(p in flatEs)).sort()
+    const missingInEn = pathsEs.filter(p => !(p in flatEn)).sort()
+
+    // Asserting the object (not two separate arrays) so a failure names which
+    // side diverged and on which paths.
+    expect({ missingInEs, missingInEn }).toEqual({ missingInEs: [], missingInEn: [] })
   })
 
-  describe('Modal translations', () => {
-    it('should have all required modal translations in English', () => {
-      expect(enTranslations.contact.modal).toBeDefined()
-      expect(enTranslations.contact.modal.title).toBeDefined()
-      expect(enTranslations.contact.modal.name).toBeDefined()
-      expect(enTranslations.contact.modal.email).toBeDefined()
-      expect(enTranslations.contact.modal.company).toBeDefined()
-      expect(enTranslations.contact.modal.message).toBeDefined()
-      expect(enTranslations.contact.modal.send).toBeDefined()
-      expect(enTranslations.contact.modal.successMessage).toBeDefined()
-      expect(enTranslations.contact.modal.errorMessage).toBeDefined()
-      expect(enTranslations.contact.modal.privacy).toBeDefined()
-    })
+  it('is not empty and covers a comparable number of keys', () => {
+    expect(pathsEn.length).toBeGreaterThan(0)
+    expect(pathsEn.length).toBe(pathsEs.length)
+  })
 
-    it('should have all required modal translations in Spanish', () => {
-      expect(esTranslations.contact.modal).toBeDefined()
-      expect(esTranslations.contact.modal.title).toBeDefined()
-      expect(esTranslations.contact.modal.name).toBeDefined()
-      expect(esTranslations.contact.modal.email).toBeDefined()
-      expect(esTranslations.contact.modal.company).toBeDefined()
-      expect(esTranslations.contact.modal.message).toBeDefined()
-      expect(esTranslations.contact.modal.send).toBeDefined()
-      expect(esTranslations.contact.modal.successMessage).toBeDefined()
-      expect(esTranslations.contact.modal.errorMessage).toBeDefined()
-      expect(esTranslations.contact.modal.privacy).toBeDefined()
-    })
+  it('uses the same type at every shared path', () => {
+    const mismatches = sharedPaths
+      .filter(p => flatEn[p]!.kind !== flatEs[p]!.kind)
+      .map(p => ({ path: p, en: flatEn[p]!.kind, es: flatEs[p]!.kind }))
 
-    it('should have matching keys in English and Spanish modal translations', () => {
-      const enKeys = Object.keys(enTranslations.contact.modal).sort()
-      const esKeys = Object.keys(esTranslations.contact.modal).sort()
-      expect(enKeys).toEqual(esKeys)
-    })
+    expect(mismatches).toEqual([])
+  })
 
-    it('should not have empty translation strings', () => {
-      Object.values(enTranslations.contact.modal).forEach((value) => {
-        expect(value).toBeTruthy()
-        expect(typeof value).toBe('string')
-        if (typeof value === 'string') {
-          expect(value.length).toBeGreaterThan(0)
+  it('keeps every array the same length in both locales', () => {
+    const mismatches = sharedPaths
+      .filter(p => flatEn[p]!.kind === 'array' && flatEn[p]!.length !== flatEs[p]!.length)
+      .map(p => ({ path: p, en: flatEn[p]!.length, es: flatEs[p]!.length }))
+
+    expect(mismatches).toEqual([])
+  })
+
+  it('holds only non-empty strings as leaf values', () => {
+    const bad: Array<{ locale: string, path: string, value: Json | undefined }> = []
+
+    for (const [locale, flat] of [['en', flatEn], ['es', flatEs]] as const) {
+      for (const [path, leaf] of scalarEntries(flat)) {
+        if (typeof leaf.value !== 'string' || leaf.value.trim() === '') {
+          bad.push({ locale, path, value: leaf.value })
         }
-      })
-    })
+      }
+    }
+
+    expect(bad).toEqual([])
   })
 
-  describe('Navigation translations', () => {
-    it('should have contact in nav translations', () => {
-      expect(enTranslations.nav.contact).toBeDefined()
-      expect(esTranslations.nav.contact).toBeDefined()
-    })
+  it('has no Spanish string left identical to its English source', () => {
+    const untranslated = sharedPaths
+      .filter(p => flatEn[p]!.kind === 'scalar')
+      .filter(p => flatEn[p]!.value === flatEs[p]!.value)
+      .filter(p => !IDENTICAL_BY_DESIGN.has(p))
+      .map(p => ({ path: p, value: flatEn[p]!.value }))
+
+    expect(untranslated).toEqual([])
   })
+
+  it('keeps the identical-by-design list honest', () => {
+    // An entry that is no longer identical is stale and must be removed, so the
+    // whitelist can never quietly mask a future regression.
+    const stale = [...IDENTICAL_BY_DESIGN]
+      .filter(p => !(p in flatEn) || flatEn[p]!.value !== flatEs[p]!.value)
+
+    expect(stale).toEqual([])
+  })
+})
+
+describe('navbar i18n contract', () => {
+  const REQUIRED_NAV_KEYS = [
+    'nav.who',
+    'nav.benefits',
+    'nav.features',
+    'nav.pricing',
+    'nav.cta',
+    'nav.aria.main',
+    'nav.aria.home',
+    'nav.aria.toggleMenu',
+    'nav.aria.languageSwitch',
+    'nav.aria.switchToEnglish',
+    'nav.aria.switchToSpanish',
+    'nav.aria.logo',
+  ]
+
+  // Renamed to nav.cta / removed outright — the navbar must never reference them again.
+  const REMOVED_NAV_KEYS = ['nav.contact', 'nav.products']
+
+  it.each(REQUIRED_NAV_KEYS)('defines %s as a non-empty string in both locales', (path) => {
+    for (const [locale, source] of [['en', en], ['es', es]] as const) {
+      const value = resolve(source as Json, path)
+      expect(typeof value, `${path} missing in ${locale}.json`).toBe('string')
+      expect((value as string).trim(), `${path} empty in ${locale}.json`).not.toBe('')
+    }
+  })
+
+  it.each(REMOVED_NAV_KEYS)('no longer defines %s in either locale', (path) => {
+    expect(resolve(en as Json, path)).toBeUndefined()
+    expect(resolve(es as Json, path)).toBeUndefined()
+  })
+
+  it('resolves every labelKey declared in NAV_LINKS', () => {
+    expect(NAV_LINKS.length).toBeGreaterThan(0)
+
+    const unresolved: Array<{ locale: string, id: string, labelKey: string }> = []
+    for (const [locale, source] of [['en', en], ['es', es]] as const) {
+      for (const link of NAV_LINKS) {
+        const value = resolve(source as Json, link.labelKey)
+        if (typeof value !== 'string' || value.trim() === '') {
+          unresolved.push({ locale, id: link.id, labelKey: link.labelKey })
+        }
+      }
+    }
+
+    expect(unresolved).toEqual([])
+  })
+})
+
+describe('accessible-name i18n contract', () => {
+  // Every aria-label / alt text rendered by a component must resolve in both
+  // locales: a Spanish screen-reader user must never be read English. These are
+  // the keys the templates reference by name, so a rename or a drop fails here
+  // instead of silently falling back to English at runtime.
+  const REQUIRED_ARIA_KEYS = [
+    'stats.aria.section',
+    'stats.aria.fuel',
+    'stats.aria.hours',
+    'stats.aria.cost',
+    'hero.aria.schedule',
+    'contact.aria.illustration',
+    'contact.aria.cta',
+    'contact.modal.aria.close',
+    'ourPurpose.aria.illustration',
+  ]
+
+  // Visible copy that used to be hardcoded English in the templates.
+  const REQUIRED_LABEL_KEYS = [
+    'footer.copyright',
+    'footer.privacyPolicy',
+    'footer.terms',
+    'pricing.mostPopular',
+  ]
+
+  it.each([...REQUIRED_ARIA_KEYS, ...REQUIRED_LABEL_KEYS])(
+    'defines %s as a non-empty string in both locales',
+    (path) => {
+      for (const [locale, source] of [['en', en], ['es', es]] as const) {
+        const value = resolve(source as Json, path)
+        expect(typeof value, `${path} missing in ${locale}.json`).toBe('string')
+        expect((value as string).trim(), `${path} empty in ${locale}.json`).not.toBe('')
+      }
+    },
+  )
 })

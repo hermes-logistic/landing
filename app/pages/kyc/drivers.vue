@@ -104,13 +104,13 @@ const isFormSaved = computed(() => {
 })
 
 // SEO Meta
-useHead({
+useHead(() => ({
   title: t('kyc.drivers.meta.title'),
   meta: [
     { name: 'description', content: t('kyc.drivers.meta.description') },
     { name: 'robots', content: 'noindex, nofollow' }
   ]
-})
+}))
 
 // KYC State Management
 const KYC_STORAGE_KEY = 'hermes_kyc_state'
