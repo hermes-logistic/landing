@@ -34,7 +34,7 @@
          first link to x=21 — DESIGN.md wants it sharing x=20 with the logo.
          groupGap {spacing.24} is the PANEL'S FLEX GAP, and the separating
          hairlines are siblings of the groups, not a total content-to-content
-         distance: the canonical drawing (V6Joog -> gWTnC) stacks nav, rule,
+         distance: the canonical drawing (nyRec -> KCMkq) stacks nav, rule,
          action, rule, switcher with 24 between each adjacent pair, so two
          groups sit 24 + 1 + 24 = 49px apart with the rule centred. `gap-6`
          here plus `pt-6` on the two groups that carry a rule spends the token

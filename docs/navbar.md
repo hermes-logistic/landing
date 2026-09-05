@@ -8,7 +8,7 @@ del sitio.
 - **Contrato de diseño:** `DESIGN.md` → `components.navbar`, `navbar-lang-chip`,
   `navbar-drawer`
 - **Diseño canónico:** `pencil.pen` → `j3SPJh` · `BWMwJ` · `ZBSNU` · `Mqgsa` ·
-  `dNNus`, y el drawer en `V6Joog` → `S9TV16` → `gWTnC`
+  `dNNus`, y el drawer en `nyRec` → `KCMkq`
 
 ---
 
